@@ -1,0 +1,59 @@
+﻿<Window x:Class="SendEvent_Sample.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local="clr-namespace:SendEvent_Sample"
+        Title="MainWindow" Height="380" Width="525" WindowStartupLocation="CenterScreen">
+    <Grid Margin="8">
+        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        
+        <TextBlock Grid.Row="2" Margin="0,5,0,0">
+            <Run Text="Card number or legacy card number" />
+            <Run Text="(Only if this necessary)" FontSize="9"/>
+        </TextBlock>
+        <TextBox Grid.Row="3" Text="{Binding EventData.CardNumber, Mode=TwoWay}"/>
+        <TextBlock Grid.Row="4" TextWrapping="Wrap" Margin="0,5,0,0">
+            <Run Text="DNA Event ID" />
+            <Run Text="(Our event that closely matches yours)" FontSize="9"/>
+        </TextBlock>
+        <ComboBox Grid.Row="5" ItemsSource="{Binding EventDescriptions, Mode=OneWay}" DisplayMemberPath="Description" SelectedValuePath="Index" SelectedValue="{Binding EventData.EventIndex, Mode=TwoWay}" />
+        <TextBlock Grid.Row="6" TextWrapping="Wrap" Margin="0,5,0,0">
+            <Run Text="Transaction Data" />
+            <Run Text="()" FontSize="9"/>
+        </TextBlock>
+        <TextBox Grid.Row="7" Text="{Binding EventData.TransactionData, Mode=TwoWay}" />
+        <TextBlock Grid.Row="8" TextWrapping="Wrap" Margin="0,5,0,0">
+            <Run Text="Hardware Address" />
+            <Run Text="(Example: 1.1.D2)" FontSize="9"/>
+        </TextBlock>
+        <TextBox Grid.Row="9" Text="{Binding EventData.Address, Mode=TwoWay}" />
+        <TextBlock Grid.Row="10" TextWrapping="Wrap" Margin="0,5,0,0">
+            <Run Text="Hardware Description" />
+            <Run Text="" FontSize="9"/>
+        </TextBlock>
+        <TextBox Grid.Row="11" Text="{Binding EventData.HardwareDescription, Mode=TwoWay}" />
+        <TextBlock Grid.Row="12">
+            <Run Text="Camera ID" />
+            <Run Text="(If this event is associated with a camera you can supply the camera id, otherwise send -1)" FontSize="9"/>
+        </TextBlock>
+        <local:NumericUpDown Grid.Row="13" Value="{Binding EventData.CameraID, Mode=TwoWay}" HorizontalAlignment="Left" Width="100" Minimum="-1" Maximum="1000"/>
+        
+        <Button Grid.Row="14" Content="Send Event" Command="{Binding SendEventCommand}" Margin="0,5,0,0"/>
+    </Grid>
+</Window>

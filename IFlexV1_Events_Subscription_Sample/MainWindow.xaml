@@ -1,0 +1,76 @@
+﻿<Window x:Class="IFlexV1_Events_Subscription_Sample.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local="clr-namespace:IFlexV1_Events_Subscription_Sample"
+        xmlns:oo="clr-namespace:OpenOptions.dnaFusion.Flex.V1"
+        xmlns:sys="clr-namespace:System;assembly=mscorlib"
+        Title="MainWindow" Height="640" Width="1075"
+        WindowStartupLocation="CenterScreen">
+    <Window.Resources>
+        <oo:ViewModel x:Key="DataContext" />
+    </Window.Resources>
+    <Grid x:Name="LayoutRoot" DataContext="{StaticResource DataContext}">
+        <Grid.Resources>
+            <local:EventDescription x:Key="EventDescription" />
+        </Grid.Resources>
+        <TabControl>
+            <TabItem Header="Events">
+                <TabItem.Resources>
+                    <oo:EventIdToGridColor x:Key="EventIdToGridColor"/>
+                    <Style TargetType="DataGridRow" x:Key="rowStyle">
+                        <Setter Property="Foreground" Value="{Binding EventIndex, Converter={StaticResource EventIdToGridColor}}" />
+                        <Setter Property="Background" Value="{Binding EventIndex, Converter={StaticResource EventIdToGridColor}, ConverterParameter='Background'}" />
+                    </Style>
+                </TabItem.Resources>
+                <DataGrid ItemsSource="{Binding Events, Mode=OneWay}" AutoGenerateColumns="False" IsReadOnly="True" RowStyle="{StaticResource rowStyle}">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="ID" Binding="{Binding UniqueKey}" />
+                        <DataGridTextColumn Header="Event Time" Binding="{Binding Transaction}" />
+                        <DataGridTextColumn Header="Address" Binding="{Binding HardwareAddress}" />
+                        <DataGridTextColumn Header="Hardware Description" Binding="{Binding HardwareDescription}" />
+                        <DataGridTextColumn Header="Event Index" Binding="{Binding EventIndex}" />
+                        <DataGridTextColumn Header="Event Description">
+                            <DataGridTextColumn.Binding>
+                                <MultiBinding Converter="{StaticResource EventDescription}">
+                                    <Binding Path="EventIndex" />
+                                    <Binding ElementName="LayoutRoot" Path="DataContext.EventDescriptions" />
+                                </MultiBinding>
+                            </DataGridTextColumn.Binding>
+                        </DataGridTextColumn>
+                        <DataGridTextColumn Header="Card Number" Binding="{Binding LegacyCardNumber}" />
+                        <DataGridTextColumn Header="Last Name" Binding="{Binding LastName}" />
+                        <DataGridTextColumn Header="First Name" Binding="{Binding FirstName}" />
+                        <DataGridTextColumn Header="Event Data" Binding="{Binding TransactionData}" />
+                    </DataGrid.Columns>
+                </DataGrid>
+            </TabItem>
+            <TabItem Header="Alarms">
+                <TabItem.Resources>
+                    <ContextMenu  x:Key="RowMenu" DataContext="{Binding PlacementTarget.DataContext, RelativeSource={RelativeSource Self}}">
+                        <MenuItem Header="Acknowledge" CommandParameter="{Binding}" Command="{Binding DataContext.AcknowledgeComand, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=DataGrid}}"/>
+                        <MenuItem Header="Clear" CommandParameter="{Binding}" Command="{Binding DataContext.ClearComand, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=DataGrid}}"/>
+                        <MenuItem Header="Dismiss" CommandParameter="{Binding}" Command="{Binding DataContext.DismissComand, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=DataGrid}}"/>
+                    </ContextMenu>
+                    <local:AlarmStatusToGridColor x:Key="AlarmStatusToGridColor"/>
+                    <Style TargetType="DataGridRow" x:Key="rowStyle">
+                        <Setter Property="ContextMenu" Value="{StaticResource RowMenu}" />
+                        <Setter Property="Foreground" Value="{Binding Status, Converter={StaticResource AlarmStatusToGridColor}}" />
+                        <Setter Property="Background" Value="{Binding Status, Converter={StaticResource AlarmStatusToGridColor}, ConverterParameter='Background'}" />
+                    </Style>
+                    <local:AlarmStatusToDNAAlarmsGridText x:Key="AlarmStatusToDNAAlarmsGridText" />
+                </TabItem.Resources>
+                <DataGrid ItemsSource="{Binding Alarms, Mode=OneWay}" SelectedItem="{Binding SelectedAlarm, Mode=TwoWay}" AutoGenerateColumns="False" IsReadOnly="True" RowStyle="{StaticResource rowStyle}">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Priority" Binding="{Binding Priority}" />
+                        <DataGridTextColumn Header="Date Time" Binding="{Binding Transaction}" />
+                        <DataGridTextColumn Header="Address" Binding="{Binding HardwareAddress}" />
+                        <DataGridTextColumn Header="Address Description" Binding="{Binding HardwareDescription}" />
+                        <DataGridTextColumn Header="Hardware State" Binding="{Binding HardwareState}" />
+                        <DataGridTextColumn Header="Count" Binding="{Binding Count}" />
+                        <DataGridTextColumn Header="Alarm Status" Binding="{Binding Status, Converter={StaticResource AlarmStatusToDNAAlarmsGridText}}" />
+                    </DataGrid.Columns>
+                </DataGrid>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</Window>
