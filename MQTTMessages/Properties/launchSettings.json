@@ -1,0 +1,11 @@
+{
+  "profiles": {
+    "MQTTMessages": {
+      "commandName": "Project",
+      "commandLineArgs": "status",
+      "environmentVariables": {
+        "DOTNET_ENVIRONMENT": "Development"
+      }
+    }
+  }
+}

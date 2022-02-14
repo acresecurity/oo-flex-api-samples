@@ -1,9 +1,0 @@
-﻿<Window x:Class="IFlexV1_Hardware_Sample.MainWindow"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="IFlexV1_Hardware Sample"
-        Height="450" Width="525" WindowStartupLocation="CenterScreen">
-    <Grid>
-        <TreeView x:Name="HardwareTreeView"/>
-    </Grid>
-</Window>

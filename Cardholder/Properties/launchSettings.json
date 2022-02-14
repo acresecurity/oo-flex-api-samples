@@ -1,0 +1,13 @@
+{
+  "profiles": {
+    "Cardholder": {
+      "commandName": "Project",
+      "~commandLineArgs": "cardholder edit c6ed9f2e-d256-45bd-a908-e970aeb13ce5 --EmployeeId Goobers",
+      "~~commandLineArgs": "cardholder add --FirstName Goober --LastName Munch",
+      "commandLineArgs": "cardholder delete fb4b3372-e76b-46b8-a673-b8299e02bd4e",
+      "environmentVariables": {
+        "DOTNET_ENVIRONMENT": "Development"
+      }
+    }
+  }
+}

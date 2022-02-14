@@ -1,0 +1,12 @@
+{
+  "profiles": {
+    "AlarmsProcessing": {
+      "commandName": "Project",
+      "commandLineArgs": "list",
+      "environmentVariables": {
+        "DOTNET_ENVIRONMENT": "Development"
+      },
+      "commandLineArgs~": "acknowledge 1006"
+    }
+  }
+}
