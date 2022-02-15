@@ -35,7 +35,7 @@ The projects all require the [.NET 6.0 SDK](https://dotnet.microsoft.com/en-us/d
 
 Subscribing to Events
 
-![MQTT Events](/images/MQTT Events.gif)
+![MQTT Events](/Images/MQTT Events.gif)
 
 
 Hardware Tree
