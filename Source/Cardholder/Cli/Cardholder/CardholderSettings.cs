@@ -2,7 +2,7 @@
 
 namespace Cardholder.Cli.Cardholder
 {
-    public partial class CardholderSettings : CommandSettings
+    internal class CardholderSettings : CommandSettings
     {
     }
 }

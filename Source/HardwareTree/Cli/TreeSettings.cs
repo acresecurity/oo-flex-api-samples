@@ -2,7 +2,7 @@
 
 namespace HardwareTree.Cli
 {
-    public class TreeSettings : CommandSettings
+    internal class TreeSettings : CommandSettings
     {
         /// <summary>
         /// Optional parameter to filter the hardware tree

@@ -15,7 +15,7 @@ namespace Common.Cli
 
         #region Implementation of ITypeResolver
 
-        public object Resolve(Type? type)
+        public object Resolve(Type type)
         {
             try
             {

@@ -15,9 +15,6 @@ namespace Microsoft.Extensions.DependencyInjection
             var config = configuration.GetSection("FlexApi");
             services.Configure<Common.Configuration.Options>(config);
 
-            var mqtt = configuration.GetSection("FlexApi:Mqtt");
-            services.Configure<Common.Configuration.MqttClientOptions>(mqtt);
-
             var table = new Table()
                 .Border(TableBorder.Minimal)
                 .BorderColor(Color.Blue)
@@ -27,8 +24,8 @@ namespace Microsoft.Extensions.DependencyInjection
                 .AddRow("Authority", config["Authority"])
                 .AddRow("ClientId", config["ClientId"])
                 .AddRow("ClientSecret", config["ClientSecret"])
-                .AddRow("MQTT Transport", mqtt["Transport"])
-                .AddRow("MQTT Host", mqtt["Host"]);
+                .AddRow("MQTT Transport", config["Mqtt:Transport"])
+                .AddRow("MQTT Host", config["Mqtt:Host"]);
 
             // Sloppy margin
             AnsiConsole.Write(new Panel(new Panel(table).Header("Settings")).Border(BoxBorder.None).PadLeft(4));

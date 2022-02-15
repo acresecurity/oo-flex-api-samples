@@ -78,7 +78,7 @@ namespace Common.DataObjects
     /// </remarks>
     [JsonProperty("items")]
     [JsonPropertyName("items")]
-    public virtual IEnumerable<HardwareTreeItem> Items { get; set; }
+    public virtual IEnumerable<HardwareTreeItem> Items { get; set; } = Array.Empty<HardwareTreeItem>();
 
     /// <summary>
     /// Provides additional information on a hardware type, for example, if a door is a POE or wireless.

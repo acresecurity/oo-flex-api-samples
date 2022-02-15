@@ -41,6 +41,8 @@ using var host = Host.CreateDefaultBuilder(args)
 try
 {
     var app = host.Services.GetService<CommandApp>();
+    if (app == null)
+        return 1;
     return await app.RunAsync(args);
 }
 catch (Exception ex)

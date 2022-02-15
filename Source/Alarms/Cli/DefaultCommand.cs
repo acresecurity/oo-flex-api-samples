@@ -14,14 +14,14 @@ namespace AlarmsProcessing.Cli
     /// For clearing an alarm <see cref="ClearCommand"/>
     /// For dismissing an alarm <see cref="DismissCommand"/>
     /// </summary>
-    public abstract class AlarmCommand : AsyncCommand<AlarmSettings>
+    internal abstract class DefaultCommand : AsyncCommand<AlarmSettings>
     {
-        public AlarmCommand(Microsoft.Extensions.Options.IOptions<Options> options, OidcClient oidcClient)
+        protected DefaultCommand(Microsoft.Extensions.Options.IOptions<Options> options, OidcClient oidcClient)
             : base(options, oidcClient)
         {
         }
 
-        #region Overrides of Command<AlarmSettings>
+        #region Overrides of AsyncCommand<AlarmSettings>
 
         public override async Task<int> ExecuteAsync(CommandContext context, AlarmSettings settings)
         {
@@ -34,7 +34,7 @@ namespace AlarmsProcessing.Cli
             //
             var response = await AnsiConsole
                 .Status()
-                .StartAsync("Retrieving operator/user information", p => client.GetJsendAsync($"{_settings.Api}account/user"));
+                .StartAsync("Retrieving operator/user information", p => client.GetJsendAsync($"{_settings.Api}/account/user"));
 
             if (!response.IsSuccess())
             {

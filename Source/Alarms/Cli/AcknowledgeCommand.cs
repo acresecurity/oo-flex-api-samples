@@ -12,7 +12,7 @@ namespace AlarmsProcessing.Cli
     /// <summary>
     /// Acknowledge alarm command
     /// </summary>
-    public class AcknowledgeCommand : AlarmCommand
+    internal class AcknowledgeCommand : DefaultCommand
     {
         public AcknowledgeCommand(Microsoft.Extensions.Options.IOptions<Options> options, OidcClient oidcClient)
             : base(options, oidcClient)

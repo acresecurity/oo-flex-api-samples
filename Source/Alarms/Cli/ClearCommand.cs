@@ -12,7 +12,7 @@ namespace AlarmsProcessing.Cli
     /// <summary>
     /// Clear alarm command
     /// </summary>
-    public class ClearCommand : AlarmCommand
+    internal class ClearCommand : DefaultCommand
     {
         public ClearCommand(Microsoft.Extensions.Options.IOptions<Options> options, OidcClient oidcClient)
             : base(options, oidcClient)

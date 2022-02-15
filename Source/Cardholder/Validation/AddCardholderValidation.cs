@@ -3,7 +3,7 @@ using FluentValidation;
 
 namespace Cardholder.Validation
 {
-    public class AddCardholderValidation : AbstractValidator<AddCardholderSettings>
+    internal class AddCardholderValidation : AbstractValidator<AddCardholderSettings>
     {
         public AddCardholderValidation()
         {

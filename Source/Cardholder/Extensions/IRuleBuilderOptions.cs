@@ -4,7 +4,7 @@
 namespace FluentValidation
 {
     // ReSharper disable once InconsistentNaming
-    public static class IRuleBuilderOptions
+    internal static class IRuleBuilderOptions
     {
         /// <summary>
         /// Specifies a condition limiting when the validator should run.

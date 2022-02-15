@@ -2,7 +2,7 @@
 
 namespace MQTTMessages.Cli
 {
-    public class DefaultSettings : CommandSettings
+    internal class DefaultSettings : CommandSettings
     {
     }
 }

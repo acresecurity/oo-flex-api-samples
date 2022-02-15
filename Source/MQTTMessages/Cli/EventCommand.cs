@@ -10,10 +10,10 @@ using Spectre.Console;
 
 namespace MQTTMessages.Cli
 {
-    public class EventCommand : DefaultCommand
+    internal class EventCommand : DefaultCommand
     {
-        public EventCommand(Microsoft.Extensions.Options.IOptions<Options> options, OidcClient oidcClient, Microsoft.Extensions.Options.IOptions<Common.Configuration.MqttClientOptions> mqttOptions)
-            : base(options, oidcClient, mqttOptions)
+        public EventCommand(Microsoft.Extensions.Options.IOptions<Options> options, OidcClient oidcClient)
+            : base(options, oidcClient)
         {
         }
 
@@ -35,7 +35,13 @@ namespace MQTTMessages.Cli
             {
                 var json = Encoding.UTF8.GetString(message.Payload);
                 var data = JsonConvert.DeserializeObject<Event>(json);
-                table.AddRow(data.Transaction?.ToLongTimeString(), data.HardwareAddress, data.HardwareDescription, data.HardwareType, data.EventDescriptionId.ToString(), eventDescriptions[data.EventDescriptionId]);
+                table.AddRow(
+                    data.Transaction == null ? string.Empty : data.Transaction.Value.ToLongTimeString(),
+                    data.HardwareAddress,
+                    data.HardwareDescription,
+                    data.HardwareType,
+                    data.EventDescriptionId.ToString(),
+                    eventDescriptions[data.EventDescriptionId]);
 
                 return true;
             }

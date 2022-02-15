@@ -13,7 +13,7 @@ namespace Common.Oidc
     /// <summary>
     /// Sample provided by IdentityModel.OidcClient.Samples <see cref="https://github.com/IdentityModel/IdentityModel.OidcClient.Samples/blob/main/NetCoreConsoleClient/src/NetCoreConsoleClient/SystemBrowser.cs"/>
     /// </summary>
-    public class SystemBrowser : IBrowser
+    internal class SystemBrowser : IBrowser
     {
         public int Port { get; }
 
@@ -90,7 +90,7 @@ namespace Common.Oidc
 
         public string Url { get; }
 
-        public LoopbackHttpListener(int port, string? path = null)
+        public LoopbackHttpListener(int port, string path = null)
         {
             path ??= string.Empty;
             if (path.StartsWith("/")) path = path[1..];

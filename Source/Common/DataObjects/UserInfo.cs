@@ -3,7 +3,7 @@ namespace Common
 {
     public class UserInfo
     {
-        private Dictionary<UserRights, OperatorRight>? _lookup;
+        private Dictionary<UserRights, OperatorRight> _lookup;
 
         public OperatorRight this[UserRights right]
         {

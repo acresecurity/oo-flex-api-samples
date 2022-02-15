@@ -10,7 +10,7 @@ namespace AlarmsProcessing.Cli
     /// Provides simple helpers for outputting alarms in a table format.
     /// </summary>
     /// <typeparam name="TSettings"></typeparam>
-    public abstract class AsyncCommand<TSettings> : Common.Cli.AsyncCommand<TSettings>
+    internal abstract class AsyncCommand<TSettings> : Common.Cli.AsyncCommand<TSettings>
         where TSettings : CommandSettings
     {
         public AsyncCommand(Microsoft.Extensions.Options.IOptions<Options> options, OidcClient oidcClient)

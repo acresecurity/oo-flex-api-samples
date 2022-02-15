@@ -12,10 +12,10 @@ using Spectre.Console;
 
 namespace MQTTMessages.Cli
 {
-    public class AlarmCommand : DefaultCommand
+    internal class AlarmCommand : DefaultCommand
     {
-        public AlarmCommand(Microsoft.Extensions.Options.IOptions<Options> options, OidcClient oidcClient, Microsoft.Extensions.Options.IOptions<Common.Configuration.MqttClientOptions> mqttOptions)
-            : base(options, oidcClient, mqttOptions)
+        public AlarmCommand(Microsoft.Extensions.Options.IOptions<Options> options, OidcClient oidcClient)
+            : base(options, oidcClient)
         {
         }
 

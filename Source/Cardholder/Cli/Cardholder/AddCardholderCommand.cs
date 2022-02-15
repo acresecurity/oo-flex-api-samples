@@ -1,4 +1,5 @@
 ﻿using System.Net;
+using Common;
 using Common.Configuration;
 using IdentityModel.OidcClient;
 using Spectre.Console;
@@ -6,20 +7,23 @@ using Spectre.Console.Cli;
 
 namespace Cardholder.Cli.Cardholder
 {
-    public class AddCardholderCommand : DefaultCommand<AddCardholderSettings>
+    internal class AddCardholderCommand : DefaultCommand<AddCardholderSettings>
     {
         public AddCardholderCommand(Microsoft.Extensions.Options.IOptions<Options> options, OidcClient oidcClient)
             : base(options, oidcClient)
         {
         }
 
-        #region Overrides of AsyncCommand<AddOrEditCardholderSettings>
+        #region Overrides of DefaultCommand<AddCardholderSettings>
 
-        public override async Task<int> ExecuteAsync(CommandContext context, AddCardholderSettings settings)
+        protected override async Task<int> ExecuteAsync(CommandContext context, AddCardholderSettings settings, HttpClient client, UserInfo userInfo)
         {
-            var client = await GetClient();
-            if (client == null)
-                return 1;
+            var right = userInfo[UserRights.ADDPERSONNEL];
+            if (!right.AsBool())
+            {
+                AnsiConsole.MarkupLine("[red]{0}[/]", "Operator is not allowed to add a cardholder");
+                return 0;
+            }
 
             var response = await AnsiConsole.Status().StartAsync("Adding cardholder...", p => client.PostJSendAsync($"{_settings.Api}/api/v2/cardholder", settings));
             if (response.IsSuccess())
@@ -27,7 +31,7 @@ namespace Cardholder.Cli.Cardholder
                 var added = response.Deserialize<Common.DataObjects.Cardholder>();
                 AnsiConsole.MarkupLine($"[green]Cardholder added successfully[/] UniqueKey: [[{added.UniqueKey}]]");
 
-                CompareAndDisplay(settings, new Common.DataObjects.Cardholder(), added);
+                CompareAndDisplay(settings, new Common.DataObjects.Cardholder(), added, p => p.BorderColor(Color.Green));
                 return 0;
             }
 

@@ -7,7 +7,7 @@ using Spectre.Console.Cli;
 
 namespace HardwareTree.Cli
 {
-    public class TreeCommand : Common.Cli.AsyncCommand<TreeSettings>
+    internal class TreeCommand : Common.Cli.AsyncCommand<TreeSettings>
     {
         private const int MaxRequests = 50;
         private int _requests = 1;
@@ -73,7 +73,7 @@ namespace HardwareTree.Cli
 
         #endregion
 
-        private async Task ExpandTree(HardwareTreeItem? treeItem, TreeNode parentNode, HttpClient client, StatusContext status)
+        private async Task ExpandTree(HardwareTreeItem treeItem, TreeNode parentNode, HttpClient client, StatusContext status)
         {
             status.Status($"Building... ({_requests}/{MaxRequests})");
             if (_requests >= MaxRequests)

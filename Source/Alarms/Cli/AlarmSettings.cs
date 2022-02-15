@@ -5,7 +5,7 @@ namespace AlarmsProcessing.Cli
     /// <summary>
     /// Settings for acknowledge, clear, and dismiss command line parameters.
     /// </summary>
-    public class AlarmSettings : CommandSettings
+    internal class AlarmSettings : CommandSettings
     {
         /// <summary>
         /// Required unique ID for the alarm to acknowledge, clear, or dismiss

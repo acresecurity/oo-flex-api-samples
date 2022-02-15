@@ -10,7 +10,7 @@ namespace AlarmsProcessing.Cli
     /// <summary>
     /// Fetch and display all of the current alarms.
     /// </summary>
-    public class DisplayAlarmsCommand : AsyncCommand<EmptyCommandSettings>
+    internal class DisplayAlarmsCommand : AsyncCommand<EmptyCommandSettings>
     {
         public DisplayAlarmsCommand(Microsoft.Extensions.Options.IOptions<Options> options, OidcClient oidcClient)
             : base(options, oidcClient)

@@ -3,9 +3,9 @@ using FluentValidation;
 
 namespace Cardholder.Validation
 {
-    public class CredentialValidation : AbstractValidator<CredentialSettings>
+    internal class EditCredentialValidation : AbstractValidator<EditCredentialSettings>
     {
-        public CredentialValidation()
+        public EditCredentialValidation()
         {
             RuleFor(p => p.Activation)
                 .LessThan(p => p.Expiration)

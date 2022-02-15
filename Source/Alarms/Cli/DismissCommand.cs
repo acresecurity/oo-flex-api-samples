@@ -12,7 +12,7 @@ namespace AlarmsProcessing.Cli
     /// <summary>
     /// Dismiss alarm command
     /// </summary>
-    public class DismissCommand : AlarmCommand
+    internal class DismissCommand : DefaultCommand
     {
         public DismissCommand(Microsoft.Extensions.Options.IOptions<Options> options, OidcClient oidcClient)
             : base(options, oidcClient)

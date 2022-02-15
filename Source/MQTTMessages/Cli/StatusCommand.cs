@@ -9,10 +9,10 @@ using Spectre.Console;
 
 namespace MQTTMessages.Cli
 {
-    public class StatusCommand : DefaultCommand
+    internal class StatusCommand : DefaultCommand
     {
-        public StatusCommand(Microsoft.Extensions.Options.IOptions<Options> options, OidcClient oidcClient, Microsoft.Extensions.Options.IOptions<Common.Configuration.MqttClientOptions> mqttOptions)
-            : base(options, oidcClient, mqttOptions)
+        public StatusCommand(Microsoft.Extensions.Options.IOptions<Options> options, OidcClient oidcClient)
+            : base(options, oidcClient)
         {
         }
 

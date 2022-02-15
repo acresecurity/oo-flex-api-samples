@@ -13,14 +13,11 @@ using Spectre.Console.Cli;
 
 namespace MQTTMessages.Cli
 {
-    public abstract class DefaultCommand : Common.Cli.AsyncCommand<DefaultSettings>
+    internal abstract class DefaultCommand : Common.Cli.AsyncCommand<DefaultSettings>
     {
-        private readonly Common.Configuration.MqttClientOptions _options;
-
-        protected DefaultCommand(IOptions<Common.Configuration.Options> options, OidcClient oidcClient, IOptions<Common.Configuration.MqttClientOptions> mqttOptions)
+        protected DefaultCommand(IOptions<Common.Configuration.Options> options, OidcClient oidcClient)
             : base(options, oidcClient)
         {
-            _options = mqttOptions.Value;
         }
 
         private IMqttClientOptions BuildOptions()
@@ -29,11 +26,11 @@ namespace MQTTMessages.Cli
             var challengeBytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(_settings.ClientSecret));
             var secret = Convert.ToBase64String(challengeBytes);
 
-            _options.CleanSession = false;
-            _options.ClientName = "Mqtt.Sample";
+            _settings.Mqtt.CleanSession = false;
+            _settings.Mqtt.ClientName = "Mqtt.Sample";
 
             MqttClientTlsOptions tlsOptions = null;
-            if (_options.TlsVersion != SslProtocols.None)
+            if (_settings.Mqtt.TlsVersion != SslProtocols.None)
             {
                 var parameters = new MqttClientOptionsBuilderTlsParameters
                 {
@@ -43,7 +40,7 @@ namespace MQTTMessages.Cli
                 tlsOptions = new MqttClientTlsOptions
                 {
                     UseTls = true,
-                    SslProtocol = _options.TlsVersion,
+                    SslProtocol = _settings.Mqtt.TlsVersion,
                     AllowUntrustedCertificates = parameters.AllowUntrustedCertificates,
 #if WINDOWS_UWP
                     Certificates = _tlsParameters.Certificates?.Select(c => c.ToArray()).ToList(),
@@ -62,31 +59,31 @@ namespace MQTTMessages.Cli
                 };
             }
 
-            if (_options.Transport == Transport.Tcp)
+            if (_settings.Mqtt.Transport == Transport.Tcp)
             {
-                _options.ChannelOptions = new MqttClientTcpOptions
+                _settings.Mqtt.ChannelOptions = new MqttClientTcpOptions
                 {
-                    Server = _options.Host,
-                    Port = _options.Port,
+                    Server = _settings.Mqtt.Host,
+                    Port = _settings.Mqtt.Port,
                     TlsOptions = tlsOptions
                 };
             }
             else
             {
-                _options.ChannelOptions = new MqttClientWebSocketOptions
+                _settings.Mqtt.ChannelOptions = new MqttClientWebSocketOptions
                 {
-                    Uri = _options.Host,
+                    Uri = _settings.Mqtt.Host,
                     TlsOptions = tlsOptions
                 };
             }
 
-            _options.Credentials = new MqttClientCredentials
+            _settings.Mqtt.Credentials = new MqttClientCredentials
             {
                 Username = _settings.ClientId,
                 Password = Encoding.UTF8.GetBytes(secret)
             };
 
-            return _options;
+            return _settings.Mqtt;
         }
 
         protected virtual Task<bool> Initialize(HttpClient client, Table table, Dictionary<int, string> eventDescriptions) => Task.FromResult(true);

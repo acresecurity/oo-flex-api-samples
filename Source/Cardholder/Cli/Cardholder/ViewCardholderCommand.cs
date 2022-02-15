@@ -1,6 +1,8 @@
 ﻿using System.Net;
+using Common;
 using Common.Configuration;
 using IdentityModel.OidcClient;
+using Spectre.Console;
 using Spectre.Console.Cli;
 
 namespace Cardholder.Cli.Cardholder
@@ -12,21 +14,39 @@ namespace Cardholder.Cli.Cardholder
         {
         }
 
-        #region Overrides of AsyncCommand<ViewCardholderSettings>
+        #region Overrides of DefaultCommand<ViewCardholderSettings>
 
-        public override async Task<int> ExecuteAsync(CommandContext context, ViewCardholderSettings settings)
+        protected override async Task<int> ExecuteAsync(CommandContext context, ViewCardholderSettings settings, HttpClient client, UserInfo userInfo)
         {
-            var client = await GetClient();
-            if (client == null)
-                return 1;
-
-            var response = await client.GetJsendAsync($"{_settings.Api}/api/v2/cardholder/{settings.UniqueKey}");
-            if (response.IsSuccess())
+            var right = userInfo[UserRights.ViewPersonnel];
+            if (!right.AsBool())
             {
-                var cardholder = response.Deserialize<Common.DataObjects.Cardholder>();
-                DisplayObject(cardholder);
-
+                AnsiConsole.MarkupLine("[red]{0}[/]", "Operator is not allowed to view cardholders");
                 return 0;
+            }
+
+            JSendResponse response;
+            if (settings.Credentials)
+            {
+                response = await client.GetJsendAsync($"{_settings.Api}/api/v2/cardholder/{settings.UniqueKey}/credentials");
+                if (response.IsSuccess())
+                {
+                    var credentials = response.Deserialize<Common.DataObjects.Credential[]>();
+                    DisplayObject(credentials);
+
+                    return 0;
+                }
+            }
+            else
+            {
+                response = await client.GetJsendAsync($"{_settings.Api}/api/v2/cardholder/{settings.UniqueKey}");
+                if (response.IsSuccess())
+                {
+                    var cardholder = response.Deserialize<Common.DataObjects.Cardholder>();
+                    DisplayObject(cardholder);
+
+                    return 0;
+                }
             }
 
             DisplayError(response);

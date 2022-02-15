@@ -1,4 +1,5 @@
 ﻿using System.Net;
+using Common;
 using Common.Configuration;
 using IdentityModel.OidcClient;
 using Spectre.Console;
@@ -6,20 +7,25 @@ using Spectre.Console.Cli;
 
 namespace Cardholder.Cli.Cardholder
 {
-    public class EditCardholderCommand : DefaultCommand<EditCardholderSettings>
+    internal class EditCardholderCommand : DefaultCommand<EditCardholderSettings>
     {
         public EditCardholderCommand(Microsoft.Extensions.Options.IOptions<Options> options, OidcClient oidcClient)
             : base(options, oidcClient)
         {
         }
 
-        #region Overrides of AsyncCommand<AddCardholderSettings>
+        #region Overrides of DefaultCommand<EditCardholderSettings>
 
-        public override async Task<int> ExecuteAsync(CommandContext context, EditCardholderSettings settings)
+        protected override async Task<int> ExecuteAsync(CommandContext context, EditCardholderSettings settings, HttpClient client, UserInfo userInfo)
         {
-            var client = await GetClient();
-            if (client == null)
-                return 1;
+            // There really isn't a permission for editing a cardholder. Rights are assigned to the various properties, but for now we are going to
+            // assume that if you can't view the cardholders then it would be safe to say you can't edit them either.
+            var right = userInfo[UserRights.ViewPersonnel];
+            if (!right.AsBool())
+            {
+                AnsiConsole.MarkupLine("[red]{0}[/]", "Operator is not allowed to edit a cardholder");
+                return 0;
+            }
 
             // Retrieving the original cardholder just so that we can compare and show the results.
             var response = await AnsiConsole.Status().StartAsync("Retrieving cardholder...", p => client.GetJsendAsync($"{_settings.Api}/api/v2/cardholder/{settings.UniqueKey}"));
@@ -36,7 +42,7 @@ namespace Cardholder.Cli.Cardholder
             {
                 var updated = response.Deserialize<Common.DataObjects.Cardholder>();
                 AnsiConsole.MarkupLine("[green]Cardholder edited successfully[/]");
-                CompareAndDisplay(settings, original, updated, new [] { "UniqueKey" });
+                CompareAndDisplay(settings, original, updated, p => p.BorderColor(Color.Green), new [] { "UniqueKey" });
                 return 0;
             }
 

@@ -4,13 +4,13 @@ using FluentValidation.Validators;
 
 namespace Cardholder.Validation
 {
-    public class AnsiValidator<T> : PropertyValidator<T, string>
+    internal class AnsiValidator<T> : PropertyValidator<T, string>
     {
         private static bool ContainsUnicodeCharacter(string input)
         {
             //const int maxAnsiCode = 255;
             //return input.Any(p => p > maxAnsiCode);
-            return input.ToCharArray().Any(p => char.GetUnicodeCategory(p) == UnicodeCategory.OtherLetter);
+            return !string.IsNullOrEmpty(input) && input.ToCharArray().Any(p => char.GetUnicodeCategory(p) == UnicodeCategory.OtherLetter);
         }
 
         #region Overrides of PropertyValidator<T,string>

@@ -25,7 +25,7 @@ namespace Common.Cli
             _oidcClient = oidcClient;
         }
 
-        protected async Task<HttpClient?> GetClient()
+        protected async Task<HttpClient> GetClient()
         {
             Token tokens = null;
             if (File.Exists("tokens.json"))

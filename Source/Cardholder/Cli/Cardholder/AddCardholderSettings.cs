@@ -5,7 +5,7 @@ using Spectre.Console.Cli;
 
 namespace Cardholder.Cli.Cardholder
 {
-    public partial class AddCardholderSettings : CardholderSettings
+    internal class AddCardholderSettings : CardholderSettings
     {
         private readonly IValidator<AddCardholderSettings> _validation;
 

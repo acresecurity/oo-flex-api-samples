@@ -1,4 +1,5 @@
 ﻿using System.Net;
+using Common;
 using Common.Configuration;
 using IdentityModel.OidcClient;
 using Spectre.Console;
@@ -6,20 +7,23 @@ using Spectre.Console.Cli;
 
 namespace Cardholder.Cli.Cardholder
 {
-    public class DeleteCardholderCommand : DefaultCommand<DeleteCardholderSettings>
+    internal class DeleteCardholderCommand : DefaultCommand<DeleteCardholderSettings>
     {
         public DeleteCardholderCommand(Microsoft.Extensions.Options.IOptions<Options> options, OidcClient oidcClient)
             : base(options, oidcClient)
         {
         }
 
-        #region Overrides of AsyncCommand<AddCardholderSettings>
+        #region Overrides of DefaultCommand<DeleteCardholderSettings>
 
-        public override async Task<int> ExecuteAsync(CommandContext context, DeleteCardholderSettings settings)
+        protected override async Task<int> ExecuteAsync(CommandContext context, DeleteCardholderSettings settings, HttpClient client, UserInfo userInfo)
         {
-            var client = await GetClient();
-            if (client == null)
-                return 1;
+            var right = userInfo[UserRights.DELETEPERSONNEL];
+            if (!right.AsBool())
+            {
+                AnsiConsole.MarkupLine("[red]{0}[/]", "Operator is not allowed to delete a cardholder");
+                return 0;
+            }
 
             // Retrieving the original cardholder just so that we can compare and show the results.
             var response = await AnsiConsole.Status().StartAsync("Retrieving cardholder...", p => client.GetJsendAsync($"{_settings.Api}/api/v2/cardholder/{settings.UniqueKey}"));
@@ -30,11 +34,13 @@ namespace Cardholder.Cli.Cardholder
             }
 
             var original = response.Deserialize<Common.DataObjects.Cardholder>();
-            var table = new Table();
-            table.BorderColor(Color.Red);
-            table.AddColumns("[yellow]UniqueKey[/]", "[yellow]FirstName[/]", "[yellow]LastName[/]", "[yellow]Title[/]", "[yellow]Department[/]");
-            table.AddRow(new [] { original.UniqueKey.ToString(), original.FirstName,  original.LastName, original.Title, original.Department }.Select(p => string.IsNullOrEmpty(p) ? string.Empty : p).ToArray());
-            AnsiConsole.Write(table);
+            DisplayTable(original, p => { p.BorderColor(Color.Red); },
+                nameof(Common.DataObjects.Cardholder.UniqueKey),
+                nameof(Common.DataObjects.Cardholder.FirstName),
+                nameof(Common.DataObjects.Cardholder.LastName),
+                nameof(Common.DataObjects.Cardholder.Title),
+                nameof(Common.DataObjects.Cardholder.Department));
+
             if (!AnsiConsole.Confirm("Are you sure you wish to delete the above cardholder?", false))
                 return 1;
 

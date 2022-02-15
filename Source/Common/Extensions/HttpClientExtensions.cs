@@ -72,6 +72,9 @@ namespace System.Net
         {
             const int pageSize = 500;
 
+            if (typeof(T).GetElementType() == null)
+                throw new ArgumentException($"{typeof(T)} is not an array type");
+
             var nextUrl = url.SetQueryParam("pageSize", pageSize);
             Array result = null;
             var index = 0;
@@ -95,7 +98,7 @@ namespace System.Net
                 {
                     AnsiConsole.WriteLine();
                     AnsiConsole.MarkupLine("[red]{0}[/]", $"{response.Status} Message");
-                    AnsiConsole.MarkupLine("[red]{0}[/]", Markup.Escape(string.IsNullOrEmpty(response.Message) ? response.Message : response.Data.ToString()));
+                    AnsiConsole.MarkupLine("[red]{0}[/]", Markup.Escape(string.IsNullOrEmpty(response.Message) ? response.Data.ToString() : response.Message));
 
                     return default;
                 }
