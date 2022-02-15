@@ -2,7 +2,7 @@
   "profiles": {
     "HardwareTree": {
       "commandName": "Project",
-      "commandLineArgs": "",
+      "commandLineArgs": "door momentary db23ce87-d4d3-4791-86c4-87b51cf8e78c",
       "environmentVariables": {
         "DOTNET_ENVIRONMENT": "Development"
       }

@@ -7,7 +7,6 @@
       "~~~~~~commandLineArgs": "credential add 54f88039-ca87-4b58-adf9-6c2ce14d8d27 --CardNumber 4571",
       "~~~~~commandLineArgs": "cardholder get --where \"LastName.StartsWith('Brown')\" --orderBy FirstName",
       "~~~~commandLineArgs": "cardholder view 49acee78-5f0d-4ff0-ad7f-2a918f21c650 --credentials",
-      "~~~commandLineArgs": "cardholder edit 5632cc73-9c70-4f68-808c-3ee0e5047bfd --FirstName Lane --MiddleName Is --LastName Gay",
       "~~commandLineArgs": "cardholder add --FirstName Goober --LastName Munch",
       "~commandLineArgs": "cardholder delete fb4b3372-e76b-46b8-a673-b8299e02bd4e",
       "environmentVariables": {

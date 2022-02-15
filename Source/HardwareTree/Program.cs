@@ -32,6 +32,11 @@ using var host = Host.CreateDefaultBuilder(args)
                     .WithDescription("Display the hardware tree.")
                     .WithExample(new [] { "--filter", "door" })
                     .WithExample(new [] { "--flatten true --filter", "door" });
+
+                config.AddBranch<DoorSettings>("door", p =>
+                {
+                    p.AddCommand<MomentarilyUnlockDoorCommand>("momentary");
+                });
             });
             return app;
         });
