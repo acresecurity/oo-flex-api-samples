@@ -1,7 +1,6 @@
-﻿
-namespace Common.DataObjects
+﻿namespace Common.DataObjects
 {
-    public enum DoorMode
+    public enum MercuryDoorMode
     {
         Disable = 1,
         Unlocked = 2,
