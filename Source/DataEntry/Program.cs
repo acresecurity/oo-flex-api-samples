@@ -1,5 +1,4 @@
-﻿using Common.DataObjects;
-using DataEntry.Cli.AccessLevels;
+﻿using DataEntry.Cli.AccessLevels;
 using DataEntry.Cli.Cardholder;
 using DataEntry.Cli.Cardholder.Settings;
 using DataEntry.Cli.Credential;
@@ -10,6 +9,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Spectre.Console;
 using Spectre.Console.Cli;
+using AccessLevelSettings = DataEntry.Cli.AccessLevels.AccessLevelSettings;
 
 // Output standard console information and run the application
 var info = new Grid();
@@ -63,6 +63,12 @@ using var host = Host.CreateDefaultBuilder(args)
                     p.AddCommand<ViewCardholderCommand>("view")
                         .WithExample(new[] { "cardholder", "view", Guid.NewGuid().ToString() })
                         .WithExample(new[] { "cardholder", "view", Guid.NewGuid().ToString(), "--credentials" });
+
+                    p.AddBranch("accessLevels", b =>
+                    {
+                        b.AddCommand<DataEntry.Cli.Cardholder.AssignAccessLevelsCommand>("assign")
+                            .WithDescription("Apply access level groups to all the credentials assigned to a cardholder");
+                    });
                 });
 
                 config.AddBranch<CredentialSettings>("credential", p =>
@@ -83,6 +89,17 @@ using var host = Host.CreateDefaultBuilder(args)
 
                     p.AddCommand<ViewCredentialCommand>("view")
                         .WithExample(new[] { "credential", "view", Guid.NewGuid().ToString() });
+
+                    p.AddBranch("accessLevels", b =>
+                    {
+                        b.AddCommand<ViewAssignedAccessLevelsCommand>("view");
+
+                        b.AddCommand<DataEntry.Cli.Credential.AssignAccessLevelsCommand>("assign")
+                            .WithDescription("Apply access level groups to a specific credential");
+
+                        b.AddCommand<DataEntry.Cli.Credential.RemoveAccessLevelsCommand>("remove")
+                            .WithDescription("Remove access level groups from a specific credential");
+                    });
                 });
 
                 config.AddBranch<AccessLevelSettings>("accessLevels", p =>

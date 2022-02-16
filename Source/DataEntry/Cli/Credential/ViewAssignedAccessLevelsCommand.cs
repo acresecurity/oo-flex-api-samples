@@ -1,35 +1,32 @@
 ﻿using System.Net;
 using Common.Configuration;
 using Common.DataObjects;
+using DataEntry.Cli.Credential.Settings;
 using IdentityModel.OidcClient;
 using Spectre.Console;
 using Spectre.Console.Cli;
 
-namespace DataEntry.Cli.AccessLevels
+namespace DataEntry.Cli.Credential
 {
-    internal class GetAccessLevelGroupsCommand : DefaultCommand<AccessLevelSettings>
+    internal class ViewAssignedAccessLevelsCommand : DefaultCommand<ViewCredentialSettings>
     {
-        public GetAccessLevelGroupsCommand(Microsoft.Extensions.Options.IOptions<Options> options, OidcClient oidcClient)
+        public ViewAssignedAccessLevelsCommand(Microsoft.Extensions.Options.IOptions<Options> options, OidcClient oidcClient)
             : base(options, oidcClient)
         {
         }
 
-        #region Overrides of DefaultCommand<AccessLevelSettings>
+        #region Overrides of DefaultCommand<ViewCredentialSettings>
 
-        protected override async Task<int> ExecuteAsync(CommandContext context, AccessLevelSettings settings, HttpClient client, UserInfo userInfo)
+        protected override async Task<int> ExecuteAsync(CommandContext context, ViewCredentialSettings settings, HttpClient client, UserInfo userInfo)
         {
             var right = userInfo[UserRights.ViewPersonnel];
             if (!right.AsBool())
             {
-                AnsiConsole.MarkupLine("[red]{0}[/]", "Operator is not allowed to view cardholders");
+                AnsiConsole.MarkupLine("[red]{0}[/]", "Operator is not allowed to view access levels");
                 return 0;
             }
 
-            var response = await AnsiConsole
-                .Status()
-                .StartAsync("Retrieving access levels ...", _ =>
-                    client.GetJsendAsync($"{Settings.Api}/api/v2/hardware/accesslevel/groups"));
-
+            var response = await client.GetJsendAsync($"{Settings.Api}/api/v2/credential/{settings.UniqueKey}/accesslevel/groups");
             if (response.IsSuccess())
             {
                 var accessLevels = response.Deserialize<AccessLevelGroup[]>();
