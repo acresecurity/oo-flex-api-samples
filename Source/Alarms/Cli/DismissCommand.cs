@@ -1,6 +1,5 @@
 ﻿using System.Net;
 using System.Text;
-using Common;
 using Common.Configuration;
 using Common.DataObjects;
 using IdentityModel.OidcClient;
@@ -50,12 +49,12 @@ namespace AlarmsProcessing.Cli
 
             if (alarm.Status is AlarmStatus.PendingClear)
             {
-                var url = $"{_settings.Api}/api/v2/hardware/alarm/{settings.UniqueId}/dismiss";
+                var url = $"{Settings.Api}/api/v2/hardware/alarm/{settings.UniqueId}/dismiss";
 
                 var content = new StringContent(string.IsNullOrEmpty(settings.DispatchText) ? string.Empty : settings.DispatchText, Encoding.ASCII, "text/plain");
                 var response = await AnsiConsole
                     .Status()
-                    .StartAsync("Sending Dismiss command", p => client.PostJSendAsync(url, content));
+                    .StartAsync("Sending Dismiss command", _ => client.PostJSendAsync(url, content));
 
                 if (response.IsSuccess())
                     AnsiConsole.WriteLine("Alarm was dismissed");

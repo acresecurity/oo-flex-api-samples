@@ -1,6 +1,6 @@
 ﻿namespace Common.DataObjects
 {
-    public enum AlarmNotification : int
+    public enum AlarmNotification
     {
         None = 0,
         Alarms = 1,

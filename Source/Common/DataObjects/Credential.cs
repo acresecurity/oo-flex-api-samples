@@ -3,12 +3,12 @@
     /// <summary>
     /// Card credential belonging to a cardholder record
     /// </summary>
-    public partial class Credential
+    public class Credential
     {
         /// <summary>
         /// The Date/Time a credential was activated
         /// </summary>
-        public virtual System.DateTime? Activation { get; set; }
+        public virtual DateTime? Activation { get; set; }
 
         /// <summary>
         /// Is the credential active or not

@@ -23,14 +23,14 @@ namespace MQTTMessages.Cli
         private IMqttClientOptions BuildOptions()
         {
             using var sha256 = SHA256.Create();
-            var challengeBytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(_settings.ClientSecret));
+            var challengeBytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(Settings.ClientSecret));
             var secret = Convert.ToBase64String(challengeBytes);
 
-            _settings.Mqtt.CleanSession = false;
-            _settings.Mqtt.ClientName = "Mqtt.Sample";
+            Settings.Mqtt.CleanSession = false;
+            Settings.Mqtt.ClientName = "Mqtt.Sample";
 
             MqttClientTlsOptions tlsOptions = null;
-            if (_settings.Mqtt.TlsVersion != SslProtocols.None)
+            if (Settings.Mqtt.TlsVersion != SslProtocols.None)
             {
                 var parameters = new MqttClientOptionsBuilderTlsParameters
                 {
@@ -40,7 +40,7 @@ namespace MQTTMessages.Cli
                 tlsOptions = new MqttClientTlsOptions
                 {
                     UseTls = true,
-                    SslProtocol = _settings.Mqtt.TlsVersion,
+                    SslProtocol = Settings.Mqtt.TlsVersion,
                     AllowUntrustedCertificates = parameters.AllowUntrustedCertificates,
 #if WINDOWS_UWP
                     Certificates = _tlsParameters.Certificates?.Select(c => c.ToArray()).ToList(),
@@ -59,31 +59,31 @@ namespace MQTTMessages.Cli
                 };
             }
 
-            if (_settings.Mqtt.Transport == Transport.Tcp)
+            if (Settings.Mqtt.Transport == Transport.Tcp)
             {
-                _settings.Mqtt.ChannelOptions = new MqttClientTcpOptions
+                Settings.Mqtt.ChannelOptions = new MqttClientTcpOptions
                 {
-                    Server = _settings.Mqtt.Host,
-                    Port = _settings.Mqtt.Port,
+                    Server = Settings.Mqtt.Host,
+                    Port = Settings.Mqtt.Port,
                     TlsOptions = tlsOptions
                 };
             }
             else
             {
-                _settings.Mqtt.ChannelOptions = new MqttClientWebSocketOptions
+                Settings.Mqtt.ChannelOptions = new MqttClientWebSocketOptions
                 {
-                    Uri = _settings.Mqtt.Host,
+                    Uri = Settings.Mqtt.Host,
                     TlsOptions = tlsOptions
                 };
             }
 
-            _settings.Mqtt.Credentials = new MqttClientCredentials
+            Settings.Mqtt.Credentials = new MqttClientCredentials
             {
-                Username = _settings.ClientId,
+                Username = Settings.ClientId,
                 Password = Encoding.UTF8.GetBytes(secret)
             };
 
-            return _settings.Mqtt;
+            return Settings.Mqtt;
         }
 
         protected virtual Task<bool> Initialize(HttpClient client, Table table, Dictionary<int, string> eventDescriptions) => Task.FromResult(true);
@@ -114,7 +114,7 @@ namespace MQTTMessages.Cli
             //
             var (pagedResponse, descriptions) = await AnsiConsole
                 .Status()
-                .StartAsync("Retrieving event descriptions ...", p => client.FetchPaged<EventDescription[]>($"{_settings.Api}/api/v2/hardware/event/descriptions"));
+                .StartAsync("Retrieving event descriptions ...", _ => client.FetchPaged<EventDescription[]>($"{Settings.Api}/api/v2/hardware/event/descriptions"));
 
             if (pagedResponse.IsSuccess())
                 eventDescriptions = descriptions.ToDictionary(p => p.UniqueId, p => p.Description);
@@ -135,14 +135,14 @@ namespace MQTTMessages.Cli
 
             await AnsiConsole
                 .Status()
-                .StartAsync("Connecting to MQTT broker...", p => mqttClient.ConnectAsync(options, CancellationToken.None));
+                .StartAsync("Connecting to MQTT broker...", _ => mqttClient.ConnectAsync(options, CancellationToken.None));
 
             var subscription = factory.CreateSubscribeOptionsBuilder();
             Subscribe(subscription);
 
             await AnsiConsole
                 .Status()
-                .Start("Subscribing to topics...", p => mqttClient.SubscribeAsync(subscription.Build(), CancellationToken.None));
+                .Start("Subscribing to topics...", _ => mqttClient.SubscribeAsync(subscription.Build(), CancellationToken.None));
 
             await AnsiConsole.Live(table)
                 .AutoClear(false)
@@ -164,6 +164,7 @@ namespace MQTTMessages.Cli
                     {
                         await Task.Delay(250);
                     }
+                    // ReSharper disable once FunctionNeverReturns
                 });
 
             return 0;

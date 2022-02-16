@@ -1,7 +1,7 @@
 ﻿
 namespace Common.DataObjects
 {
-    public enum AccessLevelType : int
+    public enum AccessLevelType
     {
         Legacy = 0,
         Global = 1,

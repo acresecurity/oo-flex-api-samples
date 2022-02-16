@@ -13,7 +13,7 @@ using Newtonsoft.Json.Converters;
 #if FLEXAPI
 namespace Flex.Privileges
 #else
-namespace Common
+namespace Common.DataObjects
 #endif
 {
 

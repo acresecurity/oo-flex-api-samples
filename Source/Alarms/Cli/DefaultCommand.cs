@@ -1,5 +1,4 @@
 ﻿using System.Net;
-using Common;
 using Common.Configuration;
 using Common.DataObjects;
 using IdentityModel.OidcClient;
@@ -34,7 +33,7 @@ namespace AlarmsProcessing.Cli
             //
             var response = await AnsiConsole
                 .Status()
-                .StartAsync("Retrieving operator/user information", p => client.GetJsendAsync($"{_settings.Api}/account/user"));
+                .StartAsync("Retrieving operator/user information", _ => client.GetJsendAsync($"{Settings.Api}/account/user"));
 
             if (!response.IsSuccess())
             {
@@ -50,7 +49,7 @@ namespace AlarmsProcessing.Cli
             //
             response = await AnsiConsole
                 .Status()
-                .StartAsync("Retrieving alarms", p => client.GetJsendAsync($"{_settings.Api}/api/v2/hardware/alarm/{settings.UniqueId}"));
+                .StartAsync("Retrieving alarms", _ => client.GetJsendAsync($"{Settings.Api}/api/v2/hardware/alarm/{settings.UniqueId}"));
 
             if (!response.IsSuccess())
             {
@@ -67,7 +66,7 @@ namespace AlarmsProcessing.Cli
             //
             var (pagedResponse, descriptions) = await AnsiConsole
                 .Status()
-                .StartAsync("Retrieving event descriptions", p => client.FetchPaged<EventDescription[]>($"{_settings.Api}/api/v2/hardware/event/descriptions"));
+                .StartAsync("Retrieving event descriptions", _ => client.FetchPaged<EventDescription[]>($"{Settings.Api}/api/v2/hardware/event/descriptions"));
 
             if (pagedResponse.IsSuccess())
                 eventDescriptions = descriptions.ToDictionary(p => p.UniqueId, p => p.Description);

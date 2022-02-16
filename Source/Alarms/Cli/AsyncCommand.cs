@@ -1,4 +1,5 @@
-﻿using Common.Configuration;
+﻿using System.Globalization;
+using Common.Configuration;
 using Common.DataObjects;
 using IdentityModel.OidcClient;
 using Spectre.Console;
@@ -13,7 +14,7 @@ namespace AlarmsProcessing.Cli
     internal abstract class AsyncCommand<TSettings> : Common.Cli.AsyncCommand<TSettings>
         where TSettings : CommandSettings
     {
-        public AsyncCommand(Microsoft.Extensions.Options.IOptions<Options> options, OidcClient oidcClient)
+        protected AsyncCommand(Microsoft.Extensions.Options.IOptions<Options> options, OidcClient oidcClient)
             : base(options, oidcClient)
         {
         }
@@ -41,7 +42,7 @@ namespace AlarmsProcessing.Cli
                 table.AddRow(
                     item.UniqueId.ToString(),
                     item.Priority.ToString(),
-                    item.Transaction.ToString(),
+                    item.Transaction.ToString(CultureInfo.InvariantCulture),
                     $"{item.HardwareAddress}: {item.HardwareDescription}".EscapeMarkup(),
                     eventDescriptions[item.EventDescriptionId].EscapeMarkup(),
                     item.Count.ToString(),

@@ -30,7 +30,7 @@
 
         public UserRights PriorityToRight(UserRights baseRight)
         {
-            if (Priority < 1 || Priority > 15)
+            if (Priority is < 1 or > 15)
                 return baseRight;
 
             return baseRight + (Priority - 1);

@@ -1,4 +1,8 @@
-﻿using Common.Configuration;
+﻿using System.Collections;
+using System.Reflection;
+using Common.Configuration;
+using Common.DataObjects;
+using Common.Responses;
 using IdentityModel.Client;
 using IdentityModel.OidcClient;
 using Newtonsoft.Json;
@@ -16,18 +20,19 @@ namespace Common.Cli
     public abstract class AsyncCommand<TSettings> : Spectre.Console.Cli.AsyncCommand<TSettings>
         where TSettings : CommandSettings
     {
-        protected readonly Options _settings;
-        protected readonly OidcClient _oidcClient;
+        protected readonly Options Settings;
 
-        public AsyncCommand(Microsoft.Extensions.Options.IOptions<Options> options, OidcClient oidcClient)
+        private readonly OidcClient _oidcClient;
+
+        protected AsyncCommand(Microsoft.Extensions.Options.IOptions<Options> options, OidcClient oidcClient)
         {
-            _settings = options.Value;
+            Settings = options.Value;
             _oidcClient = oidcClient;
         }
 
         protected async Task<HttpClient> GetClient()
         {
-            Token tokens = null;
+            Token tokens;
             if (File.Exists("tokens.json"))
             {
                 var raw = await File.ReadAllTextAsync("tokens.json");
@@ -36,11 +41,14 @@ namespace Common.Cli
             else
                 tokens = new Token();
 
+            if (tokens == null)
+                return null;
+
             if (tokens.IsValidAndIsExpired)
             {
                 var response = await AnsiConsole
                     .Status()
-                    .StartAsync("Refreshing token...", p => _oidcClient.RefreshTokenAsync(tokens.RefreshToken));
+                    .StartAsync("Refreshing token...", _ => _oidcClient.RefreshTokenAsync(tokens.RefreshToken));
 
                 if (response.IsError)
                 {
@@ -60,7 +68,7 @@ namespace Common.Cli
             {
                 var response = await AnsiConsole
                     .Status()
-                    .StartAsync("Sign in with OIDC...", p => _oidcClient.LoginAsync());
+                    .StartAsync("Sign in with OIDC...", _ => _oidcClient.LoginAsync());
 
                 if (response.IsError)
                 {
@@ -109,6 +117,114 @@ namespace Common.Cli
                 AnsiConsole.MarkupLine("[red]{0}[/]", $"{response.Status} Message");
                 AnsiConsole.MarkupLine("    [red]{0}[/]", Markup.Escape(string.IsNullOrEmpty(response.Message) ? response.Data.ToString() : response.Message));
             }
+        }
+
+        protected void DisplayTable<T>(T data, params string[] fields) where T : class => DisplayTable(data, null, fields);
+
+        protected void DisplayTable<T>(T data, Action<Table> configureTable, params string[] fields) where T : class
+        {
+            if (!fields.Any())
+                return;
+
+            var table = new Table();
+            table.BorderColor(Color.Blue);
+            foreach (var item in fields)
+                table.AddColumn($"[yellow]{item}[/]");
+
+            configureTable?.Invoke(table);
+
+            if (data is IEnumerable enumerable)
+            {
+                foreach (var item in enumerable)
+                {
+                    var properties = item.GetType().GetProperties(BindingFlags.Public | BindingFlags.Instance).Where(p => fields.Contains(p.Name) && p.GetValue(item) != null);
+                    table.AddRow(fields.Select(field => $"{properties.FirstOrDefault(p => p.Name == field)?.GetValue(item) ?? string.Empty}".EscapeMarkup()).ToArray());
+                }
+            }
+            else
+            {
+                var properties = data.GetType().GetProperties(BindingFlags.Public | BindingFlags.Instance).Where(p => fields.Contains(p.Name) && p.GetValue(data) != null);
+                table.AddRow(fields.Select(field => $"{properties.FirstOrDefault(p => p.Name == field)?.GetValue(data) ?? string.Empty}".EscapeMarkup()).ToArray());
+            }
+
+            table.Expand();
+            AnsiConsole.Write(table);
+        }
+
+        protected void DisplayObject<T>(T data) where T : class
+        {
+            if (data is IEnumerable enumerable)
+            {
+                foreach (var item in enumerable)
+                {
+                    var table = new Table();
+                    table.BorderColor(Color.Blue);
+                    table.AddColumn("Property");
+                    table.AddColumn("Value");
+
+                    var properties = item.GetType().GetProperties(BindingFlags.Public | BindingFlags.Instance).Where(p => p.GetValue(item) != null);
+                    foreach (var property in properties)
+                        table.AddRow(property.Name, $"{property.GetValue(item)}".EscapeMarkup());
+
+                    table.Expand();
+                    AnsiConsole.Write(table);
+                }
+            }
+            else
+            {
+                var table = new Table();
+                table.BorderColor(Color.Blue);
+                table.AddColumn("Property");
+                table.AddColumn("Value");
+
+                var properties = data.GetType().GetProperties(BindingFlags.Public | BindingFlags.Instance).Where(p => p.GetValue(data) != null);
+                foreach (var item in properties)
+                    table.AddRow(item.Name, $"{item.GetValue(data)}".EscapeMarkup());
+
+                table.Expand();
+                AnsiConsole.Write(table);
+            }
+        }
+
+        protected void CompareAndDisplay<TOriginal, TUpdated>(TSettings settings, TOriginal original, TUpdated updated, string[] ignoreProperties = default, string[] includeProperties = default)
+            where TOriginal : class
+            where TUpdated : class
+        {
+            CompareAndDisplay(settings, original, updated, null, ignoreProperties, includeProperties);
+        }
+
+        protected void CompareAndDisplay<TOriginal, TUpdated>(TSettings settings, TOriginal original, TUpdated updated, Action<Table> configureTable, string[] ignoreProperties = default, string[] includeProperties = default)
+            where TOriginal : class
+            where TUpdated : class
+        {
+            var table = new Table();
+            //table.BorderColor(Color.Red);
+            table.AddColumn("[yellow]Property[/]");
+            table.AddColumn("[yellow]Parameter[/]");
+            table.AddColumn("[yellow]Original Value[/]");
+            table.AddColumn("[yellow]Updated Value[/]");
+
+            configureTable?.Invoke(table);
+
+            var include = includeProperties ?? Array.Empty<string>();
+            var ignore = ignoreProperties ?? Array.Empty<string>();
+
+            // Get a list of properties that were supplied via the command line.
+            var supplied = settings.GetType().GetProperties(BindingFlags.Public | BindingFlags.Instance).Where(p => include.Contains(p.Name) || (p.GetValue(settings) != null && !ignore.Contains(p.Name)));
+
+            var originalProperties = original.GetType().GetProperties(BindingFlags.Public | BindingFlags.Instance).Where(p => supplied.Any(x => x.Name == p.Name)).ToDictionary(p => p.Name, p => p);
+            var updatedProperties = updated.GetType().GetProperties(BindingFlags.Public | BindingFlags.Instance).Where(p => supplied.Any(x => x.Name == p.Name)).ToDictionary(p => p.Name, p => p);
+
+            foreach (var item in supplied)
+            {
+                table.AddRow(item.Name,
+                    $"{item.GetValue(settings)}".EscapeMarkup(),
+                    $"{originalProperties[item.Name].GetValue(original)}".EscapeMarkup(),
+                    $"{updatedProperties[item.Name].GetValue(updated)}".EscapeMarkup());
+            }
+
+            table.Expand();
+            AnsiConsole.Write(table);
         }
     }
 }

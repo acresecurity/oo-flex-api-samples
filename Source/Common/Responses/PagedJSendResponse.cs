@@ -1,5 +1,5 @@
 ﻿
-namespace Common
+namespace Common.Responses
 {
     public class PagedJSendResponse : JSendResponse
     {

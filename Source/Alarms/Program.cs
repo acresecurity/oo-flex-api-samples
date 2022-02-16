@@ -27,7 +27,9 @@ using var host = Host.CreateDefaultBuilder(args)
             var app = new CommandApp(new Common.Cli.Registrar(services, provider));
             app.Configure(config =>
             {
-                config.AddCommand<DisplayAlarmsCommand>("list").WithDescription("Display the current alarms.");
+                config.AddCommand<DisplayAlarmsCommand>("list")
+                    .WithDescription("Display the current alarms.");
+
                 config.AddCommand<AcknowledgeCommand>("acknowledge");
                 config.AddCommand<ClearCommand>("clear");
                 config.AddCommand<DismissCommand>("dismiss");

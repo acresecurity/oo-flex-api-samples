@@ -1,5 +1,5 @@
 ﻿
-namespace Common
+namespace Common.DataObjects
 {
     /// <summary>
     /// Validation errors that were sent by the server

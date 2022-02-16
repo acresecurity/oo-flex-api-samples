@@ -27,7 +27,7 @@ namespace MQTTMessages.Cli
         {
             var response = await AnsiConsole
                 .Status()
-                .StartAsync("Retrieving alarms ...", p => client.GetJsendAsync($"{_settings.Api}/api/v2/hardware/alarms"));
+                .StartAsync("Retrieving alarms ...", _ => client.GetJsendAsync($"{Settings.Api}/api/v2/hardware/alarms"));
 
             if (response.IsSuccess())
             {

@@ -33,7 +33,7 @@ namespace AlarmsProcessing.Cli
             //
             var (pagedResponse, descriptions) = await AnsiConsole
                 .Status()
-                .StartAsync("Retrieving event descriptions ...", p => client.FetchPaged<EventDescription[]>($"{_settings.Api}/api/v2/hardware/event/descriptions"));
+                .StartAsync("Retrieving event descriptions ...", _ => client.FetchPaged<EventDescription[]>($"{Settings.Api}/api/v2/hardware/event/descriptions"));
 
             if (pagedResponse.IsSuccess())
                 eventDescriptions = descriptions.ToDictionary(p => p.UniqueId, p => p.Description);
@@ -48,7 +48,7 @@ namespace AlarmsProcessing.Cli
             //
             var response = await AnsiConsole
                 .Status()
-                .StartAsync("Retrieving alarms ...", p => client.GetJsendAsync($"{_settings.Api}/api/v2/hardware/alarms"));
+                .StartAsync("Retrieving alarms ...", _ => client.GetJsendAsync($"{Settings.Api}/api/v2/hardware/alarms"));
 
             if (response.IsSuccess())
             {

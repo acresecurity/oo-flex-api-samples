@@ -7,7 +7,7 @@
     <Nullable>disable</Nullable>
   </PropertyGroup>
 
-  <ItemGroup>
+  <ItemGroup Label="Project References">
     <ProjectReference Include="..\Common\Common.csproj" />
   </ItemGroup>
 

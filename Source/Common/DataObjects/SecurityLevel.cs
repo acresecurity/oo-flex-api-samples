@@ -1,7 +1,7 @@
 ﻿
 namespace Common.DataObjects
 {
-    public enum SecurityLevel : int
+    public enum SecurityLevel
     {
         Normal = 0,
         High = 1,

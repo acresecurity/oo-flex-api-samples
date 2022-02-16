@@ -3,7 +3,7 @@
     /// <summary>
     /// An individual cardholder record
     /// </summary>
-    public partial class Cardholder
+    public class Cardholder
     {
         public virtual string Address1 { get; set; }
 

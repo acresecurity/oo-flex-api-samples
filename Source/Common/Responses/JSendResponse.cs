@@ -4,7 +4,7 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using JsonConverter = Newtonsoft.Json.JsonConverter;
 
-namespace Common
+namespace Common.Responses
 {
     public class JSendResponse
     {

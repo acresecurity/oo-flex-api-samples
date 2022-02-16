@@ -35,6 +35,9 @@ namespace MQTTMessages.Cli
             {
                 var json = Encoding.UTF8.GetString(message.Payload);
                 var data = JsonConvert.DeserializeObject<Event>(json);
+                if (data == null)
+                    return false;
+
                 table.AddRow(
                     data.Transaction == null ? string.Empty : data.Transaction.Value.ToLongTimeString(),
                     data.HardwareAddress,

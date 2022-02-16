@@ -7,7 +7,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{D02CF3
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Common", "Common\Common.csproj", "{E8BB686C-AF74-4FB0-BF9A-82C6C3B6BE16}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Cardholder", "Cardholder", "{992A17C1-7248-493F-8FCD-1E7E422B905B}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DataEntry", "DataEntry", "{992A17C1-7248-493F-8FCD-1E7E422B905B}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AlarmProcessing", "AlarmProcessing", "{5BB986F2-1BE7-4D80-99AF-DD1462153B31}"
 EndProject
@@ -17,11 +17,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "RealtimeMessage", "Realtime
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MQTTMessages", "MQTTMessages\MQTTMessages.csproj", "{7A481A71-4173-4BB4-A72E-23CF46BB214A}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "HardwareTree", "HardwareTree", "{6966F4CA-93F0-4ABE-8CDD-6D0177A7EEBD}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Hardware", "Hardware", "{6966F4CA-93F0-4ABE-8CDD-6D0177A7EEBD}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HardwareTree", "HardwareTree\HardwareTree.csproj", "{60E3EF51-B0A2-4255-9082-3214CC143950}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hardware", "Hardware\Hardware.csproj", "{60E3EF51-B0A2-4255-9082-3214CC143950}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cardholder", "Cardholder\Cardholder.csproj", "{099B4C83-AA1E-4A86-943A-41F3790AD272}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataEntry", "DataEntry\DataEntry.csproj", "{099B4C83-AA1E-4A86-943A-41F3790AD272}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

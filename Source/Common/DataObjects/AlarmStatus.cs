@@ -1,6 +1,6 @@
 ﻿namespace Common.DataObjects
 {
-    public enum AlarmStatus : int
+    public enum AlarmStatus
     {
         PendingClear = 0,
         ReturnToNormal = 1,
