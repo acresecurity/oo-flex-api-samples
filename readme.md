@@ -1,4 +1,4 @@
-# `Flex API Samples`
+# Flex API Samples
 
 Sample code demonstrating how to do various aspects of the Flex API.
 
@@ -28,7 +28,7 @@ The projects all require the [.NET 6.0 SDK](https://dotnet.microsoft.com/en-us/d
 ## Helpful information
 
 - [Swagger API Explorer](https://flextest.ooaccess.net/apiexplorer/index.html)
-- [Identity Client Setup](https://bitbucket.org/ooaccess/flex-api-samples/wiki/Home)
+- [Identity Client Setup](https://bitbucket.org/ooaccess/flex-api-samples/wiki/Identity%20Client)
 - [JSend Message Response](https://bitbucket.org/ooaccess/flex-api-samples/wiki/JSend%20-%20Json%20Message%20Structure%20Overview)
 
 ## Screenshots ##
