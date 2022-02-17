@@ -25,10 +25,9 @@ namespace Hardware.Cli
             if (client == null)
                 return 1;
 
-            return await AnsiConsole.Status()
-                .Spinner(Spinner.Known.Dots)
-                .SpinnerStyle(Style.Parse("green bold"))
-                .StartAsync("Building...", async p =>
+            var tree = new Tree("Hardware Tree");
+            return await AnsiConsole.Live(tree)
+                .StartAsync(async p =>
                 {
                     try
                     {
@@ -41,11 +40,12 @@ namespace Hardware.Cli
                         {
                             var result = response.Deserialize<HardwareTreeItem[]>();
 
-                            var tree = new Tree("Hardware Tree");
                             foreach (var item in result)
                             {
                                 var node = tree.AddNode(item.DisplayText);
-                                if (!settings.Flatten)
+                                if (settings.Flatten)
+                                    p.Refresh();
+                                else
                                 {
                                     await ExpandTree(item, node, client, p);
                                     _requests++;
@@ -53,8 +53,6 @@ namespace Hardware.Cli
                                         break;
                                 }
                             }
-
-                            AnsiConsole.Write(tree);
                         }
                         else if (response.IsRateLimited())
                             AnsiConsole.WriteLine(response.Message);
@@ -73,11 +71,12 @@ namespace Hardware.Cli
 
         #endregion
 
-        private async Task ExpandTree(HardwareTreeItem treeItem, TreeNode parentNode, HttpClient client, StatusContext status)
+        private async Task ExpandTree(HardwareTreeItem treeItem, TreeNode parentNode, HttpClient client, LiveDisplayContext context)
         {
-            status.Status($"Building... ({_requests}/{MaxRequests})");
             if (_requests >= MaxRequests)
                 return;
+
+            context.Refresh();
 
             // Depending on the server size (small, medium, large, extra-large) the hardware tree doesn't always return the child items.
             // When this happens we can request the child items by supplying the hardware type and unique key to the hardware tree request.
@@ -94,7 +93,7 @@ namespace Hardware.Cli
                     if (!response.IsSuccess() && response.IsRateLimited())
                     {
                         await Task.Delay(TimeSpan.FromSeconds(response.RetryAfter()));
-                        await ExpandTree(treeItem, parentNode, client, status);
+                        await ExpandTree(treeItem, parentNode, client, context);
                         return;
                     }
 
@@ -112,7 +111,7 @@ namespace Hardware.Cli
                 foreach (var item in treeItem.Items)
                 {
                     var node = parentNode.AddNode(item.DisplayText);
-                    await ExpandTree(item, node, client, status);
+                    await ExpandTree(item, node, client, context);
                     if (_requests >= MaxRequests)
                         return;
                 }
