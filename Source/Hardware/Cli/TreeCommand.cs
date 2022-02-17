@@ -81,7 +81,7 @@ namespace Hardware.Cli
 
             // Depending on the server size (small, medium, large, extra-large) the hardware tree doesn't always return the child items.
             // When this happens we can request the child items by supplying the hardware type and unique key to the hardware tree request.
-            if ((treeItem?.Items == null || !treeItem.IsCollection || !treeItem.Items.Any()) && treeItem?.UniqueKey != null && treeItem.UniqueKey != Guid.Empty)
+            if (treeItem?.Items != null && treeItem.IsCollection && !treeItem.Items.Any() && treeItem?.UniqueKey  != null && treeItem.UniqueKey != Guid.Empty)
             {
                 var url = $"{Settings.Api}/api/v2/hardware/tree"
                     .SetQueryParam("type", treeItem.Type)
