@@ -4,6 +4,8 @@ namespace Common.Configuration
 {
     public class Token
     {
+        public string Authority { get; set; }
+
         public string AccessToken { get; set; }
 
         public int ExpiresIn { get; set; }

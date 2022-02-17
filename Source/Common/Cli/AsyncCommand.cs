@@ -32,17 +32,23 @@ namespace Common.Cli
 
         protected async Task<HttpClient> GetClient()
         {
-            Token tokens;
+            Token tokens = null;
             if (File.Exists("tokens.json"))
             {
-                var raw = await File.ReadAllTextAsync("tokens.json");
-                tokens = JsonConvert.DeserializeObject<Token>(raw);
+                try
+                {
+                    var raw = await File.ReadAllTextAsync("tokens.json");
+                    tokens = JsonConvert.DeserializeObject<Token>(raw);
+                }
+                catch (Exception ex)
+                {
+                    AnsiConsole.WriteException(ex, ExceptionFormats.ShortenEverything);
+                    tokens = null;
+                }
             }
-            else
-                tokens = new Token();
 
-            if (tokens == null)
-                return null;
+            if (tokens == null || tokens.Authority != Settings.Authority)
+                tokens = new Token { Authority = Settings.Authority };
 
             if (tokens.IsValidAndIsExpired)
             {
