@@ -151,8 +151,8 @@ namespace DataEntry.Cli.Cardholder.Settings
         [CommandOption($"--{nameof(Other)}")]
         public virtual string Other { get; set; }
 
-        [CommandOption($"--{nameof(PersonnelType)}")]
-        public virtual int? PersonnelType { get; set; }
+        [CommandOption($"--{nameof(CardholderType)}")]
+        public virtual int? CardholderType { get; set; }
 
         [CommandOption($"--{nameof(ReasonForVisit)}")]
         public virtual string ReasonForVisit { get; set; }

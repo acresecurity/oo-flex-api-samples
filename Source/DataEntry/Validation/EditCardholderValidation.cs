@@ -23,7 +23,7 @@ namespace DataEntry.Validation
             RuleFor(p => p.Location).Length(0, 100).UnlessIsNullOrEmpty();
             RuleFor(p => p.MiddleName).Length(0, 100).UnlessIsNullOrEmpty();
             RuleFor(p => p.Other).AnsiCharacters().UnlessIsNullOrEmpty();
-            //RuleFor(p => p.PersonnelType).WhenNotNull();
+            //RuleFor(p => p.CardholderType).WhenNotNull();
             RuleFor(p => p.ReasonForVisit).Length(0, 512).UnlessIsNullOrEmpty();
             RuleFor(p => p.Site).Length(0, 100).UnlessIsNullOrEmpty();
             RuleFor(p => p.Sponsor).GreaterThan(0).WhenNotNull();

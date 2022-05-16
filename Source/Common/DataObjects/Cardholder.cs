@@ -81,7 +81,7 @@
 
         public virtual string Other { get; set; }
 
-        public virtual int? PersonnelType { get; set; }
+        public virtual int? CardholderType { get; set; }
 
         public virtual string ReasonForVisit { get; set; }
 
