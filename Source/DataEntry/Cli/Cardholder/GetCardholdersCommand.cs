@@ -25,7 +25,7 @@ namespace DataEntry.Cli.Cardholder
             if (!right.AsBool())
             {
                 AnsiConsole.MarkupLine("[red]{0}[/]", "Operator is not allowed to view cardholders");
-                return 0;
+                return 1;
             }
 
             var (pagedResponse, cardholders) = await AnsiConsole

@@ -12,7 +12,11 @@ namespace DataEntry.Cli.Cardholder.Settings
         public virtual Guid? UniqueKey { get; set; }
 
         [CommandOption("-c|--credentials")]
-        [Description("If true return the credentials assigned to the cardholder, otherwise the cardholder.")]
+        [Description("If true return the credentials assigned to the cardholder.")]
         public bool Credentials { get; set; }
+
+        [CommandOption("-p|--photos")]
+        [Description("If true return the photos assigned to the cardholder.")]
+        public bool Photos { get; set; }
     }
 }

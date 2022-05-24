@@ -1,7 +1,7 @@
 ﻿using System.Net;
-using DataEntry.Cli.Cardholder.Settings;
 using Common.Configuration;
 using Common.DataObjects;
+using DataEntry.Cli.Cardholder.Settings;
 using IdentityModel.OidcClient;
 using Spectre.Console;
 using Spectre.Console.Cli;

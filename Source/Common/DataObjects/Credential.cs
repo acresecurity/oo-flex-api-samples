@@ -1,4 +1,5 @@
-﻿namespace Common.DataObjects
+﻿
+namespace Common.DataObjects
 {
     /// <summary>
     /// Card credential belonging to a cardholder record

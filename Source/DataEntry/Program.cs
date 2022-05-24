@@ -9,7 +9,6 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Spectre.Console;
 using Spectre.Console.Cli;
-using AccessLevelSettings = DataEntry.Cli.AccessLevels.AccessLevelSettings;
 
 // Output standard console information and run the application
 var info = new Grid();
@@ -69,6 +68,17 @@ using var host = Host.CreateDefaultBuilder(args)
                         b.AddCommand<DataEntry.Cli.Cardholder.AssignAccessLevelsCommand>("assign")
                             .WithDescription("Apply access level groups to all the credentials assigned to a cardholder");
                     });
+
+                    p.AddBranch("photos", b =>
+                    {
+                        b.AddCommand<DataEntry.Cli.Cardholder.UploadPhotoCommand>("upload")
+                            .WithDescription("Upload a photo and assign it to a cardholder")
+                            .WithExample(new[] { "cardholder", "photos", "upload", Guid.NewGuid().ToString(), "D:\\Downloads\\Scorbunny.png" });
+
+                        b.AddCommand<DataEntry.Cli.Cardholder.DeletePhotoCommand>("delete")
+                            .WithDescription("Delete a photo that has been assigned to a cardholder")
+                            .WithExample(new[] { "cardholder", "photos", "delete", Guid.NewGuid().ToString() });
+                    });
                 });
 
                 config.AddBranch<CredentialSettings>("credential", p =>
@@ -102,7 +112,7 @@ using var host = Host.CreateDefaultBuilder(args)
                     });
                 });
 
-                config.AddBranch<AccessLevelSettings>("accessLevels", p =>
+                config.AddBranch<DataEntry.Cli.AccessLevels.AccessLevelSettings>("accessLevels", p =>
                 {
                     p.AddCommand<GetAccessLevelGroupsCommand>("get")
                         .WithDescription("Return a list of the available access level groups");

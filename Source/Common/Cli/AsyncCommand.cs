@@ -100,7 +100,7 @@ namespace Common.Cli
         /// Helper method to display and errors or messages returned from the server that wasn't successful
         /// </summary>
         /// <param name="response"></param>
-        protected static void DisplayError(JSendResponse response)
+        protected static bool DisplayError(JSendResponse response)
         {
             if (response.HasFailedValidation())
             {
@@ -116,13 +116,20 @@ namespace Common.Cli
 
                 table.Expand();
                 AnsiConsole.Write(table);
+
+                return true;
             }
-            else if (response.HasFailed() || response.HasError())
+            
+            if (response.HasFailed() || response.HasError())
             {
                 AnsiConsole.WriteLine();
                 AnsiConsole.MarkupLine("[red]{0}[/]", $"{response.Status} Message");
                 AnsiConsole.MarkupLine("    [red]{0}[/]", Markup.Escape(string.IsNullOrEmpty(response.Message) ? response.Data.ToString() : response.Message));
+
+                return true;
             }
+
+            return false;
         }
 
         protected void DisplayTable<T>(T data, params string[] fields) where T : class => DisplayTable(data, null, fields);

@@ -2,7 +2,6 @@
 using DataEntry.Cli.Cardholder.Settings;
 using Common.Configuration;
 using Common.DataObjects;
-using Common.Responses;
 using IdentityModel.OidcClient;
 using Spectre.Console;
 using Spectre.Console.Cli;
@@ -17,7 +16,7 @@ namespace DataEntry.Cli.Cardholder
         }
 
         #region Overrides of DefaultCommand<ViewCardholderSettings>
-
+        
         protected override async Task<int> ExecuteAsync(CommandContext context, ViewCardholderSettings settings, HttpClient client, UserInfo userInfo)
         {
             var right = userInfo[UserRights.ViewPersonnel];
@@ -27,7 +26,13 @@ namespace DataEntry.Cli.Cardholder
                 return 0;
             }
 
-            JSendResponse response;
+            var response = await client.GetJsendAsync($"{Settings.Api}/api/v2/cardholder/{settings.UniqueKey}");
+            if (response.IsSuccess())
+            {
+                var cardholder = response.Deserialize<Common.DataObjects.Cardholder>();
+                DisplayObject(cardholder);
+            }
+
             if (settings.Credentials)
             {
                 response = await client.GetJsendAsync($"{Settings.Api}/api/v2/cardholder/{settings.UniqueKey}/credentials");
@@ -35,24 +40,20 @@ namespace DataEntry.Cli.Cardholder
                 {
                     var credentials = response.Deserialize<Common.DataObjects.Credential[]>();
                     DisplayObject(credentials);
-
-                    return 0;
                 }
             }
-            else
+
+            if (settings.Photos)
             {
-                response = await client.GetJsendAsync($"{Settings.Api}/api/v2/cardholder/{settings.UniqueKey}");
+                response = await client.GetJsendAsync($"{Settings.Api}/api/v2/cardholder/{settings.UniqueKey}/photos");
                 if (response.IsSuccess())
                 {
-                    var cardholder = response.Deserialize<Common.DataObjects.Cardholder>();
-                    DisplayObject(cardholder);
-
-                    return 0;
+                    var photos = response.Deserialize<Common.DataObjects.Photo[]>();
+                    DisplayObject(photos);
                 }
             }
 
-            DisplayError(response);
-            return 1;
+            return DisplayError(response) ? 1 : 0;
         }
 
         #endregion

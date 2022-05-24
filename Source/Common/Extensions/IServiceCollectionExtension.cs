@@ -1,6 +1,8 @@
-﻿using Common.Oidc;
+﻿using System.IO.Abstractions;
+using Common.Oidc;
 using IdentityModel.OidcClient;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.Options;
 using Spectre.Console;
 
@@ -12,6 +14,8 @@ namespace Microsoft.Extensions.DependencyInjection
     {
         public static IServiceCollection AddDefaultServices(this IServiceCollection services, IConfiguration configuration)
         {
+            services.AddTransient<IFileSystem, FileSystem>();
+
             var config = configuration.GetSection("FlexApi");
             services.Configure<Common.Configuration.Options>(config);
 
