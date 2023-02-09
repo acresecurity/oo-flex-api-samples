@@ -41,6 +41,7 @@ namespace Common.DataObjects
         public const string Graphics = "Graphics.png";
         public const string HIDOmniKey = "HIDOmniKey.png";
         public const string Holidays = "Holidays.png";
+        public const string InovonicsDP = "InovonicsDP.png";
         public const string Isonas = "Isonas.png";
         public const string Kone = "Kone.png";
         public const string Miscellaneous = "Miscellaneous.png";
@@ -443,547 +444,547 @@ namespace Common.DataObjects
 #if FLEXAPI
         [Offset(76, 2)]
         [Description("Card")]
-        [Tree("Personnel\\Card Fields", ControlType.ComboBox, Assets.Personnel, 2, 4, 0)]
+        [Tree("Cardholder\\Credential Fields", ControlType.ComboBox, Assets.Personnel, 2, 4, 0)]
 #endif
         CardField1,
 #if FLEXAPI
         [Offset(78, 2)]
         [Description("Hot Stamp")]
-        [Tree("Personnel\\Card Fields", ControlType.ComboBox, Assets.Personnel, 2, 4, 1)]
+        [Tree("Cardholder\\Credential Fields", ControlType.ComboBox, Assets.Personnel, 2, 4, 1)]
 #endif
         CardField2,
 #if FLEXAPI
         [Offset(80, 2)]
         [Description("Issue Code")]
-        [Tree("Personnel\\Card Fields", ControlType.ComboBox, Assets.Personnel, 2, 4, 2)]
+        [Tree("Cardholder\\Credential Fields", ControlType.ComboBox, Assets.Personnel, 2, 4, 2)]
 #endif
         CardField3,
 #if FLEXAPI
         [Offset(82, 2)]
         [Description("P.I.N.")]
-        [Tree("Personnel\\Card Fields", ControlType.ComboBox, Assets.Personnel, 2, 4, 3)]
+        [Tree("Cardholder\\Credential Fields", ControlType.ComboBox, Assets.Personnel, 2, 4, 3)]
 #endif
         CardField4,
 #if FLEXAPI
         [Offset(84, 2)]
         [Description("Facility Code")]
-        [Tree("Personnel\\Card Fields", ControlType.ComboBox, Assets.Personnel, 2, 4, 4)]
+        [Tree("Cardholder\\Credential Fields", ControlType.ComboBox, Assets.Personnel, 2, 4, 4)]
 #endif
         CardField5,
 #if FLEXAPI
         [Offset(86, 2)]
         [Description("Trigger Code")]
-        [Tree("Personnel\\Card Fields", ControlType.ComboBox, Assets.Personnel, 2, 4, 5)]
+        [Tree("Cardholder\\Credential Fields", ControlType.ComboBox, Assets.Personnel, 2, 4, 5)]
 #endif
         CardField6,
 #if FLEXAPI
         [Offset(88, 2)]
         [Description("Activation")]
-        [Tree("Personnel\\Card Fields", ControlType.ComboBox, Assets.Personnel, 2, 4, 6)]
+        [Tree("Cardholder\\Credential Fields", ControlType.ComboBox, Assets.Personnel, 2, 4, 6)]
 #endif
         CardField7,
 #if FLEXAPI
         [Offset(90, 2)]
         [Description("Deactivation")]
-        [Tree("Personnel\\Card Fields", ControlType.ComboBox, Assets.Personnel, 2, 4, 7)]
+        [Tree("Cardholder\\Credential Fields", ControlType.ComboBox, Assets.Personnel, 2, 4, 7)]
 #endif
         CardField8,
 #if FLEXAPI
         [Offset(92, 2)]
         [Description("Vacation Start")]
-        [Tree("Personnel\\Card Fields", ControlType.ComboBox, Assets.Personnel, 2, 4, 8)]
+        [Tree("Cardholder\\Credential Fields", ControlType.ComboBox, Assets.Personnel, 2, 4, 8)]
 #endif
         CardField9,
 #if FLEXAPI
         [Offset(94, 2)]
         [Description("Upgrade Start")]
-        [Tree("Personnel\\Card Fields", ControlType.ComboBox, Assets.Personnel, 2, 4, 9)]
+        [Tree("Cardholder\\Credential Fields", ControlType.ComboBox, Assets.Personnel, 2, 4, 9)]
 #endif
         CardField10,
 #if FLEXAPI
         [Offset(96, 2)]
         [Description("APB Location")]
-        [Tree("Personnel\\Card Fields", ControlType.ComboBox, Assets.Personnel, 2, 4, 10)]
+        [Tree("Cardholder\\Credential Fields", ControlType.ComboBox, Assets.Personnel, 2, 4, 10)]
 #endif
         CardField11,
 #if FLEXAPI
         [Offset(98, 2)]
         [Description("Card Type")]
-        [Tree("Personnel\\Card Fields", ControlType.ComboBox, Assets.Personnel, 2, 4, 11)]
+        [Tree("Cardholder\\Credential Fields", ControlType.ComboBox, Assets.Personnel, 2, 4, 11)]
 #endif
         CardField12,
 #if FLEXAPI
         [Offset(100, 2)]
         [Description("Reason Disabled")]
-        [Tree("Personnel\\Card Fields", ControlType.ComboBox, Assets.Personnel, 2, 4, 12)]
+        [Tree("Cardholder\\Credential Fields", ControlType.ComboBox, Assets.Personnel, 2, 4, 12)]
 #endif
         CardField13,
 #if FLEXAPI
         [Offset(102, 2)]
         [Description("ADA Mode")]
-        [Tree("Personnel\\Card Fields", ControlType.ComboBox, Assets.Personnel, 2, 4, 13)]
+        [Tree("Cardholder\\Credential Fields", ControlType.ComboBox, Assets.Personnel, 2, 4, 13)]
 #endif
         CardField14,
 #if FLEXAPI
         [Offset(104, 2)]
         [Description("Activate Card")]
-        [Tree("Personnel\\Card Fields", ControlType.ComboBox, Assets.Personnel, 2, 4, 14)]
+        [Tree("Cardholder\\Credential Fields", ControlType.ComboBox, Assets.Personnel, 2, 4, 14)]
 #endif
         CardField15,
 #if FLEXAPI
         [Offset(106, 2)]
         [Description("Allow 1 Free APB Pass")]
-        [Tree("Personnel\\Card Fields", ControlType.ComboBox, Assets.Personnel, 2, 4, 15)]
+        [Tree("Cardholder\\Credential Fields", ControlType.ComboBox, Assets.Personnel, 2, 4, 15)]
 #endif
         CardField16,
 #if FLEXAPI
         [Offset(108, 2)]
         [Description("V.I.P. (APB Exempt)")]
-        [Tree("Personnel\\Card Fields", ControlType.ComboBox, Assets.Personnel, 2, 4, 16)]
+        [Tree("Cardholder\\Credential Fields", ControlType.ComboBox, Assets.Personnel, 2, 4, 16)]
 #endif
         CardField17,
 #if FLEXAPI
         [Offset(110, 2)]
         [Description("Alter Use Count")]
-        [Tree("Personnel\\Card Fields", ControlType.ComboBox, Assets.Personnel, 2, 4, 17)]
+        [Tree("Cardholder\\Credential Fields", ControlType.ComboBox, Assets.Personnel, 2, 4, 17)]
 #endif
         CardField18,
 #if FLEXAPI
         [Offset(112, 2)]
         [Description("Alter APB Location")]
-        [Tree("Personnel\\Card Fields", ControlType.ComboBox, Assets.Personnel, 2, 4, 18)]
+        [Tree("Cardholder\\Credential Fields", ControlType.ComboBox, Assets.Personnel, 2, 4, 18)]
 #endif
         CardField19,
 #if FLEXAPI
         [Offset(114, 2)]
         [Description("Use Limit")]
-        [Tree("Personnel\\Card Fields", ControlType.ComboBox, Assets.Personnel, 2, 4, 19)]
+        [Tree("Cardholder\\Credential Fields", ControlType.ComboBox, Assets.Personnel, 2, 4, 19)]
 #endif
         CardField20,
 #if FLEXAPI
         [Offset(116, 2)]
         [Description("Reset APB")]
-        [Tree("Personnel\\Card Fields", ControlType.ComboBox, Assets.Personnel, 2, 4, 20)]
+        [Tree("Cardholder\\Credential Fields", ControlType.ComboBox, Assets.Personnel, 2, 4, 20)]
 #endif
         CardField21,
 #if FLEXAPI
         [Offset(118, 2)]
         [Description("Trace History")]
-        [Tree("Personnel\\Card Fields", ControlType.ComboBox, Assets.Personnel, 2, 4, 21)]
+        [Tree("Cardholder\\Credential Fields", ControlType.ComboBox, Assets.Personnel, 2, 4, 21)]
 #endif
         CardField22,
 #if FLEXAPI
         [Offset(120, 2)]
         [Description("Access Levels")]
-        [Tree("Personnel\\Card Fields", ControlType.ComboBox, Assets.Personnel, 2, 4, 22)]
+        [Tree("Cardholder\\Credential Fields", ControlType.ComboBox, Assets.Personnel, 2, 4, 22)]
 #endif
         CardField23,
 #if FLEXAPI
         [Offset(122, 2)]
         [Description("PIN Exempt Card")]
-        [Tree("Personnel\\Card Fields", ControlType.ComboBox, Assets.Personnel, 2, 4, 23)]
+        [Tree("Cardholder\\Credential Fields", ControlType.ComboBox, Assets.Personnel, 2, 4, 23)]
 #endif
         CardField24,
 #if FLEXAPI
         [Offset(124, 2)]
         [Description("Last Used")]
-        [Tree("Personnel\\Card Fields", ControlType.ComboBox, Assets.Personnel, 2, 4, 24)]
+        [Tree("Cardholder\\Credential Fields", ControlType.ComboBox, Assets.Personnel, 2, 4, 24)]
 #endif
         CardField25,
 #if FLEXAPI
         [Offset(126, 2)]
         [Description("Host Macro")]
-        [Tree("Personnel\\Card Fields", ControlType.ComboBox, Assets.Personnel, 2, 4, 25)]
+        [Tree("Cardholder\\Credential Fields", ControlType.ComboBox, Assets.Personnel, 2, 4, 25)]
 #endif
         CardField26,
 #if FLEXAPI
         [Offset(128, 2)]
         [Description("Unique ID")]
-        [Tree("Personnel\\Personnel Fields", ControlType.ComboBox, Assets.Personnel, 2, 2, 0)]
+        [Tree("Cardholder\\Cardholder Fields", ControlType.ComboBox, Assets.Personnel, 2, 2, 0)]
 #endif
         PersonnelField1,
 #if FLEXAPI
         [Offset(130, 2)]
         [Description("First")]
-        [Tree("Personnel\\Personnel Fields", ControlType.ComboBox, Assets.Personnel, 2, 2, 1)]
+        [Tree("Cardholder\\Cardholder Fields", ControlType.ComboBox, Assets.Personnel, 2, 2, 1)]
 #endif
         PersonnelField2,
 #if FLEXAPI
         [Offset(132, 2)]
         [Description("Last")]
-        [Tree("Personnel\\Personnel Fields", ControlType.ComboBox, Assets.Personnel, 2, 2, 3)]
+        [Tree("Cardholder\\Cardholder Fields", ControlType.ComboBox, Assets.Personnel, 2, 2, 3)]
 #endif
         PersonnelField3,
 #if FLEXAPI
         [Offset(134, 2)]
         [Description("E-Mail")]
-        [Tree("Personnel\\Personnel Fields", ControlType.ComboBox, Assets.Personnel, 2, 2, 5)]
+        [Tree("Cardholder\\Cardholder Fields", ControlType.ComboBox, Assets.Personnel, 2, 2, 5)]
 #endif
         PersonnelField4,
 #if FLEXAPI
         [Offset(136, 2)]
         [Description("Location")]
-        [Tree("Personnel\\Personnel Fields", ControlType.ComboBox, Assets.Personnel, 2, 2, 7)]
+        [Tree("Cardholder\\Cardholder Fields", ControlType.ComboBox, Assets.Personnel, 2, 2, 7)]
 #endif
         PersonnelField5,
 #if FLEXAPI
         [Offset(138, 2)]
         [Description("Department")]
-        [Tree("Personnel\\Personnel Fields", ControlType.ComboBox, Assets.Personnel, 2, 2, 9)]
+        [Tree("Cardholder\\Cardholder Fields", ControlType.ComboBox, Assets.Personnel, 2, 2, 9)]
 #endif
         PersonnelField6,
 #if FLEXAPI
         [Offset(140, 2)]
         [Description("Site")]
-        [Tree("Personnel\\Personnel Fields", ControlType.ComboBox, Assets.Personnel, 2, 2, 11)]
+        [Tree("Cardholder\\Cardholder Fields", ControlType.ComboBox, Assets.Personnel, 2, 2, 11)]
 #endif
         PersonnelField7,
 #if FLEXAPI
         [Offset(142, 2)]
         [Description("Title")]
-        [Tree("Personnel\\Personnel Fields", ControlType.ComboBox, Assets.Personnel, 2, 2, 13)]
+        [Tree("Cardholder\\Cardholder Fields", ControlType.ComboBox, Assets.Personnel, 2, 2, 13)]
 #endif
         PersonnelField8,
 #if FLEXAPI
         [Offset(144, 2)]
         [Description("Work Phone")]
-        [Tree("Personnel\\Personnel Fields", ControlType.ComboBox, Assets.Personnel, 2, 2, 15)]
+        [Tree("Cardholder\\Cardholder Fields", ControlType.ComboBox, Assets.Personnel, 2, 2, 15)]
 #endif
         PersonnelField9,
 #if FLEXAPI
         [Offset(146, 2)]
         [Description("Employee #")]
-        [Tree("Personnel\\Personnel Fields", ControlType.ComboBox, Assets.Personnel, 2, 2, 16)]
+        [Tree("Cardholder\\Cardholder Fields", ControlType.ComboBox, Assets.Personnel, 2, 2, 16)]
 #endif
         PersonnelField10,
 #if FLEXAPI
         [Offset(148, 2)]
         [Description("Company")]
-        [Tree("Personnel\\Personnel Fields", ControlType.ComboBox, Assets.Personnel, 2, 2, 17)]
+        [Tree("Cardholder\\Cardholder Fields", ControlType.ComboBox, Assets.Personnel, 2, 2, 17)]
 #endif
         PersonnelField11,
 #if FLEXAPI
         [Offset(150, 2)]
         [Description("Edit (Company)")]
-        [Tree("Personnel\\Personnel Fields", ControlType.ComboBox, Assets.Personnel, 2, 2, 18)]
+        [Tree("Cardholder\\Cardholder Fields", ControlType.ComboBox, Assets.Personnel, 2, 2, 18)]
 #endif
         PersonnelField12,
 #if FLEXAPI
         [Offset(152, 2)]
         [Description("Address1 (Company)")]
-        [Tree("Personnel\\Personnel Fields", ControlType.ComboBox, Assets.Personnel, 2, 2, 19)]
+        [Tree("Cardholder\\Cardholder Fields", ControlType.ComboBox, Assets.Personnel, 2, 2, 19)]
 #endif
         PersonnelField13,
 #if FLEXAPI
         [Offset(154, 2)]
         [Description("Address2 (Company)")]
-        [Tree("Personnel\\Personnel Fields", ControlType.ComboBox, Assets.Personnel, 2, 2, 20)]
+        [Tree("Cardholder\\Cardholder Fields", ControlType.ComboBox, Assets.Personnel, 2, 2, 20)]
 #endif
         PersonnelField14,
 #if FLEXAPI
         [Offset(156, 2)]
         [Description("City (Company)")]
-        [Tree("Personnel\\Personnel Fields", ControlType.ComboBox, Assets.Personnel, 2, 2, 21)]
+        [Tree("Cardholder\\Cardholder Fields", ControlType.ComboBox, Assets.Personnel, 2, 2, 21)]
 #endif
         PersonnelField15,
 #if FLEXAPI
         [Offset(158, 2)]
         [Description("State/Prov (Company)")]
-        [Tree("Personnel\\Personnel Fields", ControlType.ComboBox, Assets.Personnel, 2, 2, 22)]
+        [Tree("Cardholder\\Cardholder Fields", ControlType.ComboBox, Assets.Personnel, 2, 2, 22)]
 #endif
         PersonnelField16,
 #if FLEXAPI
         [Offset(160, 2)]
         [Description("Country (Company)")]
-        [Tree("Personnel\\Personnel Fields", ControlType.ComboBox, Assets.Personnel, 2, 2, 23)]
+        [Tree("Cardholder\\Cardholder Fields", ControlType.ComboBox, Assets.Personnel, 2, 2, 23)]
 #endif
         PersonnelField17,
 #if FLEXAPI
         [Offset(162, 2)]
         [Description("Zip (Company)")]
-        [Tree("Personnel\\Personnel Fields", ControlType.ComboBox, Assets.Personnel, 2, 2, 24)]
+        [Tree("Cardholder\\Cardholder Fields", ControlType.ComboBox, Assets.Personnel, 2, 2, 24)]
 #endif
         PersonnelField18,
 #if FLEXAPI
         [Offset(164, 2)]
-        [Description("Employee Photo 1")]
-        [Tree("Personnel\\Personnel Fields", ControlType.ComboBox, Assets.Personnel, 2, 2, 25)]
+        [Description("Cardholder Photo 1")]
+        [Tree("Cardholder\\Cardholder Fields", ControlType.ComboBox, Assets.Personnel, 2, 2, 25)]
 #endif
         PersonnelField19,
 #if FLEXAPI
         [Offset(166, 2)]
-        [Description("Employee Photo 2")]
-        [Tree("Personnel\\Personnel Fields", ControlType.ComboBox, Assets.Personnel, 2, 2, 26)]
+        [Description("Cardholder Photo 2")]
+        [Tree("Cardholder\\Cardholder Fields", ControlType.ComboBox, Assets.Personnel, 2, 2, 26)]
 #endif
         PersonnelField20,
 #if FLEXAPI
         [Offset(168, 2)]
-        [Description("Employee Photo 3")]
-        [Tree("Personnel\\Personnel Fields", ControlType.ComboBox, Assets.Personnel, 2, 2, 27)]
+        [Description("Cardholder Photo 3")]
+        [Tree("Cardholder\\Cardholder Fields", ControlType.ComboBox, Assets.Personnel, 2, 2, 27)]
 #endif
         PersonnelField21,
 #if FLEXAPI
         [Offset(170, 2)]
-        [Description("Employee Photo 4")]
-        [Tree("Personnel\\Personnel Fields", ControlType.ComboBox, Assets.Personnel, 2, 2, 28)]
+        [Description("Cardholder Photo 4")]
+        [Tree("Cardholder\\Cardholder Fields", ControlType.ComboBox, Assets.Personnel, 2, 2, 28)]
 #endif
         PersonnelField22,
 #if FLEXAPI
         [Offset(172, 2)]
         [Description("Address 1")]
-        [Tree("Personnel\\Personnel Fields", ControlType.ComboBox, Assets.Personnel, 2, 2, 29)]
+        [Tree("Cardholder\\Cardholder Fields", ControlType.ComboBox, Assets.Personnel, 2, 2, 29)]
 #endif
         PersonnelField23,
 #if FLEXAPI
         [Offset(174, 2)]
         [Description("Address 2")]
-        [Tree("Personnel\\Personnel Fields", ControlType.ComboBox, Assets.Personnel, 2, 2, 30)]
+        [Tree("Cardholder\\Cardholder Fields", ControlType.ComboBox, Assets.Personnel, 2, 2, 30)]
 #endif
         PersonnelField24,
 #if FLEXAPI
         [Offset(176, 2)]
         [Description("City")]
-        [Tree("Personnel\\Personnel Fields", ControlType.ComboBox, Assets.Personnel, 2, 2, 31)]
+        [Tree("Cardholder\\Cardholder Fields", ControlType.ComboBox, Assets.Personnel, 2, 2, 31)]
 #endif
         PersonnelField25,
 #if FLEXAPI
         [Offset(178, 2)]
         [Description("State/Province")]
-        [Tree("Personnel\\Personnel Fields", ControlType.ComboBox, Assets.Personnel, 2, 2, 32)]
+        [Tree("Cardholder\\Cardholder Fields", ControlType.ComboBox, Assets.Personnel, 2, 2, 32)]
 #endif
         PersonnelField26,
 #if FLEXAPI
         [Offset(180, 2)]
         [Description("Country")]
-        [Tree("Personnel\\Personnel Fields", ControlType.ComboBox, Assets.Personnel, 2, 2, 33)]
+        [Tree("Cardholder\\Cardholder Fields", ControlType.ComboBox, Assets.Personnel, 2, 2, 33)]
 #endif
         PersonnelField27,
 #if FLEXAPI
         [Offset(182, 2)]
         [Description("Home Phone")]
-        [Tree("Personnel\\Personnel Fields", ControlType.ComboBox, Assets.Personnel, 2, 2, 34)]
+        [Tree("Cardholder\\Cardholder Fields", ControlType.ComboBox, Assets.Personnel, 2, 2, 34)]
 #endif
         PersonnelField28,
 #if FLEXAPI
         [Offset(184, 2)]
         [Description("Zip")]
-        [Tree("Personnel\\Personnel Fields", ControlType.ComboBox, Assets.Personnel, 2, 2, 35)]
+        [Tree("Cardholder\\Cardholder Fields", ControlType.ComboBox, Assets.Personnel, 2, 2, 35)]
 #endif
         PersonnelField29,
 #if FLEXAPI
         [Offset(186, 2)]
         [Description("Employee ID")]
-        [Tree("Personnel\\Personnel Fields", ControlType.ComboBox, Assets.Personnel, 2, 2, 36)]
+        [Tree("Cardholder\\Cardholder Fields", ControlType.ComboBox, Assets.Personnel, 2, 2, 36)]
 #endif
         PersonnelField30,
 #if FLEXAPI
         [Offset(188, 2)]
         [Description("DL #")]
-        [Tree("Personnel\\Personnel Fields", ControlType.ComboBox, Assets.Personnel, 2, 2, 37)]
+        [Tree("Cardholder\\Cardholder Fields", ControlType.ComboBox, Assets.Personnel, 2, 2, 37)]
 #endif
         PersonnelField31,
 #if FLEXAPI
         [Offset(190, 2)]
-        [Description("Other Personal Information")]
-        [Tree("Personnel\\Personnel Fields", ControlType.ComboBox, Assets.Personnel, 2, 2, 38)]
+        [Description("Other Cardholder Information")]
+        [Tree("Cardholder\\Cardholder Fields", ControlType.ComboBox, Assets.Personnel, 2, 2, 38)]
 #endif
         PersonnelField32,
 #if FLEXAPI
         [Offset(192, 2)]
         [Description("Hire Date")]
-        [Tree("Personnel\\Personnel Fields", ControlType.ComboBox, Assets.Personnel, 2, 2, 39)]
+        [Tree("Cardholder\\Cardholder Fields", ControlType.ComboBox, Assets.Personnel, 2, 2, 39)]
 #endif
         PersonnelField33,
 #if FLEXAPI
         [Offset(194, 2)]
         [DescriptionLookup(Lookup = typeof(SettingsLookup), Key = "Custom Person Field 0", Default = "Custom String 1")]
-        [Tree("Personnel\\Personnel Fields", ControlType.ComboBox, Assets.Personnel, 2, 2, 40)]
+        [Tree("Cardholder\\Cardholder Fields", ControlType.ComboBox, Assets.Personnel, 2, 2, 40)]
 #endif
         PersonnelField34,
 #if FLEXAPI
         [Offset(196, 2)]
         [DescriptionLookup(Lookup = typeof(SettingsLookup), Key = "Custom Person Field 1", Default = "Custom String 2")]
-        [Tree("Personnel\\Personnel Fields", ControlType.ComboBox, Assets.Personnel, 2, 2, 41)]
+        [Tree("Cardholder\\Cardholder Fields", ControlType.ComboBox, Assets.Personnel, 2, 2, 41)]
 #endif
         PersonnelField35,
 #if FLEXAPI
         [Offset(198, 2)]
         [DescriptionLookup(Lookup = typeof(SettingsLookup), Key = "Custom Person Field 2", Default = "Custom String 3")]
-        [Tree("Personnel\\Personnel Fields", ControlType.ComboBox, Assets.Personnel, 2, 2, 42)]
+        [Tree("Cardholder\\Cardholder Fields", ControlType.ComboBox, Assets.Personnel, 2, 2, 42)]
 #endif
         PersonnelField36,
 #if FLEXAPI
         [Offset(200, 2)]
         [DescriptionLookup(Lookup = typeof(SettingsLookup), Key = "Custom Person Field 3", Default = "Custom Value 1")]
-        [Tree("Personnel\\Personnel Fields", ControlType.ComboBox, Assets.Personnel, 2, 2, 56)]
+        [Tree("Cardholder\\Cardholder Fields", ControlType.ComboBox, Assets.Personnel, 2, 2, 56)]
 #endif
         PersonnelField37,
 #if FLEXAPI
         [Offset(202, 2)]
         [DescriptionLookup(Lookup = typeof(SettingsLookup), Key = "Custom Person Field 4", Default = "Custom Value 2")]
-        [Tree("Personnel\\Personnel Fields", ControlType.ComboBox, Assets.Personnel, 2, 2, 57)]
+        [Tree("Cardholder\\Cardholder Fields", ControlType.ComboBox, Assets.Personnel, 2, 2, 57)]
 #endif
         PersonnelField38,
 #if FLEXAPI
         [Offset(204, 2)]
         [DescriptionLookup(Lookup = typeof(SettingsLookup), Key = "Custom Person Field 5", Default = "Custom Value 3")]
-        [Tree("Personnel\\Personnel Fields", ControlType.ComboBox, Assets.Personnel, 2, 2, 58)]
+        [Tree("Cardholder\\Cardholder Fields", ControlType.ComboBox, Assets.Personnel, 2, 2, 58)]
 #endif
         PersonnelField39,
 #if FLEXAPI
         [Offset(206, 2)]
         [DescriptionLookup("")]
-        [Tree("Personnel\\Personnel Custom Fields", ControlType.ComboBox, Assets.Personnel, 2, 3, 0)]
+        [Tree("Cardholder\\Cardholder Custom Fields", ControlType.ComboBox, Assets.Personnel, 2, 3, 0)]
 #endif
         PersonnelField40,
 #if FLEXAPI
         [Offset(208, 2)]
         [DescriptionLookup("")]
-        [Tree("Personnel\\Personnel Custom Fields", ControlType.ComboBox, Assets.Personnel, 2, 3, 1)]
+        [Tree("Cardholder\\Cardholder Custom Fields", ControlType.ComboBox, Assets.Personnel, 2, 3, 1)]
 #endif
         PersonnelField41,
 #if FLEXAPI
         [Offset(210, 2)]
         [DescriptionLookup("")]
-        [Tree("Personnel\\Personnel Custom Fields", ControlType.ComboBox, Assets.Personnel, 2, 3, 2)]
+        [Tree("Cardholder\\Cardholder Custom Fields", ControlType.ComboBox, Assets.Personnel, 2, 3, 2)]
 #endif
         PersonnelField42,
 #if FLEXAPI
         [Offset(212, 2)]
         [DescriptionLookup("")]
-        [Tree("Personnel\\Personnel Custom Fields", ControlType.ComboBox, Assets.Personnel, 2, 3, 3)]
+        [Tree("Cardholder\\Cardholder Custom Fields", ControlType.ComboBox, Assets.Personnel, 2, 3, 3)]
 #endif
         PersonnelField43,
 #if FLEXAPI
         [Offset(214, 2)]
         [DescriptionLookup("")]
-        [Tree("Personnel\\Personnel Custom Fields", ControlType.ComboBox, Assets.Personnel, 2, 3, 4)]
+        [Tree("Cardholder\\Cardholder Custom Fields", ControlType.ComboBox, Assets.Personnel, 2, 3, 4)]
 #endif
         PersonnelField44,
 #if FLEXAPI
         [Offset(216, 2)]
         [DescriptionLookup("")]
-        [Tree("Personnel\\Personnel Custom Fields", ControlType.ComboBox, Assets.Personnel, 2, 3, 5)]
+        [Tree("Cardholder\\Cardholder Custom Fields", ControlType.ComboBox, Assets.Personnel, 2, 3, 5)]
 #endif
         PersonnelField45,
 #if FLEXAPI
         [Offset(218, 2)]
         [DescriptionLookup("")]
-        [Tree("Personnel\\Personnel Custom Fields", ControlType.ComboBox, Assets.Personnel, 2, 3, 6)]
+        [Tree("Cardholder\\Cardholder Custom Fields", ControlType.ComboBox, Assets.Personnel, 2, 3, 6)]
 #endif
         PersonnelField46,
 #if FLEXAPI
         [Offset(220, 2)]
         [DescriptionLookup("")]
-        [Tree("Personnel\\Personnel Custom Fields", ControlType.ComboBox, Assets.Personnel, 2, 3, 7)]
+        [Tree("Cardholder\\Cardholder Custom Fields", ControlType.ComboBox, Assets.Personnel, 2, 3, 7)]
 #endif
         PersonnelField47,
 #if FLEXAPI
         [Offset(222, 2)]
         [DescriptionLookup("")]
-        [Tree("Personnel\\Personnel Custom Fields", ControlType.ComboBox, Assets.Personnel, 2, 3, 8)]
+        [Tree("Cardholder\\Cardholder Custom Fields", ControlType.ComboBox, Assets.Personnel, 2, 3, 8)]
 #endif
         PersonnelField48,
 #if FLEXAPI
         [Offset(224, 2)]
         [DescriptionLookup("")]
-        [Tree("Personnel\\Personnel Custom Fields", ControlType.ComboBox, Assets.Personnel, 2, 3, 9)]
+        [Tree("Cardholder\\Cardholder Custom Fields", ControlType.ComboBox, Assets.Personnel, 2, 3, 9)]
 #endif
         PersonnelField49,
 #if FLEXAPI
         [Offset(226, 2)]
         [DescriptionLookup("")]
-        [Tree("Personnel\\Personnel Custom Fields", ControlType.ComboBox, Assets.Personnel, 2, 3, 10)]
+        [Tree("Cardholder\\Cardholder Custom Fields", ControlType.ComboBox, Assets.Personnel, 2, 3, 10)]
 #endif
         PersonnelField50,
 #if FLEXAPI
         [Offset(228, 2)]
         [DescriptionLookup("")]
-        [Tree("Personnel\\Personnel Custom Fields", ControlType.ComboBox, Assets.Personnel, 2, 3, 11)]
+        [Tree("Cardholder\\Cardholder Custom Fields", ControlType.ComboBox, Assets.Personnel, 2, 3, 11)]
 #endif
         PersonnelField51,
 #if FLEXAPI
         [Offset(230, 2)]
         [DescriptionLookup("")]
-        [Tree("Personnel\\Personnel Custom Fields", ControlType.ComboBox, Assets.Personnel, 2, 3, 12)]
+        [Tree("Cardholder\\Cardholder Custom Fields", ControlType.ComboBox, Assets.Personnel, 2, 3, 12)]
 #endif
         PersonnelField52,
 #if FLEXAPI
         [Offset(232, 2)]
         [DescriptionLookup("")]
-        [Tree("Personnel\\Personnel Custom Fields", ControlType.ComboBox, Assets.Personnel, 2, 3, 13)]
+        [Tree("Cardholder\\Cardholder Custom Fields", ControlType.ComboBox, Assets.Personnel, 2, 3, 13)]
 #endif
         PersonnelField53,
 #if FLEXAPI
         [Offset(234, 2)]
         [DescriptionLookup("")]
-        [Tree("Personnel\\Personnel Custom Fields", ControlType.ComboBox, Assets.Personnel, 2, 3, 14)]
+        [Tree("Cardholder\\Cardholder Custom Fields", ControlType.ComboBox, Assets.Personnel, 2, 3, 14)]
 #endif
         PersonnelField54,
 #if FLEXAPI
         [Offset(236, 2)]
         [DescriptionLookup("")]
-        [Tree("Personnel\\Personnel Custom Fields", ControlType.ComboBox, Assets.Personnel, 2, 3, 15)]
+        [Tree("Cardholder\\Cardholder Custom Fields", ControlType.ComboBox, Assets.Personnel, 2, 3, 15)]
 #endif
         PersonnelField55,
 #if FLEXAPI
         [Offset(238, 2)]
         [DescriptionLookup("")]
-        [Tree("Personnel\\Personnel Custom Fields", ControlType.ComboBox, Assets.Personnel, 2, 3, 16)]
+        [Tree("Cardholder\\Cardholder Custom Fields", ControlType.ComboBox, Assets.Personnel, 2, 3, 16)]
 #endif
         PersonnelField56,
 #if FLEXAPI
         [Offset(240, 2)]
         [DescriptionLookup("")]
-        [Tree("Personnel\\Personnel Custom Fields", ControlType.ComboBox, Assets.Personnel, 2, 3, 17)]
+        [Tree("Cardholder\\Cardholder Custom Fields", ControlType.ComboBox, Assets.Personnel, 2, 3, 17)]
 #endif
         PersonnelField57,
 #if FLEXAPI
         [Offset(242, 2)]
         [DescriptionLookup("")]
-        [Tree("Personnel\\Personnel Custom Fields", ControlType.ComboBox, Assets.Personnel, 2, 3, 18)]
+        [Tree("Cardholder\\Cardholder Custom Fields", ControlType.ComboBox, Assets.Personnel, 2, 3, 18)]
 #endif
         PersonnelField58,
 #if FLEXAPI
         [Offset(244, 2)]
         [DescriptionLookup("")]
-        [Tree("Personnel\\Personnel Custom Fields", ControlType.ComboBox, Assets.Personnel, 2, 3, 19)]
+        [Tree("Cardholder\\Cardholder Custom Fields", ControlType.ComboBox, Assets.Personnel, 2, 3, 19)]
 #endif
         PersonnelField59,
 #if FLEXAPI
         [Offset(246, 2)]
         [DescriptionLookup("")]
-        [Tree("Personnel\\Personnel Custom Fields", ControlType.ComboBox, Assets.Personnel, 2, 3, 20)]
+        [Tree("Cardholder\\Cardholder Custom Fields", ControlType.ComboBox, Assets.Personnel, 2, 3, 20)]
 #endif
         PersonnelField60,
 #if FLEXAPI
         [Offset(248, 2)]
         [DescriptionLookup("")]
-        [Tree("Personnel\\Personnel Custom Fields", ControlType.ComboBox, Assets.Personnel, 2, 3, 21)]
+        [Tree("Cardholder\\Cardholder Custom Fields", ControlType.ComboBox, Assets.Personnel, 2, 3, 21)]
 #endif
         PersonnelField61,
 #if FLEXAPI
         [Offset(250, 2)]
         [DescriptionLookup("")]
-        [Tree("Personnel\\Personnel Custom Fields", ControlType.ComboBox, Assets.Personnel, 2, 3, 22)]
+        [Tree("Cardholder\\Cardholder Custom Fields", ControlType.ComboBox, Assets.Personnel, 2, 3, 22)]
 #endif
         PersonnelField62,
 #if FLEXAPI
         [Offset(252, 2)]
         [DescriptionLookup("")]
-        [Tree("Personnel\\Personnel Custom Fields", ControlType.ComboBox, Assets.Personnel, 2, 3, 23)]
+        [Tree("Cardholder\\Cardholder Custom Fields", ControlType.ComboBox, Assets.Personnel, 2, 3, 23)]
 #endif
         PersonnelField63,
 #if FLEXAPI
         [Offset(254, 2)]
         [DescriptionLookup("")]
-        [Tree("Personnel\\Personnel Custom Fields", ControlType.ComboBox, Assets.Personnel, 2, 3, 24)]
+        [Tree("Cardholder\\Cardholder Custom Fields", ControlType.ComboBox, Assets.Personnel, 2, 3, 24)]
 #endif
         PersonnelField64,
 #if FLEXAPI
         [Offset(310, 1)]
-        [Description("Download Personnel")]
-        [Tree("Personnel\\Personnel Actions", ControlType.CheckBox, Assets.Personnel, 2, 0, 8)]
+        [Description("Download Cardholder")]
+        [Tree("Cardholder\\Cardholder Actions", ControlType.CheckBox, Assets.Personnel, 2, 0, 8)]
 #endif
         ALLOWDOWNLOADP,
 #if FLEXAPI
@@ -1013,43 +1014,43 @@ namespace Common.DataObjects
 #if FLEXAPI
         [Offset(317, 1)]
         [Description("Set Card Flags")]
-        [Tree("Personnel\\Personnel Actions", ControlType.CheckBox, Assets.Personnel, 2, 0, 7)]
+        [Tree("Cardholder\\Cardholder Actions", ControlType.CheckBox, Assets.Personnel, 2, 0, 7)]
 #endif
         SetCardFlags,
 #if FLEXAPI
         [Offset(318, 1)]
         [Description("View Photos")]
-        [Tree("Personnel\\Photo Badging", ControlType.CheckBox, Assets.Personnel, 2, 9, 6)]
+        [Tree("Cardholder\\Photo Badging", ControlType.CheckBox, Assets.Personnel, 2, 9, 6)]
 #endif
         PersonnelViewPhotos,
 #if FLEXAPI
         [Offset(360, 1)]
         [Description("Add Cardholder")]
-        [Tree("Personnel\\Personnel Actions", ControlType.CheckBox, Assets.Personnel, 2, 0, 0)]
+        [Tree("Cardholder\\Cardholder Actions", ControlType.CheckBox, Assets.Personnel, 2, 0, 0)]
 #endif
         ADDPERSONNEL,
 #if FLEXAPI
         [Offset(361, 1)]
         [Description("Remove Cardholder")]
-        [Tree("Personnel\\Personnel Actions", ControlType.CheckBox, Assets.Personnel, 2, 0, 1)]
+        [Tree("Cardholder\\Cardholder Actions", ControlType.CheckBox, Assets.Personnel, 2, 0, 1)]
 #endif
         DELETEPERSONNEL,
 #if FLEXAPI
         [Offset(362, 1)]
         [Description("Add Card")]
-        [Tree("Personnel\\Personnel Actions", ControlType.CheckBox, Assets.Personnel, 2, 0, 2)]
+        [Tree("Cardholder\\Cardholder Actions", ControlType.CheckBox, Assets.Personnel, 2, 0, 2)]
 #endif
         ADDCARD,
 #if FLEXAPI
         [Offset(363, 1)]
         [Description("Remove Card")]
-        [Tree("Personnel\\Personnel Actions", ControlType.CheckBox, Assets.Personnel, 2, 0, 3)]
+        [Tree("Cardholder\\Cardholder Actions", ControlType.CheckBox, Assets.Personnel, 2, 0, 3)]
 #endif
         DELETECARD,
 #if FLEXAPI
         [Offset(364, 1)]
         [Description("Deactivate Card")]
-        [Tree("Personnel\\Personnel Actions", ControlType.CheckBox, Assets.Personnel, 2, 0, 4)]
+        [Tree("Cardholder\\Cardholder Actions", ControlType.CheckBox, Assets.Personnel, 2, 0, 4)]
 #endif
         DEACTIVATECARD,
 #if FLEXAPI
@@ -1061,61 +1062,61 @@ namespace Common.DataObjects
 #if FLEXAPI
         [Offset(366, 1)]
         [Description("Card # View")]
-        [Tree("Personnel\\Personnel View (Tabs)", ControlType.CheckBox, Assets.Personnel, 2, 1, 0)]
+        [Tree("Cardholder\\Cardholder View (Tabs)", ControlType.CheckBox, Assets.Personnel, 2, 1, 0)]
 #endif
         PERSONNELTABA,
 #if FLEXAPI
         [Offset(367, 1)]
         [Description("Name View")]
-        [Tree("Personnel\\Personnel View (Tabs)", ControlType.CheckBox, Assets.Personnel, 2, 1, 1)]
+        [Tree("Cardholder\\Cardholder View (Tabs)", ControlType.CheckBox, Assets.Personnel, 2, 1, 1)]
 #endif
         PERSONNELTABB,
 #if FLEXAPI
         [Offset(368, 1)]
         [DescriptionLookup(Lookup = typeof(SettingsLookup), Key = "Personnel Selection String  1", Default = "Custom Tab 1")]
-        [Tree("Personnel\\Personnel View (Tabs)", ControlType.CheckBox, Assets.Personnel, 2, 1, 2)]
+        [Tree("Cardholder\\Cardholder View (Tabs)", ControlType.CheckBox, Assets.Personnel, 2, 1, 2)]
 #endif
         PERSONNELTAB1,
 #if FLEXAPI
         [Offset(369, 1)]
         [DescriptionLookup(Lookup = typeof(SettingsLookup), Key = "Personnel Selection String  2", Default = "Custom Tab 2")]
-        [Tree("Personnel\\Personnel View (Tabs)", ControlType.CheckBox, Assets.Personnel, 2, 1, 3)]
+        [Tree("Cardholder\\Cardholder View (Tabs)", ControlType.CheckBox, Assets.Personnel, 2, 1, 3)]
 #endif
         PERSONNELTAB2,
 #if FLEXAPI
         [Offset(370, 1)]
         [DescriptionLookup(Lookup = typeof(SettingsLookup), Key = "Personnel Selection String  3", Default = "Custom Tab 3")]
-        [Tree("Personnel\\Personnel View (Tabs)", ControlType.CheckBox, Assets.Personnel, 2, 1, 4)]
+        [Tree("Cardholder\\Cardholder View (Tabs)", ControlType.CheckBox, Assets.Personnel, 2, 1, 4)]
 #endif
         PERSONNELTAB3,
 #if FLEXAPI
         [Offset(371, 1)]
         [DescriptionLookup(Lookup = typeof(SettingsLookup), Key = "Personnel Selection String  4", Default = "Custom Tab 4")]
-        [Tree("Personnel\\Personnel View (Tabs)", ControlType.CheckBox, Assets.Personnel, 2, 1, 5)]
+        [Tree("Cardholder\\Cardholder View (Tabs)", ControlType.CheckBox, Assets.Personnel, 2, 1, 5)]
 #endif
         PERSONNELTAB4,
 #if FLEXAPI
         [Offset(372, 1)]
         [DescriptionLookup(Lookup = typeof(SettingsLookup), Key = "Personnel Selection String  5", Default = "Custom Tab 5")]
-        [Tree("Personnel\\Personnel View (Tabs)", ControlType.CheckBox, Assets.Personnel, 2, 1, 6)]
+        [Tree("Cardholder\\Cardholder View (Tabs)", ControlType.CheckBox, Assets.Personnel, 2, 1, 6)]
 #endif
         PERSONNELTAB5,
 #if FLEXAPI
         [Offset(373, 1)]
         [DescriptionLookup(Lookup = typeof(SettingsLookup), Key = "Personnel Selection String  6", Default = "Custom Tab 6")]
-        [Tree("Personnel\\Personnel View (Tabs)", ControlType.CheckBox, Assets.Personnel, 2, 1, 7)]
+        [Tree("Cardholder\\Cardholder View (Tabs)", ControlType.CheckBox, Assets.Personnel, 2, 1, 7)]
 #endif
         PERSONNELTAB6,
 #if FLEXAPI
         [Offset(374, 1)]
         [DescriptionLookup(Lookup = typeof(SettingsLookup), Key = "Personnel Selection String  7", Default = "Custom Tab 7")]
-        [Tree("Personnel\\Personnel View (Tabs)", ControlType.CheckBox, Assets.Personnel, 2, 1, 8)]
+        [Tree("Cardholder\\Cardholder View (Tabs)", ControlType.CheckBox, Assets.Personnel, 2, 1, 8)]
 #endif
         PERSONNELTAB7,
 #if FLEXAPI
         [Offset(375, 1)]
         [DescriptionLookup(Lookup = typeof(SettingsLookup), Key = "Personnel Selection String  8", Default = "Custom Tab 8")]
-        [Tree("Personnel\\Personnel View (Tabs)", ControlType.CheckBox, Assets.Personnel, 2, 1, 9)]
+        [Tree("Cardholder\\Cardholder View (Tabs)", ControlType.CheckBox, Assets.Personnel, 2, 1, 9)]
 #endif
         PERSONNELTAB8,
 #if FLEXAPI
@@ -1354,32 +1355,32 @@ namespace Common.DataObjects
         OTHERREPORTS_TRIGGERS_R,
 #if FLEXAPI
         [Offset(423, 1)]
-        [Description("Personnel - Card Info")]
-        [Tree("Reports\\Personnel", ControlType.CheckBox, Assets.Reports, 4, 4, 2)]
+        [Description("Cardholder - Card Info")]
+        [Tree("Reports\\Cardholder", ControlType.CheckBox, Assets.Reports, 4, 4, 2)]
 #endif
         PERSONNELREPORTS_ALLUSERS_R,
 #if FLEXAPI
         [Offset(424, 1)]
         [Description("Companies")]
-        [Tree("Reports\\Personnel", ControlType.CheckBox, Assets.Reports, 4, 4, 0)]
+        [Tree("Reports\\Cardholder", ControlType.CheckBox, Assets.Reports, 4, 4, 0)]
 #endif
         PERSONNELREPORTS_COMPANIES_R,
 #if FLEXAPI
         [Offset(425, 1)]
-        [Description("Personnel - Groups")]
-        [Tree("Reports\\Personnel", ControlType.CheckBox, Assets.Reports, 4, 4, 4)]
+        [Description("Cardholder - Groups")]
+        [Tree("Reports\\Cardholder", ControlType.CheckBox, Assets.Reports, 4, 4, 4)]
 #endif
         PERSONNELREPORTS_GROUPS_R,
 #if FLEXAPI
         [Offset(426, 1)]
-        [Description("Personnel - Access")]
-        [Tree("Reports\\Personnel", ControlType.CheckBox, Assets.Reports, 4, 4, 3)]
+        [Description("Cardholder - Access")]
+        [Tree("Reports\\Cardholder", ControlType.CheckBox, Assets.Reports, 4, 4, 3)]
 #endif
         PERSONNELREPORTS_INDIVIDUAL_R,
 #if FLEXAPI
         [Offset(427, 1)]
-        [Description("Personnel - General")]
-        [Tree("Reports\\Personnel", ControlType.CheckBox, Assets.Reports, 4, 4, 1)]
+        [Description("Cardholder - General")]
+        [Tree("Reports\\Cardholder", ControlType.CheckBox, Assets.Reports, 4, 4, 1)]
 #endif
         PERSONNELREPORTS_PERSONNELGENERAL_R,
 #if FLEXAPI
@@ -1505,13 +1506,13 @@ namespace Common.DataObjects
 #if FLEXAPI
         [Offset(448, 1)]
         [Description("Set Card Use Limit")]
-        [Tree("Personnel\\Personnel Actions", ControlType.CheckBox, Assets.Personnel, 2, 0, 5)]
+        [Tree("Cardholder\\Cardholder Actions", ControlType.CheckBox, Assets.Personnel, 2, 0, 5)]
 #endif
         ALLOWSETUSELIMIT,
 #if FLEXAPI
         [Offset(449, 1)]
         [Description("Issue Free Pass")]
-        [Tree("Personnel\\Personnel Actions", ControlType.CheckBox, Assets.Personnel, 2, 0, 6)]
+        [Tree("Cardholder\\Cardholder Actions", ControlType.CheckBox, Assets.Personnel, 2, 0, 6)]
 #endif
         ALLOWISSUEFREEPASS,
 #if FLEXAPI
@@ -1559,9 +1560,16 @@ namespace Common.DataObjects
 #if FLEXAPI
         [Offset(457, 1)]
         [Description("Trace History")]
-        [Tree("Personnel\\Personnel Actions", ControlType.CheckBox, Assets.Personnel, 2, 0, 9)]
+        [Tree("Cardholder\\Cardholder Actions", ControlType.CheckBox, Assets.Personnel, 2, 0, 9)]
 #endif
         TraceCard,
+#if FLEXAPI
+        [Ignore]
+        [Offset(460, 1)]
+        [Description("Door: View Hardware - Internal use")]
+        [Tree("Hardware\\Door\\Normal", ControlType.CheckBox, Assets.ACM, Assets.Controller, 0, 2, 5, 9)]
+#endif
+        ViewHdwACM,
 #if FLEXAPI
         [Offset(471, 1)]
         [Description("Door: Forced Arm")]
@@ -1620,31 +1628,31 @@ namespace Common.DataObjects
 #if FLEXAPI
         [Offset(480, 2)]
         [DescriptionLookup(Lookup = typeof(SettingsLookup), Key = "Custom Person Field 14", Default = "Custom String 12")]
-        [Tree("Personnel\\Personnel Fields", ControlType.ComboBox, Assets.Personnel, 2, 2, 51)]
+        [Tree("Cardholder\\Cardholder Fields", ControlType.ComboBox, Assets.Personnel, 2, 2, 51)]
 #endif
         PersonnelField97,
 #if FLEXAPI
         [Offset(482, 2)]
         [DescriptionLookup(Lookup = typeof(SettingsLookup), Key = "Custom Person Field 15", Default = "Custom String 13")]
-        [Tree("Personnel\\Personnel Fields", ControlType.ComboBox, Assets.Personnel, 2, 2, 52)]
+        [Tree("Cardholder\\Cardholder Fields", ControlType.ComboBox, Assets.Personnel, 2, 2, 52)]
 #endif
         PersonnelField98,
 #if FLEXAPI
         [Offset(484, 2)]
         [DescriptionLookup(Lookup = typeof(SettingsLookup), Key = "Custom Person Field 16", Default = "Custom String 14")]
-        [Tree("Personnel\\Personnel Fields", ControlType.ComboBox, Assets.Personnel, 2, 2, 53)]
+        [Tree("Cardholder\\Cardholder Fields", ControlType.ComboBox, Assets.Personnel, 2, 2, 53)]
 #endif
         PersonnelField99,
 #if FLEXAPI
         [Offset(486, 2)]
         [DescriptionLookup(Lookup = typeof(SettingsLookup), Key = "Custom Person Field 17", Default = "Custom String 15")]
-        [Tree("Personnel\\Personnel Fields", ControlType.ComboBox, Assets.Personnel, 2, 2, 54)]
+        [Tree("Cardholder\\Cardholder Fields", ControlType.ComboBox, Assets.Personnel, 2, 2, 54)]
 #endif
         PersonnelField100,
 #if FLEXAPI
         [Offset(488, 2)]
         [DescriptionLookup(Lookup = typeof(SettingsLookup), Key = "Custom Person Field 18", Default = "Custom String 16")]
-        [Tree("Personnel\\Personnel Fields", ControlType.ComboBox, Assets.Personnel, 2, 2, 55)]
+        [Tree("Cardholder\\Cardholder Fields", ControlType.ComboBox, Assets.Personnel, 2, 2, 55)]
 #endif
         PersonnelField101,
 #if FLEXAPI
@@ -1653,6 +1661,13 @@ namespace Common.DataObjects
         [Tree("Hardware\\Door\\High Security", ControlType.CheckBox, Assets.ACM, Assets.Controller, 0, 2, 6, 7)]
 #endif
         TraceACM_H,
+#if FLEXAPI
+        [Ignore]
+        [Offset(491, 1)]
+        [Description("Door: View Hardware - Internal use")]
+        [Tree("Hardware\\Door\\High Security", ControlType.CheckBox, Assets.ACM, Assets.Controller, 0, 2, 6, 9)]
+#endif
+        ViewHdwACM_H,
 #if FLEXAPI
         [Offset(492, 1)]
         [Description("Door: Forced Arm")]
@@ -1697,6 +1712,13 @@ namespace Common.DataObjects
 #endif
         TraceACM_M,
 #if FLEXAPI
+        [Ignore]
+        [Offset(499, 1)]
+        [Description("Door: View Hardware - Internal use")]
+        [Tree("Hardware\\Door\\Medium Security", ControlType.CheckBox, Assets.ACM, Assets.Controller, 0, 2, 7, 9)]
+#endif
+        ViewHdwACM_M,
+#if FLEXAPI
         [Offset(500, 1)]
         [Description("Door: Forced Arm")]
         [Tree("Hardware\\Door\\Medium Security", ControlType.CheckBox, Assets.ACM, Assets.Controller, 0, 2, 7, 1)]
@@ -1740,6 +1762,13 @@ namespace Common.DataObjects
 #endif
         TraceACM_L,
 #if FLEXAPI
+        [Ignore]
+        [Offset(507, 1)]
+        [Description("Door: View Hardware - Internal use")]
+        [Tree("Hardware\\Door\\Low Security", ControlType.CheckBox, Assets.ACM, Assets.Controller, 0, 2, 8, 9)]
+#endif
+        ViewHdwACM_L,
+#if FLEXAPI
         [Offset(508, 1)]
         [Description("Door: Forced Arm")]
         [Tree("Hardware\\Door\\Low Security", ControlType.CheckBox, Assets.ACM, Assets.Controller, 0, 2, 8, 1)]
@@ -1766,193 +1795,193 @@ namespace Common.DataObjects
 #if FLEXAPI
         [Offset(512, 2)]
         [DescriptionLookup("")]
-        [Tree("Personnel\\Personnel Custom Fields", ControlType.ComboBox, Assets.Personnel, 2, 3, 25)]
+        [Tree("Cardholder\\Cardholder Custom Fields", ControlType.ComboBox, Assets.Personnel, 2, 3, 25)]
 #endif
         PersonnelField65,
 #if FLEXAPI
         [Offset(514, 2)]
         [DescriptionLookup("")]
-        [Tree("Personnel\\Personnel Custom Fields", ControlType.ComboBox, Assets.Personnel, 2, 3, 26)]
+        [Tree("Cardholder\\Cardholder Custom Fields", ControlType.ComboBox, Assets.Personnel, 2, 3, 26)]
 #endif
         PersonnelField66,
 #if FLEXAPI
         [Offset(516, 2)]
         [DescriptionLookup("")]
-        [Tree("Personnel\\Personnel Custom Fields", ControlType.ComboBox, Assets.Personnel, 2, 3, 27)]
+        [Tree("Cardholder\\Cardholder Custom Fields", ControlType.ComboBox, Assets.Personnel, 2, 3, 27)]
 #endif
         PersonnelField67,
 #if FLEXAPI
         [Offset(518, 2)]
         [DescriptionLookup("")]
-        [Tree("Personnel\\Personnel Custom Fields", ControlType.ComboBox, Assets.Personnel, 2, 3, 28)]
+        [Tree("Cardholder\\Cardholder Custom Fields", ControlType.ComboBox, Assets.Personnel, 2, 3, 28)]
 #endif
         PersonnelField68,
 #if FLEXAPI
         [Offset(520, 2)]
         [DescriptionLookup("")]
-        [Tree("Personnel\\Personnel Custom Fields", ControlType.ComboBox, Assets.Personnel, 2, 3, 29)]
+        [Tree("Cardholder\\Cardholder Custom Fields", ControlType.ComboBox, Assets.Personnel, 2, 3, 29)]
 #endif
         PersonnelField69,
 #if FLEXAPI
         [Offset(522, 2)]
         [DescriptionLookup("")]
-        [Tree("Personnel\\Personnel Custom Fields", ControlType.ComboBox, Assets.Personnel, 2, 3, 30)]
+        [Tree("Cardholder\\Cardholder Custom Fields", ControlType.ComboBox, Assets.Personnel, 2, 3, 30)]
 #endif
         PersonnelField70,
 #if FLEXAPI
         [Offset(524, 2)]
         [DescriptionLookup("")]
-        [Tree("Personnel\\Personnel Custom Fields", ControlType.ComboBox, Assets.Personnel, 2, 3, 31)]
+        [Tree("Cardholder\\Cardholder Custom Fields", ControlType.ComboBox, Assets.Personnel, 2, 3, 31)]
 #endif
         PersonnelField71,
 #if FLEXAPI
         [Offset(526, 2)]
         [DescriptionLookup("")]
-        [Tree("Personnel\\Personnel Custom Fields", ControlType.ComboBox, Assets.Personnel, 2, 3, 32)]
+        [Tree("Cardholder\\Cardholder Custom Fields", ControlType.ComboBox, Assets.Personnel, 2, 3, 32)]
 #endif
         PersonnelField72,
 #if FLEXAPI
         [Offset(528, 2)]
         [DescriptionLookup("")]
-        [Tree("Personnel\\Personnel Custom Fields", ControlType.ComboBox, Assets.Personnel, 2, 3, 33)]
+        [Tree("Cardholder\\Cardholder Custom Fields", ControlType.ComboBox, Assets.Personnel, 2, 3, 33)]
 #endif
         PersonnelField73,
 #if FLEXAPI
         [Offset(530, 2)]
         [DescriptionLookup("")]
-        [Tree("Personnel\\Personnel Custom Fields", ControlType.ComboBox, Assets.Personnel, 2, 3, 34)]
+        [Tree("Cardholder\\Cardholder Custom Fields", ControlType.ComboBox, Assets.Personnel, 2, 3, 34)]
 #endif
         PersonnelField74,
 #if FLEXAPI
         [Offset(532, 2)]
         [DescriptionLookup("")]
-        [Tree("Personnel\\Personnel Custom Fields", ControlType.ComboBox, Assets.Personnel, 2, 3, 35)]
+        [Tree("Cardholder\\Cardholder Custom Fields", ControlType.ComboBox, Assets.Personnel, 2, 3, 35)]
 #endif
         PersonnelField75,
 #if FLEXAPI
         [Offset(534, 2)]
         [DescriptionLookup("")]
-        [Tree("Personnel\\Personnel Custom Fields", ControlType.ComboBox, Assets.Personnel, 2, 3, 36)]
+        [Tree("Cardholder\\Cardholder Custom Fields", ControlType.ComboBox, Assets.Personnel, 2, 3, 36)]
 #endif
         PersonnelField76,
 #if FLEXAPI
         [Offset(536, 2)]
         [DescriptionLookup("")]
-        [Tree("Personnel\\Personnel Custom Fields", ControlType.ComboBox, Assets.Personnel, 2, 3, 37)]
+        [Tree("Cardholder\\Cardholder Custom Fields", ControlType.ComboBox, Assets.Personnel, 2, 3, 37)]
 #endif
         PersonnelField77,
 #if FLEXAPI
         [Offset(538, 2)]
         [DescriptionLookup("")]
-        [Tree("Personnel\\Personnel Custom Fields", ControlType.ComboBox, Assets.Personnel, 2, 3, 38)]
+        [Tree("Cardholder\\Cardholder Custom Fields", ControlType.ComboBox, Assets.Personnel, 2, 3, 38)]
 #endif
         PersonnelField78,
 #if FLEXAPI
         [Offset(540, 2)]
         [DescriptionLookup("")]
-        [Tree("Personnel\\Personnel Custom Fields", ControlType.ComboBox, Assets.Personnel, 2, 3, 39)]
+        [Tree("Cardholder\\Cardholder Custom Fields", ControlType.ComboBox, Assets.Personnel, 2, 3, 39)]
 #endif
         PersonnelField79,
 #if FLEXAPI
         [Offset(542, 2)]
         [DescriptionLookup("")]
-        [Tree("Personnel\\Personnel Custom Fields", ControlType.ComboBox, Assets.Personnel, 2, 3, 40)]
+        [Tree("Cardholder\\Cardholder Custom Fields", ControlType.ComboBox, Assets.Personnel, 2, 3, 40)]
 #endif
         PersonnelField80,
 #if FLEXAPI
         [Offset(544, 2)]
         [DescriptionLookup("")]
-        [Tree("Personnel\\Personnel Custom Fields", ControlType.ComboBox, Assets.Personnel, 2, 3, 41)]
+        [Tree("Cardholder\\Cardholder Custom Fields", ControlType.ComboBox, Assets.Personnel, 2, 3, 41)]
 #endif
         PersonnelField81,
 #if FLEXAPI
         [Offset(546, 2)]
         [DescriptionLookup("")]
-        [Tree("Personnel\\Personnel Custom Fields", ControlType.ComboBox, Assets.Personnel, 2, 3, 42)]
+        [Tree("Cardholder\\Cardholder Custom Fields", ControlType.ComboBox, Assets.Personnel, 2, 3, 42)]
 #endif
         PersonnelField82,
 #if FLEXAPI
         [Offset(548, 2)]
         [DescriptionLookup("")]
-        [Tree("Personnel\\Personnel Custom Fields", ControlType.ComboBox, Assets.Personnel, 2, 3, 43)]
+        [Tree("Cardholder\\Cardholder Custom Fields", ControlType.ComboBox, Assets.Personnel, 2, 3, 43)]
 #endif
         PersonnelField83,
 #if FLEXAPI
         [Offset(550, 2)]
         [DescriptionLookup("")]
-        [Tree("Personnel\\Personnel Custom Fields", ControlType.ComboBox, Assets.Personnel, 2, 3, 44)]
+        [Tree("Cardholder\\Cardholder Custom Fields", ControlType.ComboBox, Assets.Personnel, 2, 3, 44)]
 #endif
         PersonnelField84,
 #if FLEXAPI
         [Offset(552, 2)]
         [DescriptionLookup("")]
-        [Tree("Personnel\\Personnel Custom Fields", ControlType.ComboBox, Assets.Personnel, 2, 3, 45)]
+        [Tree("Cardholder\\Cardholder Custom Fields", ControlType.ComboBox, Assets.Personnel, 2, 3, 45)]
 #endif
         PersonnelField85,
 #if FLEXAPI
         [Offset(554, 2)]
         [DescriptionLookup("")]
-        [Tree("Personnel\\Personnel Custom Fields", ControlType.ComboBox, Assets.Personnel, 2, 3, 46)]
+        [Tree("Cardholder\\Cardholder Custom Fields", ControlType.ComboBox, Assets.Personnel, 2, 3, 46)]
 #endif
         PersonnelField86,
 #if FLEXAPI
         [Offset(556, 2)]
         [DescriptionLookup("")]
-        [Tree("Personnel\\Personnel Custom Fields", ControlType.ComboBox, Assets.Personnel, 2, 3, 47)]
+        [Tree("Cardholder\\Cardholder Custom Fields", ControlType.ComboBox, Assets.Personnel, 2, 3, 47)]
 #endif
         PersonnelField87,
 #if FLEXAPI
         [Offset(558, 2)]
         [DescriptionLookup("")]
-        [Tree("Personnel\\Personnel Custom Fields", ControlType.ComboBox, Assets.Personnel, 2, 3, 48)]
+        [Tree("Cardholder\\Cardholder Custom Fields", ControlType.ComboBox, Assets.Personnel, 2, 3, 48)]
 #endif
         PersonnelField88,
 #if FLEXAPI
         [Offset(560, 2)]
         [DescriptionLookup(Lookup = typeof(SettingsLookup), Key = "Custom Person Field 6", Default = "Custom String 4")]
-        [Tree("Personnel\\Personnel Fields", ControlType.ComboBox, Assets.Personnel, 2, 2, 43)]
+        [Tree("Cardholder\\Cardholder Fields", ControlType.ComboBox, Assets.Personnel, 2, 2, 43)]
 #endif
         PersonnelField89,
 #if FLEXAPI
         [Offset(562, 2)]
         [DescriptionLookup(Lookup = typeof(SettingsLookup), Key = "Custom Person Field 7", Default = "Custom String 5")]
-        [Tree("Personnel\\Personnel Fields", ControlType.ComboBox, Assets.Personnel, 2, 2, 44)]
+        [Tree("Cardholder\\Cardholder Fields", ControlType.ComboBox, Assets.Personnel, 2, 2, 44)]
 #endif
         PersonnelField90,
 #if FLEXAPI
         [Offset(564, 2)]
         [DescriptionLookup(Lookup = typeof(SettingsLookup), Key = "Custom Person Field 8", Default = "Custom String 6")]
-        [Tree("Personnel\\Personnel Fields", ControlType.ComboBox, Assets.Personnel, 2, 2, 45)]
+        [Tree("Cardholder\\Cardholder Fields", ControlType.ComboBox, Assets.Personnel, 2, 2, 45)]
 #endif
         PersonnelField91,
 #if FLEXAPI
         [Offset(566, 2)]
         [DescriptionLookup(Lookup = typeof(SettingsLookup), Key = "Custom Person Field 9", Default = "Custom String 7")]
-        [Tree("Personnel\\Personnel Fields", ControlType.ComboBox, Assets.Personnel, 2, 2, 46)]
+        [Tree("Cardholder\\Cardholder Fields", ControlType.ComboBox, Assets.Personnel, 2, 2, 46)]
 #endif
         PersonnelField92,
 #if FLEXAPI
         [Offset(568, 2)]
         [DescriptionLookup(Lookup = typeof(SettingsLookup), Key = "Custom Person Field 10", Default = "Custom String 8")]
-        [Tree("Personnel\\Personnel Fields", ControlType.ComboBox, Assets.Personnel, 2, 2, 47)]
+        [Tree("Cardholder\\Cardholder Fields", ControlType.ComboBox, Assets.Personnel, 2, 2, 47)]
 #endif
         PersonnelField93,
 #if FLEXAPI
         [Offset(570, 2)]
         [DescriptionLookup(Lookup = typeof(SettingsLookup), Key = "Custom Person Field 11", Default = "Custom String 9")]
-        [Tree("Personnel\\Personnel Fields", ControlType.ComboBox, Assets.Personnel, 2, 2, 48)]
+        [Tree("Cardholder\\Cardholder Fields", ControlType.ComboBox, Assets.Personnel, 2, 2, 48)]
 #endif
         PersonnelField94,
 #if FLEXAPI
         [Offset(572, 2)]
         [DescriptionLookup(Lookup = typeof(SettingsLookup), Key = "Custom Person Field 12", Default = "Custom String 10")]
-        [Tree("Personnel\\Personnel Fields", ControlType.ComboBox, Assets.Personnel, 2, 2, 49)]
+        [Tree("Cardholder\\Cardholder Fields", ControlType.ComboBox, Assets.Personnel, 2, 2, 49)]
 #endif
         PersonnelField95,
 #if FLEXAPI
         [Offset(574, 2)]
         [DescriptionLookup(Lookup = typeof(SettingsLookup), Key = "Custom Person Field 13", Default = "Custom String 11")]
-        [Tree("Personnel\\Personnel Fields", ControlType.ComboBox, Assets.Personnel, 2, 2, 50)]
+        [Tree("Cardholder\\Cardholder Fields", ControlType.ComboBox, Assets.Personnel, 2, 2, 50)]
 #endif
         PersonnelField96,
 #if FLEXAPI
@@ -2198,115 +2227,115 @@ namespace Common.DataObjects
 #if FLEXAPI
         [Offset(840, 1)]
         [Description("NORMAL")]
-        [Tree("Personnel\\Personnel Types", ControlType.CheckBox, Assets.Personnel, 2, 5, 7)]
+        [Tree("Cardholder\\Cardholder Types", ControlType.CheckBox, Assets.Personnel, 2, 5, 7)]
 #endif
         PersonnelType_Perm,
 #if FLEXAPI
         [Offset(841, 1)]
         [Description("Visitor")]
-        [Tree("Personnel\\Personnel Types", ControlType.CheckBox, Assets.Personnel, 2, 5, 10)]
+        [Tree("Cardholder\\Cardholder Types", ControlType.CheckBox, Assets.Personnel, 2, 5, 10)]
 #endif
         PersonnelType_Visitor,
 #if FLEXAPI
         [Offset(842, 1)]
         [Description("Temp")]
-        [Tree("Personnel\\Personnel Types", ControlType.CheckBox, Assets.Personnel, 2, 5, 8)]
+        [Tree("Cardholder\\Cardholder Types", ControlType.CheckBox, Assets.Personnel, 2, 5, 8)]
 #endif
         PersonnelType_Temp,
 #if FLEXAPI
         [Offset(843, 1)]
         [Description("Contractor")]
-        [Tree("Personnel\\Personnel Types", ControlType.CheckBox, Assets.Personnel, 2, 5, 0)]
+        [Tree("Cardholder\\Cardholder Types", ControlType.CheckBox, Assets.Personnel, 2, 5, 0)]
 #endif
         PersonnelType_Contractor,
 #if FLEXAPI
         [Offset(844, 1)]
         [Description("Vendor")]
-        [Tree("Personnel\\Personnel Types", ControlType.CheckBox, Assets.Personnel, 2, 5, 9)]
+        [Tree("Cardholder\\Cardholder Types", ControlType.CheckBox, Assets.Personnel, 2, 5, 9)]
 #endif
         PersonnelType_Vendor,
 #if FLEXAPI
         [Offset(845, 1)]
         [DescriptionLookup(Lookup = typeof(SettingsLookup), Key = "Custom Person Type 0", Default = "Custom 1")]
-        [Tree("Personnel\\Personnel Types", ControlType.CheckBox, Assets.Personnel, 2, 5, 1)]
+        [Tree("Cardholder\\Cardholder Types", ControlType.CheckBox, Assets.Personnel, 2, 5, 1)]
 #endif
         PersonnelType_Custom1,
 #if FLEXAPI
         [Offset(846, 1)]
         [DescriptionLookup(Lookup = typeof(SettingsLookup), Key = "Custom Person Type 1", Default = "Custom 2")]
-        [Tree("Personnel\\Personnel Types", ControlType.CheckBox, Assets.Personnel, 2, 5, 2)]
+        [Tree("Cardholder\\Cardholder Types", ControlType.CheckBox, Assets.Personnel, 2, 5, 2)]
 #endif
         PersonnelType_Custom2,
 #if FLEXAPI
         [Offset(847, 1)]
         [DescriptionLookup(Lookup = typeof(SettingsLookup), Key = "Custom Person Type 2", Default = "Custom 3")]
-        [Tree("Personnel\\Personnel Types", ControlType.CheckBox, Assets.Personnel, 2, 5, 3)]
+        [Tree("Cardholder\\Cardholder Types", ControlType.CheckBox, Assets.Personnel, 2, 5, 3)]
 #endif
         PersonnelType_Custom3,
 #if FLEXAPI
         [Offset(848, 1)]
         [DescriptionLookup(Lookup = typeof(SettingsLookup), Key = "Custom Person Type 3", Default = "Custom 4")]
-        [Tree("Personnel\\Personnel Types", ControlType.CheckBox, Assets.Personnel, 2, 5, 4)]
+        [Tree("Cardholder\\Cardholder Types", ControlType.CheckBox, Assets.Personnel, 2, 5, 4)]
 #endif
         PersonnelType_Custom4,
 #if FLEXAPI
         [Offset(849, 1)]
         [DescriptionLookup(Lookup = typeof(SettingsLookup), Key = "Custom Person Type 4", Default = "Custom 5")]
-        [Tree("Personnel\\Personnel Types", ControlType.CheckBox, Assets.Personnel, 2, 5, 5)]
+        [Tree("Cardholder\\Cardholder Types", ControlType.CheckBox, Assets.Personnel, 2, 5, 5)]
 #endif
         PersonnelType_Custom5,
 #if FLEXAPI
         [Offset(850, 1)]
         [Description("Disabled")]
-        [Tree("Personnel\\Personnel Types", ControlType.CheckBox, Assets.Personnel, 2, 5, 6)]
+        [Tree("Cardholder\\Cardholder Types", ControlType.CheckBox, Assets.Personnel, 2, 5, 6)]
 #endif
         PersonnelType_Disabled,
 #if FLEXAPI
         [Offset(851, 1)]
-        [Description("Add or Edit Personnel Group")]
-        [Tree("Personnel\\Personnel Actions", ControlType.CheckBox, Assets.Personnel, 2, 0, 10)]
+        [Description("Add or Edit Cardholder Group")]
+        [Tree("Cardholder\\Cardholder Actions", ControlType.CheckBox, Assets.Personnel, 2, 0, 10)]
 #endif
         PersonnelAddGroup,
 #if FLEXAPI
         [Offset(852, 1)]
-        [Description("Add Cardholder to Personnel Group")]
-        [Tree("Personnel\\Personnel Actions", ControlType.CheckBox, Assets.Personnel, 2, 0, 11)]
+        [Description("Add Cardholder to Cardholder Group")]
+        [Tree("Cardholder\\Cardholder Actions", ControlType.CheckBox, Assets.Personnel, 2, 0, 11)]
 #endif
         PersonnelAddPersonToGroup,
 #if FLEXAPI
         [Offset(853, 1)]
         [Description("Photo Badging")]
-        [Tree("Personnel\\Photo Badging", ControlType.CheckBox, Assets.Personnel, 2, 9, 0)]
+        [Tree("Cardholder\\Photo Badging", ControlType.CheckBox, Assets.Personnel, 2, 9, 0)]
 #endif
         Badging,
 #if FLEXAPI
         [Offset(854, 1)]
         [Description("View Badge")]
-        [Tree("Personnel\\Photo Badging", ControlType.CheckBox, Assets.Personnel, 2, 9, 1)]
+        [Tree("Cardholder\\Photo Badging", ControlType.CheckBox, Assets.Personnel, 2, 9, 1)]
 #endif
         BadgingView,
 #if FLEXAPI
         [Offset(855, 1)]
         [Description("Take Photo")]
-        [Tree("Personnel\\Photo Badging", ControlType.CheckBox, Assets.Personnel, 2, 9, 2)]
+        [Tree("Cardholder\\Photo Badging", ControlType.CheckBox, Assets.Personnel, 2, 9, 2)]
 #endif
         BadgingTakePhoto,
 #if FLEXAPI
         [Offset(856, 1)]
         [Description("Add Photo")]
-        [Tree("Personnel\\Photo Badging", ControlType.CheckBox, Assets.Personnel, 2, 9, 3)]
+        [Tree("Cardholder\\Photo Badging", ControlType.CheckBox, Assets.Personnel, 2, 9, 3)]
 #endif
         BadgingAddPhoto,
 #if FLEXAPI
         [Offset(857, 1)]
         [Description("Print Badge")]
-        [Tree("Personnel\\Photo Badging", ControlType.CheckBox, Assets.Personnel, 2, 9, 4)]
+        [Tree("Cardholder\\Photo Badging", ControlType.CheckBox, Assets.Personnel, 2, 9, 4)]
 #endif
         BadgingPrintBadge,
 #if FLEXAPI
         [Offset(858, 1)]
         [Description("Remove Photos")]
-        [Tree("Personnel\\Photo Badging", ControlType.CheckBox, Assets.Personnel, 2, 9, 5)]
+        [Tree("Cardholder\\Photo Badging", ControlType.CheckBox, Assets.Personnel, 2, 9, 5)]
 #endif
         BadgingRemovePhoto,
 #if FLEXAPI
@@ -2417,7 +2446,7 @@ namespace Common.DataObjects
         ViewHardware,
 #if FLEXAPI
         [Offset(906, 2)]
-        [Description("Personnel")]
+        [Description("Cardholder")]
         [Tree("Views", ControlType.CheckBox, Assets.Views, 5, 7)]
 #endif
         ViewPersonnel,
@@ -2957,67 +2986,67 @@ namespace Common.DataObjects
 #if FLEXAPI
         [Offset(1141, 1)]
         [Description("Normal")]
-        [Tree("Personnel\\Card Types", ControlType.CheckBox, Assets.Personnel, 2, 7, 0)]
+        [Tree("Cardholder\\Credential Types", ControlType.CheckBox, Assets.Personnel, 2, 7, 0)]
 #endif
         CardType_Perm,
 #if FLEXAPI
         [Offset(1142, 1)]
         [Description("Visitor")]
-        [Tree("Personnel\\Card Types", ControlType.CheckBox, Assets.Personnel, 2, 7, 1)]
+        [Tree("Cardholder\\Credential Types", ControlType.CheckBox, Assets.Personnel, 2, 7, 1)]
 #endif
         CardType_Visitor,
 #if FLEXAPI
         [Offset(1143, 1)]
         [Description("Temporary")]
-        [Tree("Personnel\\Card Types", ControlType.CheckBox, Assets.Personnel, 2, 7, 2)]
+        [Tree("Cardholder\\Credential Types", ControlType.CheckBox, Assets.Personnel, 2, 7, 2)]
 #endif
         CardType_Temp,
 #if FLEXAPI
         [Offset(1144, 1)]
         [Description("Contractor")]
-        [Tree("Personnel\\Card Types", ControlType.CheckBox, Assets.Personnel, 2, 7, 4)]
+        [Tree("Cardholder\\Credential Types", ControlType.CheckBox, Assets.Personnel, 2, 7, 4)]
 #endif
         CardType_Contractor,
 #if FLEXAPI
         [Offset(1145, 1)]
         [Description("Vendor")]
-        [Tree("Personnel\\Card Types", ControlType.CheckBox, Assets.Personnel, 2, 7, 5)]
+        [Tree("Cardholder\\Credential Types", ControlType.CheckBox, Assets.Personnel, 2, 7, 5)]
 #endif
         CardType_Vendor,
 #if FLEXAPI
         [Offset(1146, 1)]
         [DescriptionLookup(Lookup = typeof(CustomCardTypesLookup), Key = "6", Default = "Custom 1")]
-        [Tree("Personnel\\Card Types", ControlType.CheckBox, Assets.Personnel, 2, 7, 6)]
+        [Tree("Cardholder\\Credential Types", ControlType.CheckBox, Assets.Personnel, 2, 7, 6)]
 #endif
         CardType_Custom1,
 #if FLEXAPI
         [Offset(1147, 1)]
         [DescriptionLookup(Lookup = typeof(CustomCardTypesLookup), Key = "7", Default = "Custom 2")]
-        [Tree("Personnel\\Card Types", ControlType.CheckBox, Assets.Personnel, 2, 7, 7)]
+        [Tree("Cardholder\\Credential Types", ControlType.CheckBox, Assets.Personnel, 2, 7, 7)]
 #endif
         CardType_Custom2,
 #if FLEXAPI
         [Offset(1148, 1)]
         [DescriptionLookup(Lookup = typeof(CustomCardTypesLookup), Key = "8", Default = "Custom 3")]
-        [Tree("Personnel\\Card Types", ControlType.CheckBox, Assets.Personnel, 2, 7, 8)]
+        [Tree("Cardholder\\Credential Types", ControlType.CheckBox, Assets.Personnel, 2, 7, 8)]
 #endif
         CardType_Custom3,
 #if FLEXAPI
         [Offset(1149, 1)]
         [DescriptionLookup(Lookup = typeof(CustomCardTypesLookup), Key = "9", Default = "Custom 4")]
-        [Tree("Personnel\\Card Types", ControlType.CheckBox, Assets.Personnel, 2, 7, 9)]
+        [Tree("Cardholder\\Credential Types", ControlType.CheckBox, Assets.Personnel, 2, 7, 9)]
 #endif
         CardType_Custom4,
 #if FLEXAPI
         [Offset(1150, 1)]
         [DescriptionLookup(Lookup = typeof(CustomCardTypesLookup), Key = "10", Default = "Custom 5")]
-        [Tree("Personnel\\Card Types", ControlType.CheckBox, Assets.Personnel, 2, 7, 10)]
+        [Tree("Cardholder\\Credential Types", ControlType.CheckBox, Assets.Personnel, 2, 7, 10)]
 #endif
         CardType_Custom5,
 #if FLEXAPI
         [Offset(1151, 1)]
         [Description("Disabled")]
-        [Tree("Personnel\\Card Types", ControlType.CheckBox, Assets.Personnel, 2, 7, 3)]
+        [Tree("Cardholder\\Credential Types", ControlType.CheckBox, Assets.Personnel, 2, 7, 3)]
 #endif
         CardType_Disabled,
 #if FLEXAPI
@@ -3535,43 +3564,49 @@ namespace Common.DataObjects
 #if FLEXAPI
         [Offset(1234, 2)]
         [Description("Auto Activate Card")]
-        [Tree("Personnel\\Card Fields", ControlType.ComboBox, Assets.Personnel, 2, 4, 26)]
+        [Tree("Cardholder\\Credential Fields", ControlType.ComboBox, Assets.Personnel, 2, 4, 26)]
 #endif
         CardField27,
 #if FLEXAPI
         [Offset(1236, 2)]
         [Description("Auto Deactivate Card")]
-        [Tree("Personnel\\Card Fields", ControlType.ComboBox, Assets.Personnel, 2, 4, 27)]
+        [Tree("Cardholder\\Credential Fields", ControlType.ComboBox, Assets.Personnel, 2, 4, 27)]
 #endif
         CardField28,
 #if FLEXAPI
         [Offset(1238, 2)]
         [Description("Time/Attendance Card")]
-        [Tree("Personnel\\Card Fields", ControlType.ComboBox, Assets.Personnel, 2, 4, 28)]
+        [Tree("Cardholder\\Credential Fields", ControlType.ComboBox, Assets.Personnel, 2, 4, 28)]
 #endif
         CardField29,
 #if FLEXAPI
         [Offset(1240, 2)]
         [Description("Always Download")]
-        [Tree("Personnel\\Card Fields", ControlType.ComboBox, Assets.Personnel, 2, 4, 29)]
+        [Tree("Cardholder\\Credential Fields", ControlType.ComboBox, Assets.Personnel, 2, 4, 29)]
 #endif
         CardField30,
 #if FLEXAPI
         [Offset(1242, 2)]
         [Description("ASSA Credential Format")]
-        [Tree("Personnel\\Card Fields", ControlType.ComboBox, Assets.Personnel, 2, 4, 30)]
+        [Tree("Cardholder\\Credential Fields", ControlType.ComboBox, Assets.Personnel, 2, 4, 30)]
 #endif
         CardField31,
 #if FLEXAPI
         [Offset(1244, 2)]
         [Description("ASSA Facility Code")]
-        [Tree("Personnel\\Card Fields", ControlType.ComboBox, Assets.Personnel, 2, 4, 31)]
+        [Tree("Cardholder\\Credential Fields", ControlType.ComboBox, Assets.Personnel, 2, 4, 31)]
 #endif
         CardField32,
 #if FLEXAPI
+        [Offset(1246, 2)]
+        [Description("Elevator Flags")]
+        [Tree("Cardholder\\Credential Fields", ControlType.ComboBox, Assets.Personnel, 2, 4, 32)]
+#endif
+        CardField33,
+#if FLEXAPI
         [Offset(1256, 2)]
-        [Description("Personnel Types")]
-        [Tree("Personnel\\Personnel Fields", ControlType.ComboBox, Assets.Personnel, 2, 2, 4)]
+        [Description("Cardholder Types")]
+        [Tree("Cardholder\\Cardholder Fields", ControlType.ComboBox, Assets.Personnel, 2, 2, 4)]
 #endif
         PersonnelField102,
 #if FLEXAPI
@@ -3625,13 +3660,13 @@ namespace Common.DataObjects
 #if FLEXAPI
         [Offset(1267, 1)]
         [Description("Extended")]
-        [Tree("Personnel\\Card Types", ControlType.CheckBox, Assets.Personnel, 2, 7, 11)]
+        [Tree("Cardholder\\Credential Types", ControlType.CheckBox, Assets.Personnel, 2, 7, 11)]
 #endif
         CardType_Extended,
 #if FLEXAPI
         [Offset(1268, 1)]
         [Description("Allow Remove All Access")]
-        [Tree("Personnel\\Personnel Actions", ControlType.CheckBox, Assets.Personnel, 2, 0, 12)]
+        [Tree("Cardholder\\Cardholder Actions", ControlType.CheckBox, Assets.Personnel, 2, 0, 12)]
 #endif
         RemoveAllAccess,
 #if FLEXAPI
@@ -3685,157 +3720,157 @@ namespace Common.DataObjects
 #if FLEXAPI
         [Offset(1277, 1)]
         [Description("Use Custom XML Permissions")]
-        [Tree("Personnel\\Advanced Custom Settings", ControlType.CheckBox, Assets.Personnel, 2, 10, 0)]
+        [Tree("Cardholder\\Advanced Custom Settings", ControlType.CheckBox, Assets.Personnel, 2, 10, 0)]
 #endif
         UseCustomXMLPermissions,
 #if FLEXAPI
         [Offset(1278, 1)]
         [Description("Normal")]
-        [Tree("Personnel\\Assign Card Types", ControlType.CheckBox, Assets.Personnel, 2, 8, 0)]
+        [Tree("Cardholder\\Assign Credential Types", ControlType.CheckBox, Assets.Personnel, 2, 8, 0)]
 #endif
         CardType_Perm_Assign,
 #if FLEXAPI
         [Offset(1279, 1)]
         [Description("Visitor")]
-        [Tree("Personnel\\Assign Card Types", ControlType.CheckBox, Assets.Personnel, 2, 8, 1)]
+        [Tree("Cardholder\\Assign Credential Types", ControlType.CheckBox, Assets.Personnel, 2, 8, 1)]
 #endif
         CardType_Visitor_Assign,
 #if FLEXAPI
         [Offset(1280, 1)]
         [Description("Temporary")]
-        [Tree("Personnel\\Assign Card Types", ControlType.CheckBox, Assets.Personnel, 2, 8, 2)]
+        [Tree("Cardholder\\Assign Credential Types", ControlType.CheckBox, Assets.Personnel, 2, 8, 2)]
 #endif
         CardType_Temp_Assign,
 #if FLEXAPI
         [Offset(1281, 1)]
         [Description("Contractor")]
-        [Tree("Personnel\\Assign Card Types", ControlType.CheckBox, Assets.Personnel, 2, 8, 4)]
+        [Tree("Cardholder\\Assign Credential Types", ControlType.CheckBox, Assets.Personnel, 2, 8, 4)]
 #endif
         CardType_Contractor_Assign,
 #if FLEXAPI
         [Offset(1282, 1)]
         [Description("Vendor")]
-        [Tree("Personnel\\Assign Card Types", ControlType.CheckBox, Assets.Personnel, 2, 8, 5)]
+        [Tree("Cardholder\\Assign Credential Types", ControlType.CheckBox, Assets.Personnel, 2, 8, 5)]
 #endif
         CardType_Vendor_Assign,
 #if FLEXAPI
         [Offset(1283, 1)]
         [DescriptionLookup(Lookup = typeof(CustomCardTypesLookup), Key = "6", Default = "Custom 1")]
-        [Tree("Personnel\\Assign Card Types", ControlType.CheckBox, Assets.Personnel, 2, 8, 6)]
+        [Tree("Cardholder\\Assign Credential Types", ControlType.CheckBox, Assets.Personnel, 2, 8, 6)]
 #endif
         CardType_Custom1_Assign,
 #if FLEXAPI
         [Offset(1284, 1)]
         [DescriptionLookup(Lookup = typeof(CustomCardTypesLookup), Key = "7", Default = "Custom 2")]
-        [Tree("Personnel\\Assign Card Types", ControlType.CheckBox, Assets.Personnel, 2, 8, 7)]
+        [Tree("Cardholder\\Assign Credential Types", ControlType.CheckBox, Assets.Personnel, 2, 8, 7)]
 #endif
         CardType_Custom2_Assign,
 #if FLEXAPI
         [Offset(1285, 1)]
         [DescriptionLookup(Lookup = typeof(CustomCardTypesLookup), Key = "8", Default = "Custom 3")]
-        [Tree("Personnel\\Assign Card Types", ControlType.CheckBox, Assets.Personnel, 2, 8, 8)]
+        [Tree("Cardholder\\Assign Credential Types", ControlType.CheckBox, Assets.Personnel, 2, 8, 8)]
 #endif
         CardType_Custom3_Assign,
 #if FLEXAPI
         [Offset(1286, 1)]
         [DescriptionLookup(Lookup = typeof(CustomCardTypesLookup), Key = "9", Default = "Custom 4")]
-        [Tree("Personnel\\Assign Card Types", ControlType.CheckBox, Assets.Personnel, 2, 8, 9)]
+        [Tree("Cardholder\\Assign Credential Types", ControlType.CheckBox, Assets.Personnel, 2, 8, 9)]
 #endif
         CardType_Custom4_Assign,
 #if FLEXAPI
         [Offset(1287, 1)]
         [DescriptionLookup(Lookup = typeof(CustomCardTypesLookup), Key = "10", Default = "Custom 5")]
-        [Tree("Personnel\\Assign Card Types", ControlType.CheckBox, Assets.Personnel, 2, 8, 10)]
+        [Tree("Cardholder\\Assign Credential Types", ControlType.CheckBox, Assets.Personnel, 2, 8, 10)]
 #endif
         CardType_Custom5_Assign,
 #if FLEXAPI
         [Offset(1288, 1)]
         [Description("Disabled")]
-        [Tree("Personnel\\Assign Card Types", ControlType.CheckBox, Assets.Personnel, 2, 8, 3)]
+        [Tree("Cardholder\\Assign Credential Types", ControlType.CheckBox, Assets.Personnel, 2, 8, 3)]
 #endif
         CardType_Disabled_Assign,
 #if FLEXAPI
         [Offset(1289, 1)]
         [Description("Extended")]
-        [Tree("Personnel\\Assign Card Types", ControlType.CheckBox, Assets.Personnel, 2, 8, 11)]
+        [Tree("Cardholder\\Assign Credential Types", ControlType.CheckBox, Assets.Personnel, 2, 8, 11)]
 #endif
         CardType_Extended_Assign,
 #if FLEXAPI
         [Offset(1290, 1)]
         [Description("NORMAL")]
-        [Tree("Personnel\\Assign Personnel Types", ControlType.CheckBox, Assets.Personnel, 2, 6, 7)]
+        [Tree("Cardholder\\Assign Cardholder Types", ControlType.CheckBox, Assets.Personnel, 2, 6, 7)]
 #endif
         PersonnelType_Perm_Assign,
 #if FLEXAPI
         [Offset(1291, 1)]
         [Description("Visitor")]
-        [Tree("Personnel\\Assign Personnel Types", ControlType.CheckBox, Assets.Personnel, 2, 6, 10)]
+        [Tree("Cardholder\\Assign Cardholder Types", ControlType.CheckBox, Assets.Personnel, 2, 6, 10)]
 #endif
         PersonnelType_Visitor_Assign,
 #if FLEXAPI
         [Offset(1292, 1)]
         [Description("Temp")]
-        [Tree("Personnel\\Assign Personnel Types", ControlType.CheckBox, Assets.Personnel, 2, 6, 8)]
+        [Tree("Cardholder\\Assign Cardholder Types", ControlType.CheckBox, Assets.Personnel, 2, 6, 8)]
 #endif
         PersonnelType_Temp_Assign,
 #if FLEXAPI
         [Offset(1293, 1)]
         [Description("Contractor")]
-        [Tree("Personnel\\Assign Personnel Types", ControlType.CheckBox, Assets.Personnel, 2, 6, 0)]
+        [Tree("Cardholder\\Assign Cardholder Types", ControlType.CheckBox, Assets.Personnel, 2, 6, 0)]
 #endif
         PersonnelType_Contractor_Assign,
 #if FLEXAPI
         [Offset(1294, 1)]
         [Description("Vendor")]
-        [Tree("Personnel\\Assign Personnel Types", ControlType.CheckBox, Assets.Personnel, 2, 6, 9)]
+        [Tree("Cardholder\\Assign Cardholder Types", ControlType.CheckBox, Assets.Personnel, 2, 6, 9)]
 #endif
         PersonnelType_Vendor_Assign,
 #if FLEXAPI
         [Offset(1295, 1)]
         [DescriptionLookup(Lookup = typeof(SettingsLookup), Key = "Custom Person Type 0", Default = "Custom 1")]
-        [Tree("Personnel\\Assign Personnel Types", ControlType.CheckBox, Assets.Personnel, 2, 6, 1)]
+        [Tree("Cardholder\\Assign Cardholder Types", ControlType.CheckBox, Assets.Personnel, 2, 6, 1)]
 #endif
         PersonnelType_Custom1_Assign,
 #if FLEXAPI
         [Offset(1296, 1)]
         [DescriptionLookup(Lookup = typeof(SettingsLookup), Key = "Custom Person Type 1", Default = "Custom 2")]
-        [Tree("Personnel\\Assign Personnel Types", ControlType.CheckBox, Assets.Personnel, 2, 6, 2)]
+        [Tree("Cardholder\\Assign Cardholder Types", ControlType.CheckBox, Assets.Personnel, 2, 6, 2)]
 #endif
         PersonnelType_Custom2_Assign,
 #if FLEXAPI
         [Offset(1297, 1)]
         [DescriptionLookup(Lookup = typeof(SettingsLookup), Key = "Custom Person Type 2", Default = "Custom 3")]
-        [Tree("Personnel\\Assign Personnel Types", ControlType.CheckBox, Assets.Personnel, 2, 6, 3)]
+        [Tree("Cardholder\\Assign Cardholder Types", ControlType.CheckBox, Assets.Personnel, 2, 6, 3)]
 #endif
         PersonnelType_Custom3_Assign,
 #if FLEXAPI
         [Offset(1298, 1)]
         [DescriptionLookup(Lookup = typeof(SettingsLookup), Key = "Custom Person Type 3", Default = "Custom 4")]
-        [Tree("Personnel\\Assign Personnel Types", ControlType.CheckBox, Assets.Personnel, 2, 6, 4)]
+        [Tree("Cardholder\\Assign Cardholder Types", ControlType.CheckBox, Assets.Personnel, 2, 6, 4)]
 #endif
         PersonnelType_Custom4_Assign,
 #if FLEXAPI
         [Offset(1299, 1)]
         [DescriptionLookup(Lookup = typeof(SettingsLookup), Key = "Custom Person Type 4", Default = "Custom 5")]
-        [Tree("Personnel\\Assign Personnel Types", ControlType.CheckBox, Assets.Personnel, 2, 6, 5)]
+        [Tree("Cardholder\\Assign Cardholder Types", ControlType.CheckBox, Assets.Personnel, 2, 6, 5)]
 #endif
         PersonnelType_Custom5_Assign,
 #if FLEXAPI
         [Offset(1300, 1)]
         [Description("Disabled")]
-        [Tree("Personnel\\Assign Personnel Types", ControlType.CheckBox, Assets.Personnel, 2, 6, 6)]
+        [Tree("Cardholder\\Assign Cardholder Types", ControlType.CheckBox, Assets.Personnel, 2, 6, 6)]
 #endif
         PersonnelType_Disabled_Assign,
 #if FLEXAPI
         [Offset(1301, 1)]
         [Description("Use CardType for Deactivation Date")]
-        [Tree("Personnel\\Advanced Custom Settings", ControlType.CheckBox, Assets.Personnel, 2, 10, 2)]
+        [Tree("Cardholder\\Advanced Custom Settings", ControlType.CheckBox, Assets.Personnel, 2, 10, 2)]
 #endif
         UseCardTypeDeactivation,
 #if FLEXAPI
         [Offset(1302, 1)]
         [Description("Perform Advanced Access Level Check")]
-        [Tree("Personnel\\Advanced Custom Settings", ControlType.CheckBox, Assets.Personnel, 2, 10, 1)]
+        [Tree("Cardholder\\Advanced Custom Settings", ControlType.CheckBox, Assets.Personnel, 2, 10, 1)]
 #endif
         AdvancedAccessLevel_Check,
 #if FLEXAPI
@@ -3848,37 +3883,37 @@ namespace Common.DataObjects
 #if FLEXAPI
         [Offset(1305, 1)]
         [Description("Location: Allow Configure Drop-Down List")]
-        [Tree("Personnel\\Personnel Fields", ControlType.CheckBox, Assets.Personnel, 2, 2, 8)]
+        [Tree("Cardholder\\Cardholder Fields", ControlType.CheckBox, Assets.Personnel, 2, 2, 8)]
 #endif
         PersonnelField_Location_List,
 #if FLEXAPI
         [Offset(1306, 1)]
         [Description("Department: Allow Configure Drop-Down List")]
-        [Tree("Personnel\\Personnel Fields", ControlType.CheckBox, Assets.Personnel, 2, 2, 10)]
+        [Tree("Cardholder\\Cardholder Fields", ControlType.CheckBox, Assets.Personnel, 2, 2, 10)]
 #endif
         PersonnelField_Department_List,
 #if FLEXAPI
         [Offset(1307, 1)]
         [Description("Site: Allow Configure Drop-Down List")]
-        [Tree("Personnel\\Personnel Fields", ControlType.CheckBox, Assets.Personnel, 2, 2, 12)]
+        [Tree("Cardholder\\Cardholder Fields", ControlType.CheckBox, Assets.Personnel, 2, 2, 12)]
 #endif
         PersonnelField_Site_List,
 #if FLEXAPI
         [Offset(1308, 1)]
         [Description("Title: Allow Configure Drop-Down List")]
-        [Tree("Personnel\\Personnel Fields", ControlType.CheckBox, Assets.Personnel, 2, 2, 14)]
+        [Tree("Cardholder\\Cardholder Fields", ControlType.CheckBox, Assets.Personnel, 2, 2, 14)]
 #endif
         PersonnelField_Title_List,
 #if FLEXAPI
         [Offset(1309, 1)]
         [Description("Allow Biometric Enrollment")]
-        [Tree("Personnel\\Personnel Actions", ControlType.CheckBox, Assets.Personnel, 2, 0, 13)]
+        [Tree("Cardholder\\Cardholder Actions", ControlType.CheckBox, Assets.Personnel, 2, 0, 13)]
 #endif
         AllowBioEnroll,
 #if FLEXAPI
         [Offset(1310, 1)]
         [Description("Allow Removal of Biometric Templates")]
-        [Tree("Personnel\\Personnel Actions", ControlType.CheckBox, Assets.Personnel, 2, 0, 14)]
+        [Tree("Cardholder\\Cardholder Actions", ControlType.CheckBox, Assets.Personnel, 2, 0, 14)]
 #endif
         AllowRemoveBioTemplate,
 #if FLEXAPI
@@ -5405,8 +5440,8 @@ namespace Common.DataObjects
         ACCESSLEVELS_ACCESSLEVELGROUPASSIGNED_R,
 #if FLEXAPI
         [Offset(1534, 1)]
-        [Description("Personnel - Summary")]
-        [Tree("Reports\\Personnel", ControlType.CheckBox, Assets.Reports, 4, 4, 5)]
+        [Description("Cardholder - Summary")]
+        [Tree("Reports\\Cardholder", ControlType.CheckBox, Assets.Reports, 4, 4, 5)]
 #endif
         PERSONNELREPORTS_SUMMARY_R,
 #if FLEXAPI
@@ -5424,7 +5459,7 @@ namespace Common.DataObjects
 #if FLEXAPI
         [Offset(1537, 2)]
         [Description("Middle")]
-        [Tree("Personnel\\Personnel Fields", ControlType.ComboBox, Assets.Personnel, 2, 2, 2)]
+        [Tree("Cardholder\\Cardholder Fields", ControlType.ComboBox, Assets.Personnel, 2, 2, 2)]
 #endif
         PersonnelFieldMiddleName,
 #if FLEXAPI
@@ -5513,8 +5548,8 @@ namespace Common.DataObjects
         DoorAlertCfg,
 #if FLEXAPI
         [Offset(1554, 1)]
-        [Description("Personnel - Daily Card Usage")]
-        [Tree("Reports\\Personnel", ControlType.CheckBox, Assets.Reports, 4, 4, 6)]
+        [Description("Cardholder - Daily Card Usage")]
+        [Tree("Reports\\Cardholder", ControlType.CheckBox, Assets.Reports, 4, 4, 6)]
 #endif
         PERSONNELREPORTS_CARD_USAGE_R,
 #if FLEXAPI
@@ -5629,8 +5664,8 @@ namespace Common.DataObjects
         GraphicsAllowDesign,
 #if FLEXAPI
         [Offset(1575, 2)]
-        [Description("User Personnel Group")]
-        [Tree("Personnel\\Personnel Fields", ControlType.ComboBox, Assets.Personnel, 2, 2, 6)]
+        [Description("User Cardholder Group")]
+        [Tree("Cardholder\\Cardholder Fields", ControlType.ComboBox, Assets.Personnel, 2, 2, 6)]
 #endif
         UserPersonnelGrp,
 #if FLEXAPI
@@ -5887,14 +5922,14 @@ namespace Common.DataObjects
         AlarmsClearSel,
 #if FLEXAPI
         [Offset(1621, 1)]
-        [Description("Personnel - Printed Badges")]
-        [Tree("Reports\\Personnel", ControlType.CheckBox, Assets.Reports, 4, 4, 7)]
+        [Description("Cardholder - Printed Badges")]
+        [Tree("Reports\\Cardholder", ControlType.CheckBox, Assets.Reports, 4, 4, 7)]
 #endif
         PERSONNELREPORTS_BADGES_R,
 #if FLEXAPI
         [Offset(1622, 1)]
         [Description("Allow Has Access To")]
-        [Tree("Personnel\\Personnel Actions", ControlType.CheckBox, Assets.Personnel, 2, 0, 15)]
+        [Tree("Cardholder\\Cardholder Actions", ControlType.CheckBox, Assets.Personnel, 2, 0, 15)]
 #endif
         AllowHasAccess,
 #if FLEXAPI
@@ -5954,7 +5989,7 @@ namespace Common.DataObjects
 #if FLEXAPI
         [Offset(1632, 2)]
         [Description("Override Card")]
-        [Tree("Personnel\\Card Fields", ControlType.ComboBox, Assets.Personnel, 2, 4, 32)]
+        [Tree("Cardholder\\Credential Fields", ControlType.ComboBox, Assets.Personnel, 2, 4, 33)]
 #endif
         CardField38,
 #if FLEXAPI
@@ -5972,13 +6007,13 @@ namespace Common.DataObjects
 #if FLEXAPI
         [Offset(1636, 1)]
         [Description("Allow Non Tenant Hardware on Cardholder Trace History")]
-        [Tree("Personnel\\Personnel Actions", ControlType.CheckBox, Assets.Personnel, 2, 0, 16)]
+        [Tree("Cardholder\\Cardholder Actions", ControlType.CheckBox, Assets.Personnel, 2, 0, 16)]
 #endif
         AllowNonTenantHdwOnCardholderTraceHistory,
 #if FLEXAPI
         [Offset(1637, 1)]
-        [Description("Personnel - Schindler")]
-        [Tree("Reports\\Personnel", ControlType.CheckBox, Assets.Reports, 4, 4, 8)]
+        [Description("Cardholder - Schindler")]
+        [Tree("Reports\\Cardholder", ControlType.CheckBox, Assets.Reports, 4, 4, 8)]
 #endif
         PERSONNELREPORTS_PersonnelSchindler_R,
 #if FLEXAPI
@@ -6073,14 +6108,14 @@ namespace Common.DataObjects
         AllowWaveLynxEnrollment,
 #if FLEXAPI
         [Offset(1653, 1)]
-        [Description("Personnel - CardLess")]
-        [Tree("Reports\\Personnel", ControlType.CheckBox, Assets.Reports, 4, 4, 9)]
+        [Description("Cardholder - CardLess")]
+        [Tree("Reports\\Cardholder", ControlType.CheckBox, Assets.Reports, 4, 4, 9)]
 #endif
         PERSONNELREPORTS_CARDLESS_R,
 #if FLEXAPI
         [Offset(1654, 2)]
         [Description("Non-Use Exclusion")]
-        [Tree("Personnel\\Card Fields", ControlType.ComboBox, Assets.Personnel, 2, 4, 33)]
+        [Tree("Cardholder\\Credential Fields", ControlType.ComboBox, Assets.Personnel, 2, 4, 34)]
 #endif
         CardField39,
 #if FLEXAPI
@@ -6572,7 +6607,7 @@ namespace Common.DataObjects
 #if FLEXAPI
         [Offset(1737, 2)]
         [Description("Credential Format")]
-        [Tree("Personnel\\Card Fields", ControlType.ComboBox, Assets.Personnel, 2, 4, 34)]
+        [Tree("Cardholder\\Credential Fields", ControlType.ComboBox, Assets.Personnel, 2, 4, 35)]
 #endif
         CardField40,
 #if FLEXAPI
@@ -6605,6 +6640,115 @@ namespace Common.DataObjects
         [Tree("Hardware\\External Hardware", ControlType.CheckBox, Assets.ExtHardware, Assets.Controller, 0, 23, 4)]
 #endif
         ExtHdwEdtiCustomEvents,
+#if FLEXAPI
+        [Offset(1744, 1)]
+        [Secondary(0, 1)]
+        [Description("Promote SSP")]
+        [Tree("Hardware\\Controller", ControlType.CheckBox, Assets.Controller, 0, 8, 14)]
+#endif
+        AllowPromoteSSP,
+#if FLEXAPI
+        [Offset(1745, 1)]
+        [Description("Allow Editing Site")]
+        [Tree("Hardware\\Inovonics Duress Pendant", ControlType.CheckBox, Assets.InovonicsDP, Assets.Controller, 0, 24, 0)]
+#endif
+        InvDpEditSite,
+#if FLEXAPI
+        [Offset(1746, 1)]
+        [Description("Allow Editing Locators")]
+        [Tree("Hardware\\Inovonics Duress Pendant", ControlType.CheckBox, Assets.InovonicsDP, Assets.Controller, 0, 24, 1)]
+#endif
+        InvDpEditLocator,
+#if FLEXAPI
+        [Offset(1747, 1)]
+        [Description("Priority: 1")]
+        [Tree("Alarms\\View Alarm", ControlType.CheckBox, Assets.Alarms, 3, 7, 0)]
+#endif
+        ViewAlarm1,
+#if FLEXAPI
+        [Offset(1748, 1)]
+        [Description("Priority: 2")]
+        [Tree("Alarms\\View Alarm", ControlType.CheckBox, Assets.Alarms, 3, 7, 1)]
+#endif
+        ViewAlarm2,
+#if FLEXAPI
+        [Offset(1749, 1)]
+        [Description("Priority: 3")]
+        [Tree("Alarms\\View Alarm", ControlType.CheckBox, Assets.Alarms, 3, 7, 2)]
+#endif
+        ViewAlarm3,
+#if FLEXAPI
+        [Offset(1750, 1)]
+        [Description("Priority: 4")]
+        [Tree("Alarms\\View Alarm", ControlType.CheckBox, Assets.Alarms, 3, 7, 3)]
+#endif
+        ViewAlarm4,
+#if FLEXAPI
+        [Offset(1751, 1)]
+        [Description("Priority: 5")]
+        [Tree("Alarms\\View Alarm", ControlType.CheckBox, Assets.Alarms, 3, 7, 4)]
+#endif
+        ViewAlarm5,
+#if FLEXAPI
+        [Offset(1752, 1)]
+        [Description("Priority: 6")]
+        [Tree("Alarms\\View Alarm", ControlType.CheckBox, Assets.Alarms, 3, 7, 5)]
+#endif
+        ViewAlarm6,
+#if FLEXAPI
+        [Offset(1753, 1)]
+        [Description("Priority: 7")]
+        [Tree("Alarms\\View Alarm", ControlType.CheckBox, Assets.Alarms, 3, 7, 6)]
+#endif
+        ViewAlarm7,
+#if FLEXAPI
+        [Offset(1754, 1)]
+        [Description("Priority: 8")]
+        [Tree("Alarms\\View Alarm", ControlType.CheckBox, Assets.Alarms, 3, 7, 7)]
+#endif
+        ViewAlarm8,
+#if FLEXAPI
+        [Offset(1755, 1)]
+        [Description("Priority: 9")]
+        [Tree("Alarms\\View Alarm", ControlType.CheckBox, Assets.Alarms, 3, 7, 8)]
+#endif
+        ViewAlarm9,
+#if FLEXAPI
+        [Offset(1756, 1)]
+        [Description("Priority: 10")]
+        [Tree("Alarms\\View Alarm", ControlType.CheckBox, Assets.Alarms, 3, 7, 9)]
+#endif
+        ViewAlarm10,
+#if FLEXAPI
+        [Offset(1757, 1)]
+        [Description("Priority: 11")]
+        [Tree("Alarms\\View Alarm", ControlType.CheckBox, Assets.Alarms, 3, 7, 10)]
+#endif
+        ViewAlarm11,
+#if FLEXAPI
+        [Offset(1758, 1)]
+        [Description("Priority: 12")]
+        [Tree("Alarms\\View Alarm", ControlType.CheckBox, Assets.Alarms, 3, 7, 11)]
+#endif
+        ViewAlarm12,
+#if FLEXAPI
+        [Offset(1759, 1)]
+        [Description("Priority: 13")]
+        [Tree("Alarms\\View Alarm", ControlType.CheckBox, Assets.Alarms, 3, 7, 12)]
+#endif
+        ViewAlarm13,
+#if FLEXAPI
+        [Offset(1760, 1)]
+        [Description("Priority: 14")]
+        [Tree("Alarms\\View Alarm", ControlType.CheckBox, Assets.Alarms, 3, 7, 13)]
+#endif
+        ViewAlarm14,
+#if FLEXAPI
+        [Offset(1761, 1)]
+        [Description("Priority: 15")]
+        [Tree("Alarms\\View Alarm", ControlType.CheckBox, Assets.Alarms, 3, 7, 14)]
+#endif
+        ViewAlarm15,
     }
 }
 // ReSharper enable CheckNamespace
