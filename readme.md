@@ -30,6 +30,7 @@ The projects all require the [.NET 6.0 SDK](https://dotnet.microsoft.com/en-us/d
 - [Swagger API Explorer](https://flextest.ooaccess.net/apiexplorer/index.html)
 - [Identity Client Setup](https://bitbucket.org/ooaccess/flex-api-samples/wiki/Identity%20Client)
 - [JSend Message Response](https://bitbucket.org/ooaccess/flex-api-samples/wiki/JSend%20-%20Json%20Message%20Structure%20Overview)
+- [Authorizing Postman Requests](https://bitbucket.org/ooaccess/flex-api-samples/wiki/Authorizing%20Postman%20Requests)
 
 ## Screenshots ##
 
