@@ -1,0 +1,39 @@
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+  <!-- NuGet Central Package Management  -->
+  <!-- https://devblogs.microsoft.com/nuget/introducing-central-package-management/ -->
+  <!-- https://learn.microsoft.com/en-us/nuget/consume-packages/central-package-management -->
+  <PropertyGroup>
+    <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <LangVersion>latest</LangVersion>
+  </PropertyGroup>
+
+  <!-- Default TFMs to use when building and packaging -->
+  <PropertyGroup>
+    <!-- TFM used when coding in Visual Studio and when creating templates -->
+    <DefaultTargetFramework>net7.0</DefaultTargetFramework>
+
+    <!-- TFMs used to build the abstractions and modules-->
+    <CommonTargetFrameworks Condition="'$(CommonTargetFrameworks)' == ''">net7.0</CommonTargetFrameworks>
+  </PropertyGroup>
+
+  <!-- Detect if the solution is opened in VS to limit the TFMs that are analyzed by Roslyn for performance reasons -->
+  <PropertyGroup Condition="'$(BuildingInsideVisualStudio)' == 'true' or '$(BuildingByReSharper)' == 'true'">
+    <CommonTargetFrameworks>$(DefaultTargetFramework)</CommonTargetFrameworks>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <NoWarn>
+      CS1591, <!--  Warning CS1591: Missing XML comment for publicly visible type or member -->
+      CS0169  <!--  Warning CS0169: The field '...' is never used [ Public API that some types aren't apparent because it is serialized via JSON ] -->
+    </NoWarn>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <WarningsAsErrors>612,618</WarningsAsErrors> <!--  Warning : Type or member is obsolete -->
+  </PropertyGroup>
+
+</Project>
