@@ -1,5 +1,4 @@
-﻿using System.Text;
-using Flex.Configuration;
+using System.Text;
 using Flex.DataObjects.Hardware;
 using Flex.Services.Abstractions;
 using MQTTnet;
@@ -12,7 +11,7 @@ namespace Flex.Cli.MQTTMessages
 {
     internal class EventCommand : DefaultCommand
     {
-        public EventCommand(Microsoft.Extensions.Options.IOptions<Options> options, ICacheStore cache, IFlexHttpClientFactory factory, IManagedMqttClient mqttClient, MqttClientOptions clientOptions)
+        public EventCommand(IOptionsProvider options, ICacheStore cache, IFlexHttpClientFactory factory, IManagedMqttClient mqttClient, MqttClientOptions clientOptions)
             : base(options, cache, factory, mqttClient, clientOptions)
         {
         }

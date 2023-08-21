@@ -1,7 +1,6 @@
-﻿using System.Diagnostics;
+using System.Diagnostics;
 using System.Net;
 using Flex.Cli.Hardware.Settings;
-using Flex.Configuration;
 using Flex.DataObjects;
 using Flex.DataObjects.Hardware;
 using Flex.Services.Abstractions;
@@ -16,7 +15,7 @@ namespace Flex.Cli.Hardware
         private const int MaxRequests = 50;
         private int _requests = 1;
 
-        public TreeCommand(Microsoft.Extensions.Options.IOptions<Options> options, ICacheStore cache, IFlexHttpClientFactory factory)
+        public TreeCommand(IOptionsProvider options, ICacheStore cache, IFlexHttpClientFactory factory)
             : base(options, cache, factory)
         {
         }

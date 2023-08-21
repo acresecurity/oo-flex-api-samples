@@ -1,5 +1,4 @@
-﻿using System.Text;
-using Flex.Configuration;
+using System.Text;
 using Flex.Services.Abstractions;
 using MQTTnet;
 using MQTTnet.Client;
@@ -12,7 +11,7 @@ namespace Flex.Cli.MQTTMessages
 {
     internal class StatusCommand : DefaultCommand
     {
-        public StatusCommand(Microsoft.Extensions.Options.IOptions<Options> options, ICacheStore cache, IFlexHttpClientFactory factory, IManagedMqttClient mqttClient, MqttClientOptions clientOptions)
+        public StatusCommand(IOptionsProvider options, ICacheStore cache, IFlexHttpClientFactory factory, IManagedMqttClient mqttClient, MqttClientOptions clientOptions)
             : base(options, cache, factory, mqttClient, clientOptions)
         {
         }

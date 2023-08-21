@@ -1,5 +1,4 @@
-﻿using Flex.Cli.DataEntry.AccessLevels.Settings;
-using Flex.Configuration;
+using Flex.Cli.DataEntry.AccessLevels.Settings;
 using Flex.DataObjects;
 using Flex.Services.Abstractions;
 using Spectre.Console.Cli;
@@ -8,7 +7,7 @@ namespace Flex.Cli.DataEntry.AccessLevels
 {
     internal class AddAccessLevelCommand : AsyncCommand<AddAccessLevelSettings>
     {
-        public AddAccessLevelCommand(Microsoft.Extensions.Options.IOptions<Options> options, ICacheStore cache, IFlexHttpClientFactory factory)
+        public AddAccessLevelCommand(IOptionsProvider options, ICacheStore cache, IFlexHttpClientFactory factory)
             : base(options, cache, factory)
         {
         }

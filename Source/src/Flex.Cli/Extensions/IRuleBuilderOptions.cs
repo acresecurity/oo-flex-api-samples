@@ -1,4 +1,4 @@
-﻿using Flex.Validation;
+using Flex.DataObjects.Validation;
 
 // ReSharper disable once CheckNamespace
 namespace FluentValidation

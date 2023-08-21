@@ -1,4 +1,3 @@
-﻿using Flex.Configuration;
 using Flex.DataObjects;
 using Flex.DataObjects.Settings;
 using Flex.Services.Abstractions;
@@ -9,7 +8,7 @@ namespace Flex.Cli.DataEntry
     internal abstract class DefaultCommand<TSettings> : AsyncCommand<TSettings>
         where TSettings : DefaultCommandSettings
     {
-        protected DefaultCommand(Microsoft.Extensions.Options.IOptions<Options> options, ICacheStore cache, IFlexHttpClientFactory clientFactory)
+        protected DefaultCommand(IOptionsProvider options, ICacheStore cache, IFlexHttpClientFactory clientFactory)
             : base(options, cache, clientFactory)
         {
         }

@@ -1,4 +1,4 @@
-﻿using FluentValidation;
+using FluentValidation;
 using Spectre.Console.Cli;
 
 namespace Flex.Cli.DataEntry.Cardholder.Settings
@@ -167,8 +167,5 @@ namespace Flex.Cli.DataEntry.Cardholder.Settings
 
         [CommandOption($"--{nameof(Zip)}")]
         public virtual string Zip { get; set; }
-
-        [CommandOption($"--{nameof(UserId)}")]
-        public virtual int? UserId { get; set; }
     }
 }

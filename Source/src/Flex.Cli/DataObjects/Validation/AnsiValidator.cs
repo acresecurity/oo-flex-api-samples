@@ -1,8 +1,8 @@
-﻿using System.Globalization;
+using System.Globalization;
 using FluentValidation;
 using FluentValidation.Validators;
 
-namespace Flex.Validation
+namespace Flex.DataObjects.Validation
 {
     internal class AnsiValidator<T> : PropertyValidator<T, string>
     {

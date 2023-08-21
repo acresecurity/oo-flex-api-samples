@@ -1,4 +1,4 @@
-﻿using EasyCaching.Core;
+using EasyCaching.Core;
 using Flex.Services.Abstractions;
 using IdentityModel.Client;
 using IdentityModel.OidcClient;
@@ -13,9 +13,9 @@ namespace Flex.Services
         private readonly IEasyCachingProvider _cache;
         private readonly OidcClient _oidcClient;
 
-        public FlexHttpClientFactory(Microsoft.Extensions.Options.IOptions<Configuration.Options> options, OidcClient oidcClient, IHttpClientFactory factory, IEasyCachingProvider cache)
+        public FlexHttpClientFactory(IOptionsProvider options, OidcClient oidcClient, IHttpClientFactory factory, IEasyCachingProvider cache)
         {
-            _settings = options.Value;
+            _settings = options.Options;
             _factory = factory;
             _cache = cache;
             _oidcClient = oidcClient;
@@ -41,6 +41,7 @@ namespace Flex.Services
                 {
                     AnsiConsole.MarkupLine("[red]{0}[/]", response.Error.EscapeMarkup());
                     AnsiConsole.MarkupLine("[red]{0}[/]", response.ErrorDescription.EscapeMarkup());
+                    await _cache.FlushAsync();
                     return default;
                 }
 
@@ -63,6 +64,7 @@ namespace Flex.Services
                 {
                     AnsiConsole.MarkupLine("[red]{0}[/]", response.Error.EscapeMarkup());
                     AnsiConsole.MarkupLine("[red]{0}[/]", response.ErrorDescription.EscapeMarkup());
+                    await _cache.FlushAsync();
                     return default;
                 }
 

@@ -1,12 +1,13 @@
-﻿using System.Net;
+using System.Net;
 using Flex.Cli.DataEntry.Credential.Settings;
 using Flex.DataObjects.Cardholder;
 using Flex.Services.Abstractions;
 using FluentValidation;
 using Microsoft.AspNetCore.WebUtilities;
 
-namespace Flex.Validation
+namespace Flex.DataObjects.Validation
 {
+    // ReSharper disable once UnusedMember.Global
     internal class EditCredentialValidation : AbstractValidator<EditCredentialSettings>
     {
         private readonly IFlexHttpClientFactory _factory;

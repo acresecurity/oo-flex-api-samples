@@ -1,16 +1,18 @@
-﻿using System.IO.Abstractions;
+using System.IO.Abstractions;
 using System.Security.Authentication;
-using System.Security.Cryptography;
-using System.Text;
 using EasyCaching.Disk;
+using Flex.Cli.Setup.Models;
+using Flex.Cli.Setup.Views;
 using Flex.Configuration;
 using Flex.Oidc;
 using Flex.Services;
 using Flex.Services.Abstractions;
+using Flex.Utils;
 using FluentValidation;
 using IdentityModel.Client;
 using IdentityModel.OidcClient;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Options;
 using MQTTnet;
 using MQTTnet.Client;
@@ -23,10 +25,13 @@ namespace Microsoft.Extensions.DependencyInjection
     // ReSharper disable once InconsistentNaming
     internal static class IServiceCollectionExtensions
     {
-        public static IServiceCollection AddDefaultServices(this IServiceCollection services, IConfiguration configuration, string[] args)
+        public static IServiceCollection AddDefaultServices(this IServiceCollection services, IConfiguration configuration, IHostEnvironment environment, string[] args)
         {
+            services
+                .AddOptions<Flex.Configuration.Options>()
+                .BindConfiguration("FlexApi");
+
             var config = configuration.GetSection("FlexApi");
-            services.Configure<Flex.Configuration.Options>(config);
 
             var displayBanner = !args.Any(p => p.Equals("--no-banner", StringComparison.OrdinalIgnoreCase));
             if (displayBanner)
@@ -39,6 +44,7 @@ namespace Microsoft.Extensions.DependencyInjection
                     .AddRow("Api", config["Api"] ?? "<Unset>")
                     .AddRow("Authority", config["Authority"] ?? "<Unset>")
                     .AddRow("ClientId", config["ClientId"] ?? "<Unset>")
+                    .AddRow("ClientSecret", string.IsNullOrEmpty(config["ClientSecret"]) ? "<Unset>" : "[[REDACTED]]")
                     .AddRow("MQTT Transport", config["Mqtt:Transport"] ?? "<Unset>")
                     .AddRow("MQTT Host", config["Mqtt:Host"] ?? "<Unset>");
 
@@ -49,9 +55,14 @@ namespace Microsoft.Extensions.DependencyInjection
             // OIDC Options
             services.AddSingleton(p =>
             {
+                var provider = p.GetService<IOptionsProvider>();
+                var validate = provider.Validate();
+                if (!validate.IsValid)
+                    return null;
+
                 var browser = new SystemBrowser();
 
-                var settings = p.GetService<IOptions<Flex.Configuration.Options>>().Value;
+                var settings = provider.Options;
                 var options = new OidcClientOptions
                 {
                     Authority = settings.Authority,
@@ -59,18 +70,34 @@ namespace Microsoft.Extensions.DependencyInjection
                     ClientSecret = settings.ClientSecret,
                     Scope = "offline_access openid profile email flex_api",
                     RedirectUri = $"http://127.0.0.1:{browser.Port}",
-                    Browser = browser,
-                    Policy = new Policy { Discovery = new DiscoveryPolicy { AllowHttpOnLoopback = true } }
+                    Browser = browser
                 };
+
+                if (environment.IsDevelopment())
+                {
+                    options.Policy = new Policy
+                    {
+                        Discovery = new DiscoveryPolicy
+                        {
+                            AllowHttpOnLoopback = true,
+                            RequireHttps = false
+                        }
+                    };
+
+                    options.BackchannelHandler = new HttpClientHandler
+                    {
+                        ServerCertificateCustomValidationCallback = HttpClientHandler.DangerousAcceptAnyServerCertificateValidator
+                    };
+                }
 
                 return new OidcClient(options);
             });
 
             // MQTT Options
-            services.AddTransient(p =>
+            services.AddTransient(provider =>
             {
-                var options = p.GetRequiredService<Flex.Configuration.Options>();
-                
+                var options = provider.GetRequiredService<IOptions<Flex.Configuration.Options>>().Value;
+
                 var builder = new MqttClientOptionsBuilder()
                         .WithCleanSession(false)
                         .WithClientId($"{options.Mqtt.ClientName}:{Environment.MachineName}")
@@ -91,17 +118,20 @@ namespace Microsoft.Extensions.DependencyInjection
 
                 if (options.Mqtt.TlsVersion != SslProtocols.None)
                 {
-                    builder.WithTls(o =>
+                    builder.WithTls(p =>
                     {
-                        o.SslProtocol = options.Mqtt.TlsVersion;
+                        p.SslProtocol = options.Mqtt.TlsVersion;
                     });
                 }
 
                 return builder.Build();
             });
 
+            services.AddTransient<TerminalScheduler>();
+
             services.AddTransient<IFlexHttpClientFactory, FlexHttpClientFactory>();
             services.AddTransient<ICacheStore, CacheStore>();
+            services.AddTransient<IOptionsProvider, OptionsProvider>();
 
             services.AddSingleton(_ => new MqttFactory());
 
@@ -127,23 +157,17 @@ namespace Microsoft.Extensions.DependencyInjection
                         BasePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "flex.cli", "cache")
                     };
                     options.SerializerName = "json";
-                }, ComputeHash(config["Authority"] ?? "default"));
+                }, (config["Authority"] ?? "default").ComputeHash());
 
                 p.WithJson();
             });
 
             services.AddHttpClient();
 
-            return services;
-        }
+            services.AddTransient<SetupView>();
+            services.AddSingleton<SetupModel>();
 
-        private static string ComputeHash(string value)
-        {
-            var data = MD5.HashData(Encoding.UTF8.GetBytes(value));
-            var sb = new StringBuilder(64);
-            foreach (var item in data)
-                sb.Append(item.ToString("x2"));
-            return sb.ToString();
+            return services;
         }
     }
 }

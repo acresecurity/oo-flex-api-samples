@@ -1,4 +1,4 @@
-﻿using System.Globalization;
+using System.Globalization;
 using Flex.DataObjects;
 using Flex.DataObjects.Hardware;
 using Flex.Services.Abstractions;
@@ -14,7 +14,7 @@ namespace Flex.Cli.Alarms
     internal abstract class AsyncCommand<TSettings> : Cli.AsyncCommand<TSettings>
         where TSettings : DefaultCommandSettings
     {
-        protected AsyncCommand(Microsoft.Extensions.Options.IOptions<Configuration.Options> options,ICacheStore cache, IFlexHttpClientFactory factory)
+        protected AsyncCommand(IOptionsProvider options, ICacheStore cache, IFlexHttpClientFactory factory)
             : base(options, cache, factory)
         {
         }

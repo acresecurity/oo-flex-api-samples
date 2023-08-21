@@ -1,6 +1,5 @@
-﻿using System.Net;
+using System.Net;
 using Flex.Cli.DataEntry.Credential.Settings;
-using Flex.Configuration;
 using Flex.DataObjects;
 using Flex.Services.Abstractions;
 using Spectre.Console;
@@ -10,7 +9,7 @@ namespace Flex.Cli.DataEntry.Credential
 {
     internal class DeleteCredentialCommand : AsyncCommand<DeleteCredentialSettings>
     {
-        public DeleteCredentialCommand(Microsoft.Extensions.Options.IOptions<Options> options, ICacheStore cache, IFlexHttpClientFactory factory)
+        public DeleteCredentialCommand(IOptionsProvider options, ICacheStore cache, IFlexHttpClientFactory factory)
             : base(options, cache, factory)
         {
         }

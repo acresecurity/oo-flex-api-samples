@@ -1,10 +1,10 @@
-﻿using Flex.Cli.DataEntry.AccessLevels.Settings;
-using Flex.DataObjects;
+using Flex.Cli.DataEntry.AccessLevels.Settings;
 using Flex.Services.Abstractions;
 using FluentValidation;
 
-namespace Flex.Validation
+namespace Flex.DataObjects.Validation
 {
+    // ReSharper disable once UnusedMember.Global
     internal class AddAccessLevelValidation : AbstractValidator<AddAccessLevelSettings>
     {
         public AddAccessLevelValidation(ICacheStore cacheStore)

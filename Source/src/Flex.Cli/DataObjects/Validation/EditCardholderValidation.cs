@@ -1,11 +1,12 @@
-﻿using Flex.Cli.DataEntry.Cardholder.Settings;
+using Flex.Cli.DataEntry.Cardholder.Settings;
 using FluentValidation;
 
-namespace Flex.Validation
+namespace Flex.DataObjects.Validation
 {
-    internal class AddCardholderValidation : AbstractValidator<AddCardholderSettings>
+    // ReSharper disable once UnusedMember.Global
+    internal class EditCardholderValidation : AbstractValidator<EditCardholderSettings>
     {
-        public AddCardholderValidation()
+        public EditCardholderValidation()
         {
             RuleFor(p => p.Address1).Length(0, 100).UnlessIsNullOrEmpty();
             RuleFor(p => p.Address2).Length(0, 100).UnlessIsNullOrEmpty();
@@ -54,8 +55,6 @@ namespace Flex.Validation
             RuleFor(p => p.CustomText14).Length(0, 255).UnlessIsNullOrEmpty();
             RuleFor(p => p.CustomText15).Length(0, 255).UnlessIsNullOrEmpty();
             RuleFor(p => p.CustomText16).Length(0, 255).UnlessIsNullOrEmpty();
-
-            // Tenants
         }
     }
 }

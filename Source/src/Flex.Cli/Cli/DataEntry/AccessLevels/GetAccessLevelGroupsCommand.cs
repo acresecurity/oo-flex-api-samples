@@ -1,6 +1,5 @@
-﻿using System.Net;
+using System.Net;
 using Flex.Cli.DataEntry.AccessLevels.Settings;
-using Flex.Configuration;
 using Flex.DataObjects;
 using Flex.DataObjects.Hardware;
 using Flex.Services.Abstractions;
@@ -11,7 +10,7 @@ namespace Flex.Cli.DataEntry.AccessLevels
 {
     internal class GetAccessLevelGroupsCommand : AsyncCommand<AccessLevelSettings>
     {
-        public GetAccessLevelGroupsCommand(Microsoft.Extensions.Options.IOptions<Options> options, ICacheStore cache, IFlexHttpClientFactory factory)
+        public GetAccessLevelGroupsCommand(IOptionsProvider options, ICacheStore cache, IFlexHttpClientFactory factory)
             : base(options, cache, factory)
         {
         }

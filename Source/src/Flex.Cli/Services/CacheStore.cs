@@ -1,4 +1,4 @@
-﻿using System.Net;
+using System.Net;
 using EasyCaching.Core;
 using Flex.DataObjects;
 using Flex.DataObjects.Hardware;
@@ -13,9 +13,9 @@ namespace Flex.Services
         private readonly Configuration.Options _settings;
         private readonly IFlexHttpClientFactory _clientFactory;
 
-        public CacheStore(Microsoft.Extensions.Options.IOptions<Configuration.Options> options, IEasyCachingProvider cache, IFlexHttpClientFactory clientFactory)
+        public CacheStore(IOptionsProvider options, IEasyCachingProvider cache, IFlexHttpClientFactory clientFactory)
         {
-            _settings = options.Value;
+            _settings = options.Options;
             _clientFactory = clientFactory;
             
             Provider = cache;

@@ -1,4 +1,4 @@
-﻿
+
 namespace Flex.Utils
 {
     internal static class Constants

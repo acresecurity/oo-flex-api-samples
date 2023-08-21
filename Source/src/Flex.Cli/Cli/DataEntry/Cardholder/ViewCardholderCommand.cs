@@ -1,6 +1,5 @@
-﻿using System.Net;
+using System.Net;
 using Flex.Cli.DataEntry.Cardholder.Settings;
-using Flex.Configuration;
 using Flex.DataObjects;
 using Flex.DataObjects.Cardholder;
 using Flex.Services.Abstractions;
@@ -12,7 +11,7 @@ namespace Flex.Cli.DataEntry.Cardholder
 {
     internal class ViewCardholderCommand : AsyncCommand<ViewCardholderSettings>
     {
-        public ViewCardholderCommand(Microsoft.Extensions.Options.IOptions<Options> options, ICacheStore cache, IFlexHttpClientFactory factory)
+        public ViewCardholderCommand(IOptionsProvider options, ICacheStore cache, IFlexHttpClientFactory factory)
             : base(options, cache, factory)
         {
         }

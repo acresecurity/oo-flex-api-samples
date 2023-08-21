@@ -1,4 +1,5 @@
-﻿using System.Reflection;
+using System.Reflection;
+using System.Text;
 using Flex.DataObjects;
 using Flex.Services.Abstractions;
 using Spectre.Console;
@@ -15,17 +16,19 @@ namespace Flex.Cli
     internal abstract class AsyncCommand<TSettings> : Spectre.Console.Cli.AsyncCommand<TSettings>
         where TSettings : DefaultCommandSettings
     {
-        protected readonly Configuration.Options Settings;
         protected readonly ICacheStore Cache;
 
+        private readonly IOptionsProvider _optionsProvider;
         private readonly IFlexHttpClientFactory _clientFactory;
 
-        protected AsyncCommand(Microsoft.Extensions.Options.IOptions<Configuration.Options> options, ICacheStore cache, IFlexHttpClientFactory clientFactory)
+        protected AsyncCommand(IOptionsProvider options, ICacheStore cache, IFlexHttpClientFactory clientFactory)
         {
-            Settings = options.Value;
             Cache = cache;
+            _optionsProvider = options;
             _clientFactory = clientFactory;
         }
+
+        protected Configuration.Options Settings => _optionsProvider.Options;
 
         protected abstract Task<int> ExecuteAsync(CommandContext context, TSettings settings, HttpClient client, UserInfo userInfo);
 
@@ -33,6 +36,25 @@ namespace Flex.Cli
 
         public sealed override async Task<int> ExecuteAsync(CommandContext context, TSettings settings)
         {
+            // Validate settings, it not valid, display error and exit
+            var validation = await _optionsProvider.ValidateAsync();
+            if (!validation.IsValid)
+            {
+                var sb = new StringBuilder();
+                sb.AppendLine("[red]Settings are invalid[/]");
+                sb.AppendLine();
+                foreach (var item in validation.Errors)
+                    sb.AppendLine($"[yellow]{item.PropertyName}[/]: {item.ErrorMessage}");
+
+                var entryPoint = Assembly.GetExecutingAssembly().GetName().Name;
+
+                sb.AppendLine();
+                sb.AppendLine($"Use [aqua]{entryPoint} setup[/] to configure");
+
+                AnsiConsole.MarkupLine(sb.ToString());
+                return CommandLineClientValidationError;
+            }
+
             var client = await _clientFactory.GetClient();
             if (client == null)
                 return CommandLineGeneralError;

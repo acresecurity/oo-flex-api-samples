@@ -1,6 +1,5 @@
-﻿using System.Net;
+using System.Net;
 using Flex.Cli.DataEntry.Cardholder.Settings;
-using Flex.Configuration;
 using Flex.DataObjects;
 using Flex.Services.Abstractions;
 using Flurl;
@@ -12,7 +11,7 @@ namespace Flex.Cli.DataEntry.Cardholder
 {
     internal class GetCardholdersCommand : AsyncCommand<GetCardholdersSettings>
     {
-        public GetCardholdersCommand(Microsoft.Extensions.Options.IOptions<Options> options, ICacheStore cache, IFlexHttpClientFactory factory)
+        public GetCardholdersCommand(IOptionsProvider options, ICacheStore cache, IFlexHttpClientFactory factory)
             : base(options, cache, factory)
         {
         }
@@ -27,6 +26,9 @@ namespace Flex.Cli.DataEntry.Cardholder
                 AnsiConsole.MarkupLine("[red]{0}[/]", "Operator is not allowed to view cardholders");
                 return CommandLineInsufficientPermission; ;
             }
+
+            // Build where clause
+
 
             var (pagedResponse, cardholders) = await AnsiConsole
                 .Status()

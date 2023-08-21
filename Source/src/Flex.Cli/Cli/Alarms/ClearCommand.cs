@@ -1,7 +1,6 @@
-﻿using System.Net;
+using System.Net;
 using System.Text;
 using Flex.Cli.Alarms.Settings;
-using Flex.Configuration;
 using Flex.DataObjects;
 using Flex.DataObjects.Hardware;
 using Flex.Services.Abstractions;
@@ -15,7 +14,7 @@ namespace Flex.Cli.Alarms
     /// </summary>
     internal class ClearCommand : DefaultCommand
     {
-        public ClearCommand(Microsoft.Extensions.Options.IOptions<Options> options, ICacheStore cache, IFlexHttpClientFactory factory)
+        public ClearCommand(IOptionsProvider options, ICacheStore cache, IFlexHttpClientFactory factory)
             : base(options, cache, factory)
         {
         }

@@ -1,6 +1,5 @@
-﻿using System.Net;
+using System.Net;
 using Flex.Cli.Hardware.Settings;
-using Flex.Configuration;
 using Flex.DataObjects;
 using Flex.Services.Abstractions;
 using Spectre.Console;
@@ -10,7 +9,7 @@ namespace Flex.Cli.Hardware
 {
     internal class MomentarilyUnlockDoorCommand : AsyncCommand<MomentarilyUnlockDoorSettings>
     {
-        public MomentarilyUnlockDoorCommand(Microsoft.Extensions.Options.IOptions<Options> options, ICacheStore cache, IFlexHttpClientFactory factory)
+        public MomentarilyUnlockDoorCommand(IOptionsProvider options, ICacheStore cache, IFlexHttpClientFactory factory)
             : base(options, cache, factory)
         {
         }

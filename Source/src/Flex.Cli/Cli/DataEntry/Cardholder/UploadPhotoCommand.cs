@@ -1,7 +1,6 @@
-﻿using System.IO.Abstractions;
+using System.IO.Abstractions;
 using System.Net;
 using Flex.Cli.DataEntry.Cardholder.Settings;
-using Flex.Configuration;
 using Flex.DataObjects;
 using Flex.DataObjects.Cardholder;
 using Flex.Services.Abstractions;
@@ -15,7 +14,7 @@ namespace Flex.Cli.DataEntry.Cardholder
     {
         private readonly IFileSystem _fileSystem;
 
-        public UploadPhotoCommand(Microsoft.Extensions.Options.IOptions<Options> options, ICacheStore cache, IFlexHttpClientFactory factory, IFileSystem fileSystem)
+        public UploadPhotoCommand(IOptionsProvider options, ICacheStore cache, IFlexHttpClientFactory factory, IFileSystem fileSystem)
             : base(options, cache, factory)
         {
             _fileSystem = fileSystem;

@@ -19,31 +19,25 @@
     <PackageReference Include="Ben.Demystifier" />
     <PackageReference Include="EasyCaching.Disk" />
     <PackageReference Include="EasyCaching.Serialization.Json" />
+    <PackageReference Include="Enums.NET" />
     <PackageReference Include="FluentValidation.DependencyInjectionExtensions" />
     <PackageReference Include="Flurl" />
     <PackageReference Include="Humanizer" />
     <PackageReference Include="IdentityModel.OidcClient" />
     <PackageReference Include="MQTTnet.Extensions.ManagedClient" />
     <PackageReference Include="Newtonsoft.Json" />
+    <PackageReference Include="ReactiveUI.Fody" />
+    <PackageReference Include="ReactiveMarbles.ObservableEvents.SourceGenerator" PrivateAssets="all" />
     <PackageReference Include="Spectre.Console.Cli" />
     <PackageReference Include="Spectre.Console.Json" />
     <PackageReference Include="System.IO.Abstractions" />
+    <PackageReference Include="Terminal.Gui" />
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="appsettings.development.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <DependentUpon>appsettings.json</DependentUpon>
-      <CopyToPublishDirectory>Never</CopyToPublishDirectory>
+    <None Update="appsettings.Development.json" Condition="'$(Configuration)'=='DEBUG~'">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="appsettings.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <CopyToPublishDirectory>Always</CopyToPublishDirectory>
-    </None>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="DataObjects\Settings\" />
   </ItemGroup>
 
 </Project>

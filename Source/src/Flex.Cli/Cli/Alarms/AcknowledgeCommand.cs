@@ -1,7 +1,6 @@
-﻿using System.Net;
+using System.Net;
 using System.Text;
 using Flex.DataObjects;
-using Flex.Configuration;
 using Flex.Services.Abstractions;
 using Spectre.Console;
 using Spectre.Console.Cli;
@@ -14,7 +13,7 @@ namespace Flex.Cli.Alarms
     /// </summary>
     internal class AcknowledgeCommand : DefaultCommand
     {
-        public AcknowledgeCommand(Microsoft.Extensions.Options.IOptions<Options> options, ICacheStore cache, IFlexHttpClientFactory factory)
+        public AcknowledgeCommand(IOptionsProvider options, ICacheStore cache, IFlexHttpClientFactory factory)
             : base(options, cache, factory)
         {
         }

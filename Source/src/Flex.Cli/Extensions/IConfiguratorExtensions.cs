@@ -1,11 +1,32 @@
-﻿
+
 // ReSharper disable once CheckNamespace
 namespace Spectre.Console.Cli
 {
     // ReSharper disable once InconsistentNaming
     internal static class IConfiguratorExtensions
     {
-        public static IConfigurator AddAlarmCommands(this IConfigurator self)
+        public static IConfigurator AddBuiltInCommands(this IConfigurator self)
+        {
+            self.AddSetupCommand()
+                .AddAlarmCommands()
+                .AddAccessLevelCommands()
+                .AddCardholderCommands()
+                .AddCredentialCommands()
+                .AddHardwareCommands()
+                .AddMqttCommands();
+
+            return self;
+        }
+
+        private static IConfigurator AddSetupCommand(this IConfigurator self)
+        {
+            self.AddCommand<Flex.Cli.Setup.SetupCommand>("setup")
+                .WithDescription("Manage settings");
+
+            return self;
+        }
+
+        private static IConfigurator AddAlarmCommands(this IConfigurator self)
         {
             self.AddBranch("alarms", branch =>
             {
@@ -20,7 +41,7 @@ namespace Spectre.Console.Cli
             return self;
         }
 
-        public static IConfigurator AddCardholderCommands(this IConfigurator self)
+        private static IConfigurator AddCardholderCommands(this IConfigurator self)
         {
             self.AddBranch<Flex.Cli.DataEntry.Cardholder.Settings.CardholderSettings>("cardholder", branch =>
             {
@@ -68,7 +89,7 @@ namespace Spectre.Console.Cli
             return self;
         }
 
-        public static IConfigurator AddCredentialCommands(this IConfigurator self)
+        private static IConfigurator AddCredentialCommands(this IConfigurator self)
         {
             self.AddBranch<Flex.Cli.DataEntry.Credential.Settings.CredentialSettings>("credential", branch =>
             {
@@ -104,7 +125,7 @@ namespace Spectre.Console.Cli
             return self;
         }
 
-        public static IConfigurator AddAccessLevelCommands(this IConfigurator self)
+        private static IConfigurator AddAccessLevelCommands(this IConfigurator self)
         {
             self.AddBranch<Flex.Cli.DataEntry.AccessLevels.Settings.AccessLevelSettings>("accessLevels", branch =>
             {
@@ -115,7 +136,7 @@ namespace Spectre.Console.Cli
             return self;
         }
 
-        public static IConfigurator AddHardwareCommands(this IConfigurator self)
+        private static IConfigurator AddHardwareCommands(this IConfigurator self)
         {
             self.AddBranch("hardware", branch =>
             {
@@ -136,7 +157,7 @@ namespace Spectre.Console.Cli
             return self;
         }
 
-        public static IConfigurator AddMqttCommands(this IConfigurator self)
+        private static IConfigurator AddMqttCommands(this IConfigurator self)
         {
             self.AddBranch("mqtt", branch =>
             {

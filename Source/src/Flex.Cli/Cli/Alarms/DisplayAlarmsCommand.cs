@@ -1,5 +1,4 @@
-﻿using System.Net;
-using Flex.Configuration;
+using System.Net;
 using Flex.DataObjects;
 using Flex.DataObjects.Hardware;
 using Flex.Services.Abstractions;
@@ -13,7 +12,7 @@ namespace Flex.Cli.Alarms
     /// </summary>
     internal class DisplayAlarmsCommand : AsyncCommand<DefaultCommandSettings>
     {
-        public DisplayAlarmsCommand(Microsoft.Extensions.Options.IOptions<Options> options, ICacheStore cache, IFlexHttpClientFactory factory)
+        public DisplayAlarmsCommand(IOptionsProvider options, ICacheStore cache, IFlexHttpClientFactory factory)
             : base(options, cache, factory)
         {
         }

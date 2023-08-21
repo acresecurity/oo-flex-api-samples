@@ -1,6 +1,5 @@
-﻿using System.Net;
+using System.Net;
 using Flex.Cli.Hardware.Settings;
-using Flex.Configuration;
 using Flex.DataObjects;
 using Flex.Services.Abstractions;
 using Humanizer;
@@ -11,7 +10,7 @@ namespace Flex.Cli.Hardware
 {
     internal class DoorModeCommand : AsyncCommand<DoorModeSettings>
     {
-        public DoorModeCommand(Microsoft.Extensions.Options.IOptions<Options> options, ICacheStore cache, IFlexHttpClientFactory factory)
+        public DoorModeCommand(IOptionsProvider options, ICacheStore cache, IFlexHttpClientFactory factory)
             : base(options, cache, factory)
         {
         }

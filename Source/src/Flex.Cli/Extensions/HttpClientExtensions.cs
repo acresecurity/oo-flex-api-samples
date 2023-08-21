@@ -1,11 +1,9 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Text;
 using Flex.Responses;
 using Flurl;
 using Microsoft.AspNetCore.WebUtilities;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
-using Newtonsoft.Json.Serialization;
 using Spectre.Console;
 
 // ReSharper disable once CheckNamespace
@@ -23,20 +21,6 @@ namespace System.Net
     // ReSharper disable once UnusedMember.Global
     internal static class HttpClientExtensions
     {
-        static HttpClientExtensions()
-        {
-            var settings = new JsonSerializerSettings
-            {
-                NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore,
-                FloatFormatHandling = FloatFormatHandling.DefaultValue,
-                DateTimeZoneHandling = DateTimeZoneHandling.RoundtripKind,
-                DateParseHandling = DateParseHandling.None,
-            };
-            settings.Converters.Add(new StringEnumConverter(new CamelCaseNamingStrategy(true, true, true)));
-
-            JsonConvert.DefaultSettings = () => settings;
-        }
-
         public static Task<JSendResponse> DeleteJSendAsync(this HttpClient httpClient, string requestUri, object content = null)
             => httpClient.SendJSendAsync<JSendResponse>(HttpMethod.Delete, requestUri, content);
 

@@ -1,14 +1,12 @@
-﻿using Flex.Cli.MQTTMessages.Settings;
+using Flex.Cli.MQTTMessages.Settings;
 using Flex.DataObjects;
 using Flex.Services.Abstractions;
-using Microsoft.Extensions.Options;
 using MQTTnet;
 using MQTTnet.Client;
 using MQTTnet.Extensions.ManagedClient;
 using MQTTnet.Packets;
 using Spectre.Console;
 using Spectre.Console.Cli;
-using Options = Flex.Configuration.Options;
 
 namespace Flex.Cli.MQTTMessages
 {
@@ -17,7 +15,7 @@ namespace Flex.Cli.MQTTMessages
         private readonly IManagedMqttClient _mqttClient;
         private readonly MqttClientOptions _clientOptions;
 
-        protected DefaultCommand(IOptions<Options> options, ICacheStore cache, IFlexHttpClientFactory factory, IManagedMqttClient mqttClient, MqttClientOptions clientOptions)
+        protected DefaultCommand(IOptionsProvider options, ICacheStore cache, IFlexHttpClientFactory factory, IManagedMqttClient mqttClient, MqttClientOptions clientOptions)
             : base(options, cache, factory)
         {
             _mqttClient = mqttClient;

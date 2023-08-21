@@ -1,7 +1,6 @@
-﻿using System.Collections.Concurrent;
+using System.Collections.Concurrent;
 using System.Net;
 using System.Text;
-using Flex.Configuration;
 using Flex.DataObjects.Hardware;
 using Flex.Services.Abstractions;
 using MQTTnet;
@@ -14,7 +13,7 @@ namespace Flex.Cli.MQTTMessages
 {
     internal class AlarmCommand : DefaultCommand
     {
-        public AlarmCommand(Microsoft.Extensions.Options.IOptions<Options> options, ICacheStore cache, IFlexHttpClientFactory factory, IManagedMqttClient mqttClient, MqttClientOptions clientOptions)
+        public AlarmCommand(IOptionsProvider options, ICacheStore cache, IFlexHttpClientFactory factory, IManagedMqttClient mqttClient, MqttClientOptions clientOptions)
             : base(options, cache, factory, mqttClient, clientOptions)
         {
         }
