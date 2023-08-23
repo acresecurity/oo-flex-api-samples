@@ -1,4 +1,4 @@
-﻿using Flex.DataObjects;
+using Flex.DataObjects;
 using FluentValidation;
 
 namespace Flex.Cli.DataEntry.AccessLevels.Settings
@@ -7,10 +7,13 @@ namespace Flex.Cli.DataEntry.AccessLevels.Settings
     {
         private readonly IValidator<AddAccessLevelSettings> _validation;
 
-        public AddAccessLevelSettings(IValidator<AddAccessLevelSettings> validation)
-        {
-            _validation = validation;
-        }
+        public AddAccessLevelSettings(IValidator<AddAccessLevelSettings> validation) => _validation = validation;
+
+        #region Overrides of DefaultCommandSettings
+
+        protected override FluentValidation.Results.ValidationResult InternalValidate() => _validation.ValidateAsync(this).GetAwaiter().GetResult();
+
+        #endregion
 
         public Guid UniqueKey { get; set; }
 

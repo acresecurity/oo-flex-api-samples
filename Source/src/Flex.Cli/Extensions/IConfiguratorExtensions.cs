@@ -78,7 +78,7 @@ namespace Spectre.Console.Cli
                 {
                     p.AddCommand<Flex.Cli.DataEntry.Cardholder.UploadPhotoCommand>("upload")
                         .WithDescription("Upload a photo and assign it to a cardholder")
-                        .WithExample("cardholder", "photos", "upload", Guid.NewGuid().ToString(), "D:\\Downloads\\Scorbunny.png");
+                        .WithExample("cardholder", "photos", "upload", Guid.NewGuid().ToString(), "D:\\Downloads\\GeorgeWashington.png");
 
                     p.AddCommand<Flex.Cli.DataEntry.Cardholder.DeletePhotoCommand>("delete")
                         .WithDescription("Delete a photo that has been assigned to a cardholder")

@@ -7,12 +7,9 @@ namespace Flex.Cli.DataEntry.Cardholder.Settings
     {
         private readonly IValidator<AddCardholderSettings> _validation;
 
-        public AddCardholderSettings(IValidator<AddCardholderSettings> validation)
-        {
-            _validation = validation;
-        }
+        public AddCardholderSettings(IValidator<AddCardholderSettings> validation) => _validation = validation;
 
-        #region Overrides of CardholderSettings
+        #region Overrides of DefaultCommandSettings
 
         protected override FluentValidation.Results.ValidationResult InternalValidate() => _validation.Validate(this);
 

@@ -68,14 +68,12 @@ namespace Flex.Cli
 
         #endregion
 
-        protected void CompareAndDisplay<TOriginal, TUpdated>(TSettings settings, TOriginal original, TUpdated updated, string[] ignoreProperties = default, string[] includeProperties = default)
+        protected static void CompareAndDisplay<TOriginal, TUpdated>(TSettings settings, TOriginal original, TUpdated updated, string[] ignoreProperties = default, string[] includeProperties = default)
             where TOriginal : class
-            where TUpdated : class
-        {
+            where TUpdated : class =>
             CompareAndDisplay(settings, original, updated, null, ignoreProperties, includeProperties);
-        }
 
-        protected void CompareAndDisplay<TOriginal, TUpdated>(TSettings settings, TOriginal original, TUpdated updated, Action<Table> configureTable, string[] ignoreProperties = default, string[] includeProperties = default)
+        protected static void CompareAndDisplay<TOriginal, TUpdated>(TSettings settings, TOriginal original, TUpdated updated, Action<Table> configureTable, string[] ignoreProperties = default, string[] includeProperties = default)
             where TOriginal : class
             where TUpdated : class
         {

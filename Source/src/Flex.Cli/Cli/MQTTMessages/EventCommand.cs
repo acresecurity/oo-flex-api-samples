@@ -56,15 +56,12 @@ namespace Flex.Cli.MQTTMessages
             return true;
         }
 
-        protected override void Subscribe(MqttTopicFilterBuilder builder)
-        {
-            // Flex                 Root topic
-            //   +                  Hardware System Source  (int)
-            //     +                Hardware Type           (string) Example, Door, Controller, Input, Output, Reader
-            //       +              Hardware Unique Key     (guid)
-            //         event
-            builder.WithTopic("flex/+/+/+/event");
-        }
+        // Flex                 Root topic
+        //   +                  Hardware System Source  (int)
+        //     +                Hardware Type           (string) Example, Door, Controller, Input, Output, Reader
+        //       +              Hardware Unique Key     (guid)
+        //         event
+        protected override void Subscribe(MqttTopicFilterBuilder builder) => builder.WithTopic("flex/+/+/+/event");
 
         #endregion
     }

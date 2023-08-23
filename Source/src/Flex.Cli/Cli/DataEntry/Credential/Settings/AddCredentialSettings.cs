@@ -1,4 +1,4 @@
-﻿using FluentValidation;
+using FluentValidation;
 using Spectre.Console.Cli;
 
 namespace Flex.Cli.DataEntry.Credential.Settings
@@ -7,10 +7,13 @@ namespace Flex.Cli.DataEntry.Credential.Settings
     {
         private readonly IValidator<AddCredentialSettings> _validation;
 
-        public AddCredentialSettings(IValidator<AddCredentialSettings> validation)
-        {
-            _validation = validation;
-        }
+        public AddCredentialSettings(IValidator<AddCredentialSettings> validation) => _validation = validation;
+
+        #region Overrides of DefaultCommandSettings
+
+        protected override FluentValidation.Results.ValidationResult InternalValidate() => _validation.ValidateAsync(this).GetAwaiter().GetResult();
+
+        #endregion
 
         /// <summary>
         /// Unique identifier for the parent cardholder record

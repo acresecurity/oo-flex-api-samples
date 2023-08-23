@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Reflection;
 using Flex.DataObjects;
 using Flex.Responses;
@@ -18,10 +18,7 @@ namespace Flex.Utils
             return true;
         }
 
-        public static bool DisplayJson(JToken token)
-        {
-            return DisplayJson(token.ToString());
-        }
+        public static bool DisplayJson(JToken token) => DisplayJson(token.ToString());
 
         /// <summary>
         /// Helper method to display and errors or messages returned from the server that wasn't successful

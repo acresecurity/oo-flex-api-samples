@@ -9,10 +9,7 @@ namespace Flex.Cli.Setup.Views
 {
     internal class SetupView : BaseReactiveView, IViewFor<SetupModel>
     {
-        public SetupView(SetupModel viewModel)
-        {
-            ViewModel = viewModel;
-        }
+        public SetupView(SetupModel viewModel) => ViewModel = viewModel;
 
         #region Implementation for IViewFor<Models.SetupModel>
 
