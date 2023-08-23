@@ -8,7 +8,6 @@ namespace Flex.Configuration.Validation
         public OptionsValidation(IValidator<MqttSubscriptionOptions> mqttValidator)
         {
             RuleFor(p => p.Mqtt)
-                .NotNull()
                 .SetValidator(mqttValidator);
 
             RuleFor(p => p.Api)
@@ -20,7 +19,6 @@ namespace Flex.Configuration.Validation
                 .WithMessage($"'{nameof(Options.Api)}' must start with 'http://' or 'https://'");
 
             RuleFor(p => p.Api)
-                .NotNull()
                 .NotEmpty()
                 .Must(p => !string.IsNullOrEmpty(p) && !p.EndsWith("/"))
                 .WithMessage($"'{nameof(Options.Api)}' must not end with '/'");

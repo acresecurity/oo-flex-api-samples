@@ -1,3 +1,5 @@
+using System.Text;
+using DynamicData.Binding;
 using Flex.Cli.Setup.Models;
 using Flex.Cli.TerminalGui;
 using ReactiveUI;
@@ -59,14 +61,75 @@ namespace Flex.Cli.Setup.Views
             tabView.AddTab(new TabView.Tab("API Config", CreateApiConfigView()), true);
             tabView.AddTab(new TabView.Tab("MQTT Config", CreateMqttConfigView()), false);
 
+            var validationView = new FrameView("Validation Errors")
+            {
+                X = Pos.Percent(66) + 1,
+                Y = 1,
+                Width = Dim.Percent(33),
+                Height = Dim.Fill(1),
+                Visible = false,
+            };
+
+            var validationText = new TextView
+            {
+                X = 1,
+                Y = 1,
+                Width = Dim.Fill(1),
+                Height = Dim.Fill(1),
+                ReadOnly = true,
+                WordWrap = true,
+                ColorScheme = new ColorScheme
+                {
+                    Normal = Application.Driver.MakeColor(Color.White, Color.Blue),
+                    Focus = Application.Driver.MakeColor(Color.Red, Color.Blue),
+                    HotNormal = Application.Driver.MakeColor(Color.BrightCyan, Color.Blue),
+                    HotFocus = Application.Driver.MakeColor(Color.BrightBlue, Color.Gray),
+                    Disabled = Application.Driver.MakeColor(Color.Red, Color.Blue),
+                }
+            };
+
+            validationView.Add(validationText);
+
             var statusBar = new StatusBar(new[]
             {
                 new StatusItem (Key.CtrlMask | Key.Q, "~CTRL-Q~ Quit", () => Application.RequestStop()),
             });
             
-            Add(menu, tabView, statusBar);
+            Add(menu, tabView, validationView, statusBar);
+
+            ViewModel?.Options.WhenAnyPropertyChanged().Subscribe(ValidateChanges);
+            ViewModel?.Options?.Mqtt.WhenAnyPropertyChanged().Subscribe(ValidateChanges);
 
             return this;
+
+            void ValidateChanges(ReactiveObject p)
+            {
+                if (ViewModel?.Options?.Mqtt == null)
+                    return;
+
+                ViewModel.Validate();
+                if (ViewModel.Validation?.IsValid == true)
+                {
+                    validationView.Visible = false;
+                    tabView.Width = Dim.Fill(1);
+                }
+                else
+                {
+                    validationView.Visible = true;
+                    tabView.Width = Dim.Percent(66, true);
+
+                    if (ViewModel?.Validation?.Errors?.Any() == true)
+                    {
+                        var sb = new StringBuilder();
+                        foreach (var item in ViewModel.Validation.Errors)
+                            sb.AppendLine(item.ErrorMessage);
+
+                        validationText.Text = sb.ToString();
+                    }
+                    else
+                        validationText.Text = string.Empty;
+                }
+            }
         }
 
         private View CreateApiConfigView()
