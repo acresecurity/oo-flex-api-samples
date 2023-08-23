@@ -29,7 +29,7 @@ namespace Flex.Cli.DataEntry.Cardholder
 
             var json = JToken.Parse("{}");
 
-            var response = await client.GetJsendAsync($"{Settings.Api}/api/v2/cardholder/{settings.UniqueKey}");
+            var response = await client.GetJsendAsync($"api/v2/cardholder/{settings.UniqueKey}");
             if (response.IsSuccess())
             {
                 var cardholder = response.Deserialize<DataObjects.Cardholder.Cardholder>();
@@ -41,7 +41,7 @@ namespace Flex.Cli.DataEntry.Cardholder
 
             if (settings.Credentials)
             {
-                response = await client.GetJsendAsync($"{Settings.Api}/api/v2/cardholder/{settings.UniqueKey}/credentials");
+                response = await client.GetJsendAsync($"api/v2/cardholder/{settings.UniqueKey}/credentials");
                 if (response.IsSuccess())
                 {
                     var credentials = response.Deserialize<DataObjects.Cardholder.Credential[]>();
@@ -54,7 +54,7 @@ namespace Flex.Cli.DataEntry.Cardholder
 
             if (settings.Photos)
             {
-                response = await client.GetJsendAsync($"{Settings.Api}/api/v2/cardholder/{settings.UniqueKey}/photos");
+                response = await client.GetJsendAsync($"api/v2/cardholder/{settings.UniqueKey}/photos");
                 if (response.IsSuccess())
                 {
                     var photos = response.Deserialize<Photo[]>();

@@ -26,7 +26,7 @@ namespace Flex.Cli.DataEntry.Credential
             }
 
             // Retrieving the original cardholder just so that we can compare and show the results.
-            var response = await AnsiConsole.Status().StartAsync("Retrieving credential...", _ => client.GetJsendAsync($"{Settings.Api}/api/v2/credential/{settings.UniqueKey}"));
+            var response = await AnsiConsole.Status().StartAsync("Retrieving credential...", _ => client.GetJsendAsync($"api/v2/credential/{settings.UniqueKey}"));
             if (!response.IsSuccess())
                 DisplayError(response);
 
@@ -42,7 +42,7 @@ namespace Flex.Cli.DataEntry.Credential
             if (!AnsiConsole.Confirm("Are you sure you wish to delete the above credential?", false))
                 return CommandLineCancelled;
 
-            response = await AnsiConsole.Status().StartAsync("Deleting credential...", _ => client.DeleteJSendAsync($"{Settings.Api}/api/v2/credential/{settings.UniqueKey}"));
+            response = await AnsiConsole.Status().StartAsync("Deleting credential...", _ => client.DeleteJSendAsync($"api/v2/credential/{settings.UniqueKey}"));
 
             if (!response.IsSuccess())
                 return DisplayError(response);

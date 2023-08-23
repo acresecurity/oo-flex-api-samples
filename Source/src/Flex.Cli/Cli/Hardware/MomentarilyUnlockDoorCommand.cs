@@ -25,7 +25,7 @@ namespace Flex.Cli.Hardware
                 return CommandLineInsufficientPermission;
             }
 
-            var response = await AnsiConsole.Status().StartAsync("Sending momentary unlock command...", _ => client.PostJSendAsync($"{Settings.Api}/api/v2/hardware/door/{settings.UniqueKey}/momentaryunlock", null));
+            var response = await AnsiConsole.Status().StartAsync("Sending momentary unlock command...", _ => client.PostJSendAsync($"api/v2/hardware/door/{settings.UniqueKey}/momentaryunlock", null));
 
             if (!response.IsSuccess())
                 return DisplayError(response);

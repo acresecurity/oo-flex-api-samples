@@ -11,9 +11,6 @@ namespace Flex.Configuration
         public string Api { get; set; }
 
         [Reactive, DataMember]
-        public string Authority { get; set; }
-
-        [Reactive, DataMember]
         public string ClientId { get; set; }
 
         [Reactive, DataMember]

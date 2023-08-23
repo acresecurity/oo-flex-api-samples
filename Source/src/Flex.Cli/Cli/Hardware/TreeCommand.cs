@@ -34,7 +34,7 @@ namespace Flex.Cli.Hardware
                         if (settings.Filter.Any())
                             query = settings.Filter.Aggregate(query, (current, item) => current + $"&filter={item}");
 
-                        var response = await client.GetJsendAsync($"{Settings.Api}/api/v2/hardware/tree/{query}");
+                        var response = await client.GetJsendAsync($"api/v2/hardware/tree/{query}");
                         if (response.IsSuccess())
                         {
                             var result = response.Deserialize<HardwareTreeItem[]>();
@@ -79,7 +79,7 @@ namespace Flex.Cli.Hardware
             // When this happens we can request the child items by supplying the hardware type and unique key to the hardware tree request.
             if (treeItem?.Items != null && treeItem.IsCollection && !treeItem.Items.Any() && treeItem?.UniqueKey  != null && treeItem.UniqueKey != Guid.Empty)
             {
-                var url = $"{Settings.Api}/api/v2/hardware/tree"
+                var url = "api/v2/hardware/tree"
                     .SetQueryParam("type", treeItem.Type)
                     .SetQueryParam("uniqueKey", treeItem.UniqueKey);
 

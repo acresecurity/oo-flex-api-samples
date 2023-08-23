@@ -106,7 +106,7 @@ namespace Flex.DataObjects.Validation
             if (!string.IsNullOrEmpty(pinCode))
                 query.Add(nameof(pinCode), pinCode);
     
-            var url = QueryHelpers.AddQueryString("/api/v2/credentials/exist", query);
+            var url = QueryHelpers.AddQueryString("api/v2/credentials/exist", query);
             
             var client = await _factory.GetClient();
             var response = await client.GetJsendAsync(url);

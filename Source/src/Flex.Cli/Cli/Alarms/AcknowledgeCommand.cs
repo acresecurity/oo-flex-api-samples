@@ -37,7 +37,7 @@ namespace Flex.Cli.Alarms
 
             if (alarm.Status is AlarmStatus.Alarm or AlarmStatus.ReturnToNormal)
             {
-                var url = $"{Settings.Api}/api/v2/hardware/alarm/{settings.UniqueId}/acknowledge";
+                var url = $"api/v2/hardware/alarm/{settings.UniqueId}/acknowledge";
 
                 var content = new StringContent(string.IsNullOrEmpty(settings.DispatchText) ? string.Empty : settings.DispatchText, Encoding.ASCII, "text/plain");
                 var response = await AnsiConsole

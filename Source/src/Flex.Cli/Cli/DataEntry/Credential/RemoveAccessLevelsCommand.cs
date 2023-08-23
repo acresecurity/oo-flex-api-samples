@@ -25,7 +25,7 @@ namespace Flex.Cli.DataEntry.Credential
                 return CommandLineInsufficientPermission;
             }
 
-            var response = await client.DeleteJSendAsync($"{Settings.Api}/api/v2/credential/{settings.UniqueKey}/accesslevel/groups", settings.AccessLevels);
+            var response = await client.DeleteJSendAsync($"api/v2/credential/{settings.UniqueKey}/accesslevel/groups", settings.AccessLevels);
 
             if (!response.IsSuccess())
                 return DisplayError(response);

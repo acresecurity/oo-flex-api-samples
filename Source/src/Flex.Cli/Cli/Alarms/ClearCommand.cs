@@ -50,7 +50,7 @@ namespace Flex.Cli.Alarms
 
             if (alarm.Status is AlarmStatus.PendingClear)
             {
-                var url = $"{Settings.Api}/api/v2/hardware/alarm/{settings.UniqueId}/clear";
+                var url = $"api/v2/hardware/alarm/{settings.UniqueId}/clear";
 
                 var content = new StringContent(string.IsNullOrEmpty(settings.DispatchText) ? string.Empty : settings.DispatchText, Encoding.ASCII, "text/plain");
                 var response = await AnsiConsole

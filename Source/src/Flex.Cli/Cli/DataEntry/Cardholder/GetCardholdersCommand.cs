@@ -34,7 +34,7 @@ namespace Flex.Cli.DataEntry.Cardholder
                 .Status()
                 .StartAsync("Retrieving cardholders ...", _ =>
                     client.FetchPaged<CardholderDto[]>(
-                        $"{Settings.Api}/api/v2/cardholders"
+                        "api/v2/cardholders"
                             .SetQueryParam("where", settings.Where?.Replace('\'', '"'))
                             .SetQueryParam("orderBy", settings.OrderBy)));
 

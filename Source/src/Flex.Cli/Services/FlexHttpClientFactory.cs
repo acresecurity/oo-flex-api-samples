@@ -1,5 +1,6 @@
 using EasyCaching.Core;
 using Flex.Services.Abstractions;
+using Flurl;
 using IdentityModel.Client;
 using IdentityModel.OidcClient;
 using Spectre.Console;
@@ -25,9 +26,10 @@ namespace Flex.Services
         {
             _cache.TryGetValue<Configuration.Token>(CacheKeyTokens, out var tokens);
 
-            if (tokens == null || tokens.Authority != _settings.Authority)
+            var authority = _settings.Api.AppendPathSegment("identity");
+            if (tokens == null || tokens.Authority != authority)
             {
-                tokens = new Configuration.Token { Authority = _settings.Authority };
+                tokens = new Configuration.Token { Authority = authority };
                 await _cache.FlushAsync();
             }
 
@@ -77,6 +79,7 @@ namespace Flex.Services
             }
             
             var result = _factory.CreateClient();
+            result.BaseAddress = new Uri(_settings.Api);
             result.SetBearerToken(tokens.AccessToken);
             return result;
         }

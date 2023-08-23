@@ -35,7 +35,7 @@ namespace Flex.Cli.Alarms
             //
             var response = await AnsiConsole
                 .Status()
-                .StartAsync("Retrieving alarms", _ => client.GetJsendAsync($"{Settings.Api}/api/v2/hardware/alarm/{settings.UniqueId}"));
+                .StartAsync("Retrieving alarms", _ => client.GetJsendAsync($"/api/v2/hardware/alarm/{settings.UniqueId}"));
 
             if (!response.IsSuccess())
                 return DisplayError(response);

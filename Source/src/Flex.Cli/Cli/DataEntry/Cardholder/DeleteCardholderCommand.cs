@@ -26,7 +26,7 @@ namespace Flex.Cli.DataEntry.Cardholder
             }
 
             // Retrieving the original cardholder just so that we can compare and show the results.
-            var response = await AnsiConsole.Status().StartAsync("Retrieving cardholder...", _ => client.GetJsendAsync($"{Settings.Api}/api/v2/cardholder/{settings.UniqueKey}"));
+            var response = await AnsiConsole.Status().StartAsync("Retrieving cardholder...", _ => client.GetJsendAsync($"api/v2/cardholder/{settings.UniqueKey}"));
             if (!response.IsSuccess())
                 return DisplayError(response);
 
@@ -41,7 +41,7 @@ namespace Flex.Cli.DataEntry.Cardholder
             if (!AnsiConsole.Confirm("Are you sure you wish to delete the above cardholder?", false))
                 return CommandLineCancelled;
 
-            response = await AnsiConsole.Status().StartAsync("Deleting cardholder...", _ => client.DeleteJSendAsync($"{Settings.Api}/api/v2/cardholder/{settings.UniqueKey}"));
+            response = await AnsiConsole.Status().StartAsync("Deleting cardholder...", _ => client.DeleteJSendAsync($"api/v2/cardholder/{settings.UniqueKey}"));
 
             if (!response.IsSuccess())
                 return DisplayError(response);

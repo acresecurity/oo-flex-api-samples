@@ -28,7 +28,7 @@ namespace Flex.Cli.DataEntry.Credential
             }
 
             // Retrieving the original credential just so that we can compare and show the results.
-            var response = await AnsiConsole.Status().StartAsync("Retrieving credential...", _ => client.GetJsendAsync($"{Settings.Api}/api/v2/credential/{commandSettings.UniqueKey}"));
+            var response = await AnsiConsole.Status().StartAsync("Retrieving credential...", _ => client.GetJsendAsync($"api/v2/credential/{commandSettings.UniqueKey}"));
             if (!response.IsSuccess())
             {
                 DisplayError(response);
@@ -37,7 +37,7 @@ namespace Flex.Cli.DataEntry.Credential
 
             var original = response.Deserialize<DataObjects.Cardholder.Credential>();
 
-            response = await AnsiConsole.Status().StartAsync("Saving cardholder...", _ => client.PutJSendAsync($"{Settings.Api}/api/v2/credential/{commandSettings.UniqueKey}", settings));
+            response = await AnsiConsole.Status().StartAsync("Saving cardholder...", _ => client.PutJSendAsync($"api/v2/credential/{commandSettings.UniqueKey}", settings));
 
             if (!response.IsSuccess())
                 return DisplayError(response);

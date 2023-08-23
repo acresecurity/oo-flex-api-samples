@@ -15,10 +15,8 @@ namespace Flex.Cli.DataEntry.Cardholder
         private readonly IFileSystem _fileSystem;
 
         public UploadPhotoCommand(IOptionsProvider options, ICacheStore cache, IFlexHttpClientFactory factory, IFileSystem fileSystem)
-            : base(options, cache, factory)
-        {
+            : base(options, cache, factory) =>
             _fileSystem = fileSystem;
-        }
 
         #region Overrides of AsyncCommand<UploadPhotoSettings>
 
@@ -51,7 +49,7 @@ namespace Flex.Cli.DataEntry.Cardholder
                 { new StreamContent(stream), "file", _fileSystem.Path.GetFileName(settings.Filename) }
             };
 
-            var response = await AnsiConsole.Status().StartAsync("Uploading photo...", _ => client.PostJSendAsync($"{Settings.Api}/api/v2/cardholder/{settings.UniqueKey}/upload", content));
+            var response = await AnsiConsole.Status().StartAsync("Uploading photo...", _ => client.PostJSendAsync($"api/v2/cardholder/{settings.UniqueKey}/upload", content));
 
             if (!response.IsSuccess())
                 return DisplayError(response);

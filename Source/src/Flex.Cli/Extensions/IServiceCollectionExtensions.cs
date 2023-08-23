@@ -9,6 +9,7 @@ using Flex.Services;
 using Flex.Services.Abstractions;
 using Flex.Utils;
 using FluentValidation;
+using Flurl;
 using IdentityModel.Client;
 using IdentityModel.OidcClient;
 using Microsoft.Extensions.Configuration;
@@ -65,7 +66,7 @@ namespace Microsoft.Extensions.DependencyInjection
                 var settings = provider.Options;
                 var options = new OidcClientOptions
                 {
-                    Authority = settings.Authority,
+                    Authority = settings.Api.AppendPathSegment("identity"),
                     ClientId = settings.ClientId,
                     ClientSecret = settings.ClientSecret,
                     Scope = "offline_access openid profile email flex_api",

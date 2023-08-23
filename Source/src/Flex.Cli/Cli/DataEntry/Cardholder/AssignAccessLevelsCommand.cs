@@ -25,7 +25,7 @@ namespace Flex.Cli.DataEntry.Cardholder
                 return CommandLineInsufficientPermission;
             }
 
-            var response = await client.PutJSendAsync($"{Settings.Api}/api/v2/cardholder/{settings.UniqueKey}/accesslevels/groups", settings.AccessLevels);
+            var response = await client.PutJSendAsync($"api/v2/cardholder/{settings.UniqueKey}/accesslevels/groups", settings.AccessLevels);
 
             if (!response.IsSuccess())
                 return DisplayError(response);

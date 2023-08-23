@@ -28,7 +28,7 @@ namespace Flex.Cli.DataEntry.Cardholder
             if (!AnsiConsole.Confirm("Are you sure you wish to delete the cardholder photo?", false))
                 return CommandLineCancelled;
 
-            var response = await AnsiConsole.Status().StartAsync("Deleting photo...", _ => client.DeleteJSendAsync($"{Settings.Api}/api/v2/photo/{settings.UniqueKey}"));
+            var response = await AnsiConsole.Status().StartAsync("Deleting photo...", _ => client.DeleteJSendAsync($"api/v2/photo/{settings.UniqueKey}"));
 
             if (response.IsSuccess())
                 return DisplayError(response);

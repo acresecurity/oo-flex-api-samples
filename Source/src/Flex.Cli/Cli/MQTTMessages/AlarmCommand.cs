@@ -26,7 +26,7 @@ namespace Flex.Cli.MQTTMessages
         {
             var response = await AnsiConsole
                 .Status()
-                .StartAsync("Retrieving alarms ...", _ => client.GetJsendAsync($"{Settings.Api}/api/v2/hardware/alarms"));
+                .StartAsync("Retrieving alarms ...", _ => client.GetJsendAsync("api/v2/hardware/alarms"));
 
             if (response.IsSuccess())
             {

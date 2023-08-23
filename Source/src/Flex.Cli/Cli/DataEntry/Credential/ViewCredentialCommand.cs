@@ -25,7 +25,7 @@ namespace Flex.Cli.DataEntry.Credential
                 return CommandLineInsufficientPermission;
             }
 
-            var response = await client.GetJsendAsync($"{Settings.Api}/api/v2/credential/{settings.UniqueKey}");
+            var response = await client.GetJsendAsync($"api/v2/credential/{settings.UniqueKey}");
 
             if (!response.IsSuccess())
                 return DisplayError(response);

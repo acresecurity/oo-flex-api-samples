@@ -143,7 +143,6 @@ namespace Flex.Cli.Setup.Views
             };
 
             var (label, _) = CreateTextFieldView(result, null, "API Url:", ViewModel?.Options, p => p.Api);
-            (label, _) = CreateTextFieldView(result, label, "Authority:", ViewModel?.Options, p => p.Authority);
             (label, _) = CreateTextFieldView(result, label, "Client ID:", ViewModel?.Options, p => p.ClientId);
             CreateTextFieldView(result, label, "Client Secret:", ViewModel?.Options, p => p.ClientSecret);
 

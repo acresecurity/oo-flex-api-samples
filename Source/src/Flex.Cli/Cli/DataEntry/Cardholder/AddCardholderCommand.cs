@@ -32,7 +32,7 @@ namespace Flex.Cli.DataEntry.Cardholder
                 return CommandLineClientValidationError;
             }
 
-            var response = await AnsiConsole.Status().StartAsync("Adding cardholder...", _ => client.PostJSendAsync($"{Settings.Api}/api/v2/cardholder", settings));
+            var response = await AnsiConsole.Status().StartAsync("Adding cardholder...", _ => client.PostJSendAsync("api/v2/cardholder", settings));
 
             if (!response.IsSuccess())
                 return DisplayError(response);

@@ -29,7 +29,7 @@ namespace Flex.Cli.DataEntry.AccessLevels
             var response = await AnsiConsole
                 .Status()
                 .StartAsync("Retrieving access levels ...", _ =>
-                    client.GetJsendAsync($"{Settings.Api}/api/v2/hardware/accesslevel/groups"));
+                    client.GetJsendAsync("api/v2/hardware/accesslevel/groups"));
 
             if (!response.IsSuccess())
                 return DisplayError(response);

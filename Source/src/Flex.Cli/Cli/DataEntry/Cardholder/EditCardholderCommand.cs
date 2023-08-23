@@ -28,7 +28,7 @@ namespace Flex.Cli.DataEntry.Cardholder
             }
 
             // Retrieving the original cardholder just so that we can compare and show the results.
-            var response = await AnsiConsole.Status().StartAsync("Retrieving cardholder...", _ => client.GetJsendAsync($"{Settings.Api}/api/v2/cardholder/{commandSettings.UniqueKey}"));
+            var response = await AnsiConsole.Status().StartAsync("Retrieving cardholder...", _ => client.GetJsendAsync($"api/v2/cardholder/{commandSettings.UniqueKey}"));
             if (!response.IsSuccess())
             {
                 DisplayError(response);
@@ -37,7 +37,7 @@ namespace Flex.Cli.DataEntry.Cardholder
 
             var original = response.Deserialize<DataObjects.Cardholder.Cardholder>();
 
-            response = await AnsiConsole.Status().StartAsync("Saving cardholder...", _ => client.PutJSendAsync($"{Settings.Api}/api/v2/cardholder/{commandSettings.UniqueKey}", settings));
+            response = await AnsiConsole.Status().StartAsync("Saving cardholder...", _ => client.PutJSendAsync($"api/v2/cardholder/{commandSettings.UniqueKey}", settings));
 
             if (!response.IsSuccess())
                 return DisplayError(response);

@@ -27,7 +27,7 @@ namespace Flex.Cli.Hardware
             }
 
             var response = await AnsiConsole.Status().StartAsync("Sending door mode command...", _ =>
-                client.PostJSendAsync($"{Settings.Api}/api/v2/hardware/door/{settings.UniqueKey}/mode", settings.Mode.Camelize()));
+                client.PostJSendAsync($"api/v2/hardware/door/{settings.UniqueKey}/mode", settings.Mode.Camelize()));
 
             if (!response.IsSuccess())
                 return DisplayError(response);

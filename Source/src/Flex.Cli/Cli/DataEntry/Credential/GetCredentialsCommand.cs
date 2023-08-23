@@ -31,7 +31,7 @@ namespace Flex.Cli.DataEntry.Credential
                 .Status()
                 .StartAsync("Retrieving credentials ...", _ =>
                     client.FetchPaged<CredentialDto[]>(
-                        $"{Settings.Api}/api/v2/credentials"
+                        "api/v2/credentials"
                             .SetQueryParam("where", settings.Where?.Replace('\'', '"'))
                             .SetQueryParam("orderBy", settings.OrderBy)));
 
