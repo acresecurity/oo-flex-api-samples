@@ -1,6 +1,5 @@
-﻿using Spectre.Console;
+using Spectre.Console;
 using Spectre.Console.Cli;
-using System.Text;
 
 namespace Flex.Cli
 {
@@ -27,14 +26,22 @@ namespace Flex.Cli
             var result = InternalValidate();
             if (result.IsValid)
                 return ValidationResult.Success();
+            
+            AnsiConsole.WriteLine();
+            AnsiConsole.MarkupLine(ValidationErrorHeader);
 
-            var sb = new StringBuilder();
-            sb.AppendLine(ValidationErrorHeader);
-            sb.AppendLine();
+            var table = new Table();
+            table.BorderColor(Color.Red);
+            table.AddColumn("Field");
+            table.AddColumn("Message");
+
             foreach (var item in result.Errors)
-                sb.AppendLine($"[yellow]{item.PropertyName}[/]: {item.ErrorMessage}");
+                table.AddRow(item.PropertyName ?? "<Missing Field>", item.ErrorMessage.EscapeMarkup());
 
-            return ValidationResult.Error(sb.ToString());
+            table.Expand();
+            AnsiConsole.Write(table);
+
+            return ValidationResult.Error(ValidationErrorHeader);
         }
 
         #endregion

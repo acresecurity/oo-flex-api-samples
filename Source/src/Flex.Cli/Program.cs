@@ -88,7 +88,6 @@ namespace Flex
             }
             catch (CommandRuntimeException ex) when (ex.Message.StartsWith(ValidationErrorHeader))
             {
-                AnsiConsole.MarkupLine(ex.Message);
                 return Environment.ExitCode == CommandLineSuccess ? CommandLineClientValidationError : Environment.ExitCode;
             }
             catch (Exception ex)
