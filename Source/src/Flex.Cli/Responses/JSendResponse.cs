@@ -1,4 +1,4 @@
-﻿using System.Net;
+using System.Net;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
@@ -24,6 +24,9 @@ namespace Flex.Responses
 
         public T Deserialize<T>()
         {
+            if (JsonConvert.DefaultSettings == null)
+                return default;
+
             var settings = JsonConvert.DefaultSettings();
             settings.DateParseHandling = DateParseHandling.DateTime;
 
@@ -32,6 +35,9 @@ namespace Flex.Responses
 
         public T Deserialize<T>(params JsonConverter[] converters)
         {
+            if (JsonConvert.DefaultSettings == null)
+                return default;
+
             var settings = JsonConvert.DefaultSettings();
             settings.DateParseHandling = DateParseHandling.DateTime;
 
@@ -49,10 +55,7 @@ namespace Flex.Responses
 
         public bool HasFailedValidation() => HasFailed() && Message == "Validation Failed";
 
-        public bool IsRateLimited()
-        {
-            return Code == (int)HttpStatusCode.TooManyRequests;
-        }
+        public bool IsRateLimited() => Code == (int)HttpStatusCode.TooManyRequests;
 
         public uint RetryAfter()
         {
