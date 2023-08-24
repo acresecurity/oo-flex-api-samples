@@ -20,8 +20,16 @@ namespace Spectre.Console.Cli
 
         private static IConfigurator AddSetupCommand(this IConfigurator self)
         {
-            self.AddCommand<Flex.Cli.Setup.SetupCommand>("setup")
-                .WithDescription("Manage settings");
+            self.AddBranch("setup", branch =>
+            {
+                branch.AddExample(new[] { "setup" });
+                branch.SetDescription("Provide a user interface for settings and displaying them.");
+                branch.SetDefaultCommand<Flex.Cli.Setup.SetupCommand>();
+
+                branch.AddCommand<Flex.Cli.Setup.InfoCommand>("info")
+                    .WithDescription("Display the current settings.")
+                    .WithExample("setup", "info");
+            });
 
             return self;
         }
@@ -30,6 +38,7 @@ namespace Spectre.Console.Cli
         {
             self.AddBranch("alarms", branch =>
             {
+                branch.SetDescription("View, acknowledge, clear, and dismiss alarms");
                 branch.AddCommand<Flex.Cli.Alarms.DisplayAlarmsCommand>("list")
                     .WithDescription("Display the current alarms.");
 
@@ -58,10 +67,10 @@ namespace Spectre.Console.Cli
                     .WithExample("cardholder", "edit", Guid.NewGuid().ToString(), "--FirstName", "Marco", "--LastName", "Polo");
 
                 branch.AddCommand<Flex.Cli.DataEntry.Cardholder.GetCardholdersCommand>("get")
-                    .WithExample("cardholder", "get", "--where", "\"LastName == 'Brown'\"", "--orderBy", "FirstName")
-                    .WithExample("cardholder", "get", "--where", "\"LastName.Contains('Brown')\"", "--orderBy", "FirstName")
-                    .WithExample("cardholder", "get", "--where", "\"LastName.StartsWith('Brown')\"", "--orderBy", "FirstName")
-                    .WithExample("cardholder", "get", "--where", "\"LastName.EndsWith('Brown')\"", "--orderBy", "\"FirstName Descending\"")
+                    .WithExample("cardholder", "get", "--where", "\"LastName == \\\"Brown\\\"", "--orderBy", "FirstName")
+                    .WithExample("cardholder", "get", "--where", "\"LastName.Contains(\\\"Brown\\\")\"", "--orderBy", "FirstName")
+                    .WithExample("cardholder", "get", "--where", "\"LastName.StartsWith(\\\"Brown\\\")\"", "--orderBy", "FirstName")
+                    .WithExample("cardholder", "get", "--where", "\"LastName.EndsWith(\\\"Brown\\\")\"", "--orderBy", "\"FirstName Descending\"")
                     .WithExample("cardholder", "get", "--where", "\"Updated == Updated > DateTime.Now.AddDays(-1)\"");
 
                 branch.AddCommand<Flex.Cli.DataEntry.Cardholder.ViewCardholderCommand>("view")
@@ -70,12 +79,14 @@ namespace Spectre.Console.Cli
 
                 branch.AddBranch("accessLevels", p =>
                 {
+                    p.SetDescription("Manage access levels for the cardholder.");
                     p.AddCommand<Flex.Cli.DataEntry.Cardholder.AssignAccessLevelsCommand>("assign")
                         .WithDescription("Apply access level groups to all the credentials assigned to a cardholder");
                 });
 
                 branch.AddBranch("photos", p =>
                 {
+                    p.SetDescription("Upload and delete photos for a cardholder");
                     p.AddCommand<Flex.Cli.DataEntry.Cardholder.UploadPhotoCommand>("upload")
                         .WithDescription("Upload a photo and assign it to a cardholder")
                         .WithExample("cardholder", "photos", "upload", Guid.NewGuid().ToString(), "D:\\Downloads\\GeorgeWashington.png");
@@ -93,6 +104,7 @@ namespace Spectre.Console.Cli
         {
             self.AddBranch<Flex.Cli.DataEntry.Credential.Settings.CredentialSettings>("credential", branch =>
             {
+                branch.SetDescription("Manage credentials assigned to a cardholder.");
                 branch.AddCommand<Flex.Cli.DataEntry.Credential.AddCredentialCommand>("add")
                     .WithDescription("Add a credential to a specified cardholder")
                     .WithExample("credential", "add", Guid.NewGuid().ToString(), "--CardNumber", "4571");
@@ -104,7 +116,7 @@ namespace Spectre.Console.Cli
                     .WithExample("credential", "edit", Guid.NewGuid().ToString(), "--Active", "false", "--CardType", "3");
 
                 branch.AddCommand<Flex.Cli.DataEntry.Credential.GetCredentialsCommand>("get")
-                    .WithExample("credential", "get", "--where", "\"Updated == Updated > '2/14/2015 2:0 PM'\"", "--orderBy", "CardNumber")
+                    .WithExample("credential", "get", "--where", "\"Updated == Updated > \\\"2/14/2015 2:0 PM\\\"", "--orderBy", "CardNumber")
                     .WithExample("credential", "get", "--where", "\"Updated == Updated > DateTime.Now.AddDays(-1)\"");
 
                 branch.AddCommand<Flex.Cli.DataEntry.Credential.ViewCredentialCommand>("view")
@@ -112,6 +124,7 @@ namespace Spectre.Console.Cli
 
                 branch.AddBranch("accessLevels", p =>
                 {
+                    p.SetDescription("Manage access levels assigned to a credential.");
                     p.AddCommand<Flex.Cli.DataEntry.Credential.ViewAssignedAccessLevelsCommand>("view");
 
                     p.AddCommand<Flex.Cli.DataEntry.Credential.AssignAccessLevelsCommand>("assign")
@@ -129,6 +142,7 @@ namespace Spectre.Console.Cli
         {
             self.AddBranch<Flex.Cli.DataEntry.AccessLevels.Settings.AccessLevelSettings>("accessLevels", branch =>
             {
+                branch.SetDescription("Manage access level groups");
                 branch.AddCommand<Flex.Cli.DataEntry.AccessLevels.GetAccessLevelGroupsCommand>("list")
                     .WithDescription("Return a list of the available access level groups");
             });
@@ -140,18 +154,20 @@ namespace Spectre.Console.Cli
         {
             self.AddBranch("hardware", branch =>
             {
+                branch.SetDescription("Display a hardware and control hardware.");
+
                 branch.AddCommand<Flex.Cli.Hardware.TreeCommand>("tree")
                     .WithDescription("Display the hardware tree.")
-                    .WithExample("--filter", "door")
-                    .WithExample("--flatten true --filter", "door");
+                    .WithExample("hardware", "tree", "--filter", "door")
+                    .WithExample("hardware", "tree", "--flatten", "true", "--filter", "door");
 
                 branch.AddBranch<Flex.Cli.Hardware.Settings.HardwareSettings>("door", p =>
                 {
                     p.AddCommand<Flex.Cli.Hardware.MomentarilyUnlockDoorCommand>("momentary")
-                        .WithExample("door", "momentary", Guid.NewGuid().ToString());
+                        .WithExample("hardware", "door", "momentary", Guid.NewGuid().ToString());
 
                     p.AddCommand<Flex.Cli.Hardware.DoorModeCommand>("mode")
-                        .WithExample("door", "mode", Guid.NewGuid().ToString(), "Unlocked");
+                        .WithExample("hardware", "door", "mode", Guid.NewGuid().ToString(), "Unlocked");
                 });
             });
             return self;
@@ -161,12 +177,16 @@ namespace Spectre.Console.Cli
         {
             self.AddBranch("mqtt", branch =>
             {
+                branch.SetDescription("Listen to alarms, events, and status messages from the MQTT broker.");
                 branch.AddCommand<Flex.Cli.MQTTMessages.EventCommand>("events")
-                    .WithDescription("Subscribe to events and display them in a live table.");
+                    .WithDescription("Subscribe to events and display them in a live table.")
+                    .WithExample("mqtt", "events");
                 branch.AddCommand<Flex.Cli.MQTTMessages.AlarmCommand>("alarms")
-                    .WithDescription("Subscribe to alarms and display them in a live table.");
+                    .WithDescription("Subscribe to alarms and display them in a live table.")
+                    .WithExample("mqtt", "alarms");
                 branch.AddCommand<Flex.Cli.MQTTMessages.StatusCommand>("status")
-                    .WithDescription("Subscribe to hardware status");
+                    .WithDescription("Subscribe to hardware status")
+                    .WithExample("mqtt", "status");
             });
 
             return self;

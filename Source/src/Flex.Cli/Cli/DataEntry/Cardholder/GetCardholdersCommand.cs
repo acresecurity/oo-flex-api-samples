@@ -3,6 +3,7 @@ using Flex.Cli.DataEntry.Cardholder.Settings;
 using Flex.DataObjects;
 using Flex.Services.Abstractions;
 using Flurl;
+using Newtonsoft.Json.Linq;
 using Spectre.Console;
 using Spectre.Console.Cli;
 using CardholderDto = Flex.DataObjects.Cardholder.Cardholder;
@@ -29,14 +30,13 @@ namespace Flex.Cli.DataEntry.Cardholder
 
             // Build where clause
 
+            var url = "api/v2/cardholders"
+                .SetQueryParam("where", settings.Where)
+                .SetQueryParam("orderBy", settings.OrderBy);
 
             var (pagedResponse, cardholders) = await AnsiConsole
                 .Status()
-                .StartAsync("Retrieving cardholders ...", _ =>
-                    client.FetchPaged<CardholderDto[]>(
-                        "api/v2/cardholders"
-                            .SetQueryParam("where", settings.Where?.Replace('\'', '"'))
-                            .SetQueryParam("orderBy", settings.OrderBy)));
+                .StartAsync("Retrieving cardholders ...", _ => client.FetchPaged<CardholderDto[]>(url));
 
             if (!pagedResponse.IsSuccess())
                 return DisplayError(pagedResponse);
