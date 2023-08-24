@@ -37,18 +37,25 @@ Fully functional console application that demonstates how to utilize the Flex AP
 
 ## Screenshots ##
 
-Login Procedure
+### Login Procedure ###
 
 ![Login Procedure](/Images/LoginProcedure.png)
 
-Setup Gui `dotnet run setup` or `flex setup`
+### Setup Gui ###
+
+`dotnet run setup` or `flex setup`
+
 ![Setup Gui](/Images/SetupGui.png)
 
-Subscribing to Events
+### Subscribing to Events ###
+
+`dotnet run mqtt events`
 
 ![MQTT Events](/Images/MQTT Events.gif)
 
 
-Hardware Tree
+### Hardware Tree ###
+
+`dotnet run hardware tree`
 
 ![Hardware Tree](/Images/Hardware Tree Demo.gif)
