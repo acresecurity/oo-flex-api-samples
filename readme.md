@@ -1,10 +1,12 @@
-# Flex API Samples
+# Flex API Console Sample
 
-Sample code demonstrating how to do various aspects of the Flex API.
+Fully functional console application that demonstates how to utilize the Flex API.
 
 ## Requirements
 
-The projects all require the [.NET 6.0 SDK](https://dotnet.microsoft.com/en-us/download).
+- The projects all require the [.NET 7.0 SDK](https://dotnet.microsoft.com/en-us/download).
+- Flex API license
+- Configured Flex Identity client. See helpful information below.
 
 ## Features
 
@@ -17,13 +19,15 @@ The projects all require the [.NET 6.0 SDK](https://dotnet.microsoft.com/en-us/d
     - Subscribing to alarms, events, and status
     - TCP and WebSocket transport
 - Hardware Tree
-    - How to retrieve the complete DNA hardware tree and fetch child nodes.
-    - API rate limiting support
+    - How to retrieve the complete DNA hardware tree and fetch child nodes.    
 - Cardholder
     - Complete lifecyle management of a cardholder and its credentials
     - Adding, editing, deleting cardholders and credentials
     - Assigning and removing access levels
-    - Data validation handling
+- Client and server side data validation
+- API rate limiting support
+- Output response as JSON data using the `--json` option
+
 
 ## Helpful information
 
@@ -32,6 +36,13 @@ The projects all require the [.NET 6.0 SDK](https://dotnet.microsoft.com/en-us/d
 - [JSend Message Response](https://bitbucket.org/ooaccess/flex-api-samples/wiki/JSend%20-%20Json%20Message%20Structure%20Overview)
 
 ## Screenshots ##
+
+Login Procedure
+
+![Login Procedure](/Images/LoginProcedure.png)
+
+Setup Gui `dotnet run setup` or `flex setup`
+![Setup Gui](/Images/SetupGui.png)
 
 Subscribing to Events
 
