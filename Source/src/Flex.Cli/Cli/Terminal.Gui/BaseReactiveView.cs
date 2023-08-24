@@ -9,7 +9,7 @@ using ReactiveUI;
 using Terminal.Gui;
 using Terminal.Gui.TextValidateProviders;
 
-namespace Flex.Cli.TerminalGui
+namespace Flex.Cli.Terminal.Gui
 {
     internal class BaseReactiveView : Toplevel
     {
