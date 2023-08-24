@@ -1,4 +1,4 @@
-﻿using System.Text;
+using System.Text;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -16,7 +16,8 @@ namespace Flex.Oidc
         public LoopbackHttpListener(int port, string path = null)
         {
             path ??= string.Empty;
-            if (path.StartsWith("/")) path = path[1..];
+            if (path.StartsWith("/"))
+                path = path[1..];
 
             Url = $"http://127.0.0.1:{port}/{path}";
 
@@ -29,47 +30,42 @@ namespace Flex.Oidc
             _host.Start();
         }
 
-        public void Dispose()
-        {
-            Task.Run(async () =>
+        public void Dispose() => Task.Run(async () =>
             {
                 await Task.Delay(500);
                 _host.Dispose();
             });
-        }
 
-        private void Configure(IApplicationBuilder app)
-        {
-            app.Run(async ctx =>
+        private void Configure(IApplicationBuilder app) =>
+            app?.Run(async context =>
             {
-                if (ctx.Request.Method == "GET")
+                if (context.Request.Method == "GET")
                 {
-                    await SetResultAsync(ctx.Request.QueryString.Value, ctx);
+                    await SetResultAsync(context.Request.QueryString.Value, context);
                 }
-                else if (ctx.Request.Method == "POST")
+                else if (context.Request.Method == "POST")
                 {
-                    if (!ctx.Request.ContentType.Equals("application/x-www-form-urlencoded", StringComparison.OrdinalIgnoreCase))
-                        ctx.Response.StatusCode = 415;
+                    if (context.Request.ContentType != null && !context.Request.ContentType.Equals("application/x-www-form-urlencoded", StringComparison.OrdinalIgnoreCase))
+                        context.Response.StatusCode = 415;
                     else
                     {
-                        using var sr = new StreamReader(ctx.Request.Body, Encoding.UTF8);
-                        var body = await sr.ReadToEndAsync();
-                        await SetResultAsync(body, ctx);
+                        using var reader = new StreamReader(context.Request.Body, Encoding.UTF8);
+                        var body = await reader.ReadToEndAsync();
+                        await SetResultAsync(body, context);
                     }
                 }
                 else
-                    ctx.Response.StatusCode = 405;
+                    context.Response.StatusCode = 405;
             });
-        }
 
-        private async Task SetResultAsync(string value, HttpContext ctx)
+        private async Task SetResultAsync(string value, HttpContext context)
         {
             try
             {
-                ctx.Response.StatusCode = 200;
-                ctx.Response.ContentType = "text/html";
-                await ctx.Response.WriteAsync("<h1>You can now return to the application.</h1>");
-                await ctx.Response.Body.FlushAsync();
+                context.Response.StatusCode = 200;
+                context.Response.ContentType = "text/html";
+                await context.Response.WriteAsync(SuccessResponse);
+                await context.Response.Body.FlushAsync();
 
                 _source.TrySetResult(value);
             }
@@ -77,10 +73,10 @@ namespace Flex.Oidc
             {
                 Console.WriteLine(ex.ToString());
 
-                ctx.Response.StatusCode = 400;
-                ctx.Response.ContentType = "text/html";
-                await ctx.Response.WriteAsync("<h1>Invalid request.</h1>");
-                await ctx.Response.Body.FlushAsync();
+                context.Response.StatusCode = 400;
+                context.Response.ContentType = "text/html";
+                await context.Response.WriteAsync(ErrorResponse);
+                await context.Response.Body.FlushAsync();
             }
         }
 
@@ -94,5 +90,113 @@ namespace Flex.Oidc
 
             return _source.Task;
         }
+
+        #region Static HTML Responses
+
+        // https://codepen.io/warrendunlop/pen/YmVKzm
+
+        private const string SuccessResponse = """
+            <html>
+             <head>
+               <link href='https://fonts.googleapis.com/css?family=Nunito+Sans:400,400i,700,900&display=swap' rel='stylesheet'>
+             </head>
+             <style>
+               body {
+                 text-align: center;
+                 padding: 40px 0;
+                 background: #EBF0F5;
+               }
+               h1 {
+                 color: #88B04B;
+                 font-family: 'Nunito Sans', 'Helvetica Neue', sans-serif;
+                 font-weight: 900;
+                 font-size: 40px;
+                 margin-bottom: 10px;
+               }
+               p {
+                 color: #404F5E;
+                 font-family: 'Nunito Sans', 'Helvetica Neue', sans-serif;
+                 font-size:20px;
+                 margin: 0;
+               }
+               i {
+                 color: #9ABC66;
+                 font-size: 100px;
+                 line-height: 200px;
+                 margin-left:-15px;
+               }
+               .card {
+                 background: white;
+                 padding: 60px;
+                 border-radius: 4px;
+                 box-shadow: 0 2px 3px #C8D0D8;
+                 display: inline-block;
+                 margin: 0 auto;
+               }
+             </style>
+             <body>
+               <div class='card'>
+                 <div style='border-radius:200px; height:200px; width:200px; background: #F8FAF5; margin:0 auto;'>
+                   <i class='checkmark'>&#x2713;</i>
+                 </div>
+                 <h1>Success</h1>
+                 <p>You have successfully logged on.<br/>You can now return to the application.</p>
+               </div>
+             </body>
+            </html>
+            """;
+
+        private const string ErrorResponse = """
+             <html>
+               <head>
+                 <link href='https://fonts.googleapis.com/css?family=Nunito+Sans:400,400i,700,900&display=swap' rel='stylesheet'>
+               </head>
+               <style>
+                 body {
+                   text-align: center;
+                   padding: 40px 0;
+                   background: #EBF0F5;
+                 }
+                 h1 {
+                   color: #b04b53;
+                   font-family: 'Nunito Sans', 'Helvetica Neue', sans-serif;
+                   font-weight: 900;
+                   font-size: 40px;
+                   margin-bottom: 10px;
+                 }
+                 p {
+                   color: #404F5E;
+                   font-family: 'Nunito Sans', 'Helvetica Neue', sans-serif;
+                   font-size:20px;
+                   margin: 0;
+                 }
+                 i {
+                   color: #bc6666;
+                   font-size: 100px;
+                   line-height: 200px;
+                   margin-left:-15px;
+                 }
+                 .card {
+                   background: white;
+                   padding: 60px;
+                   border-radius: 4px;
+                   box-shadow: 0 2px 3px #C8D0D8;
+                   display: inline-block;
+                   margin: 0 auto;
+                 }
+               </style>
+               <body>
+                 <div class='card'>
+                   <div style='border-radius:200px; height:200px; width:200px; background: #F8FAF5; margin:0 auto;'>
+                     <i class='exception'>!</i>
+                   </div>
+                   <h1>Error</h1> 
+                   <p>Invalid request.</p>
+                 </div>
+               </body>
+             </html>
+             """;
+
+        #endregion
     }
 }
