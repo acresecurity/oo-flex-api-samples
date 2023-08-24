@@ -36,6 +36,12 @@ namespace Flex.Cli
 
         public sealed override async Task<int> ExecuteAsync(CommandContext context, TSettings settings)
         {
+            if (settings.FlushCache)
+            {
+                await Cache.Provider.FlushAsync();
+                AnsiConsole.MarkupLine("[green]Cache flushed[/]");
+            }
+
             // Validate settings, it not valid, display error and exit
             var validation = await _optionsProvider.ValidateAsync();
             if (!validation.IsValid)
@@ -87,7 +93,7 @@ namespace Flex.Cli
             configureTable?.Invoke(table);
 
             var include = includeProperties ?? Array.Empty<string>();
-            var ignore = (ignoreProperties ?? Array.Empty<string>()).Concat(new[] { nameof(DefaultCommandSettings.OutputJson), nameof(DefaultCommandSettings.IncludeBanner) }).ToArray();
+            var ignore = (ignoreProperties ?? Array.Empty<string>()).Concat(new[] { nameof(DefaultCommandSettings.OutputJson), nameof(DefaultCommandSettings.FlushCache) }).ToArray();
 
             // Get a list of properties that were supplied via the command line.
             var supplied = settings.GetType().GetProperties(BindingFlags.Public | BindingFlags.Instance).Where(p => include.Contains(p.Name) || (p.GetValue(settings) != null && !ignore.Contains(p.Name)));

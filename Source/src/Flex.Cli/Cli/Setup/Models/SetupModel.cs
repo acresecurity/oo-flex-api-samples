@@ -20,14 +20,16 @@ namespace Flex.Cli.Setup.Models
         private readonly string _fileName;
         private readonly IHostEnvironment _environment;
         private readonly IFileSystem _fileSystem;
+        private readonly ICacheStore _cache;
 
-        public SetupModel(ILogger<SetupModel> logger, IOptionsProvider optionsProvider, IConfiguration configuration, IHostEnvironment environment, IFileSystem fileSystem)
+        public SetupModel(ILogger<SetupModel> logger, IOptionsProvider optionsProvider, IConfiguration configuration, IHostEnvironment environment, IFileSystem fileSystem, ICacheStore cache)
         {
             _logger = logger;
             _optionsProvider = optionsProvider;
             _configuration = configuration;
             _environment = environment;
             _fileSystem = fileSystem;
+            _cache = cache;
 
             _fileName = environment.IsDevelopment()
                 ? "appsettings.Development.json"
@@ -45,6 +47,8 @@ namespace Flex.Cli.Setup.Models
         public ValidationResult Validation { get; set; }
 
         #endregion
+
+        public void FlushCache() => _cache.Provider.Flush();
 
         public void Validate() => Validation = _optionsProvider.Validate();
 

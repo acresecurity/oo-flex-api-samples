@@ -18,7 +18,6 @@ using Microsoft.Extensions.Options;
 using MQTTnet;
 using MQTTnet.Client;
 using MQTTnet.Extensions.ManagedClient;
-using Spectre.Console;
 
 // ReSharper disable once CheckNamespace
 namespace Microsoft.Extensions.DependencyInjection
@@ -26,33 +25,12 @@ namespace Microsoft.Extensions.DependencyInjection
     // ReSharper disable once InconsistentNaming
     internal static class IServiceCollectionExtensions
     {
-        public static IServiceCollection AddDefaultServices(this IServiceCollection services, IConfiguration configuration, IHostEnvironment environment, string[] args)
+        public static IServiceCollection AddDefaultServices(this IServiceCollection services, IConfiguration configuration, IHostEnvironment environment)
         {
             services
                 .AddOptions<Flex.Configuration.Options>()
                 .BindConfiguration("FlexApi");
 
-            var config = configuration.GetSection("FlexApi");
-
-            var displayBanner = !args.Any(p => p.Equals("--no-banner", StringComparison.OrdinalIgnoreCase));
-            if (displayBanner)
-            {
-                var table = new Table()
-                    .Border(TableBorder.Minimal)
-                    .BorderColor(Color.Blue)
-                    .AddColumn("Name")
-                    .AddColumn("Value")
-                    .AddRow("Api", config["Api"] ?? "<Unset>")
-                    .AddRow("Authority", config["Authority"] ?? "<Unset>")
-                    .AddRow("ClientId", config["ClientId"] ?? "<Unset>")
-                    .AddRow("ClientSecret", string.IsNullOrEmpty(config["ClientSecret"]) ? "<Unset>" : "[[REDACTED]]")
-                    .AddRow("MQTT Transport", config["Mqtt:Transport"] ?? "<Unset>")
-                    .AddRow("MQTT Host", config["Mqtt:Host"] ?? "<Unset>");
-
-                // Sloppy margin
-                AnsiConsole.Write(new Panel(new Panel(table).Header("Settings")).Border(BoxBorder.None).PadLeft(4));
-            }
-            
             // OIDC Options
             services.AddSingleton(p =>
             {
@@ -158,7 +136,7 @@ namespace Microsoft.Extensions.DependencyInjection
                         BasePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "flex.cli", "cache")
                     };
                     options.SerializerName = "json";
-                }, (config["Authority"] ?? "default").ComputeHash());
+                }, (configuration.GetSection("FlexApi")["Api"] ?? "default").ComputeHash());
 
                 p.WithJson();
             });

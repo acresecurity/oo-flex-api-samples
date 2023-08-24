@@ -20,6 +20,8 @@ namespace Flex.Cli.Setup
             _defaultView = defaultView;
         }
 
+        #region Overrides of Command
+
         public override int Execute(CommandContext context)
         {
             try
@@ -44,5 +46,7 @@ namespace Flex.Cli.Setup
                 Application.Shutdown();
             }
         }
+
+        #endregion
     }
 }

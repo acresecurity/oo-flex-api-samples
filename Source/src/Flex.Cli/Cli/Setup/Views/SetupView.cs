@@ -1,7 +1,7 @@
 using System.Text;
 using DynamicData.Binding;
 using Flex.Cli.Setup.Models;
-using Flex.Cli.TerminalGui;
+using Flex.Cli.Terminal.Gui;
 using ReactiveUI;
 using Terminal.Gui;
 
@@ -43,6 +43,13 @@ namespace Flex.Cli.Setup.Views
                     new MenuItem[]
                     {
                         new ("_Quit", string.Empty, () => Application.RequestStop())
+                    }
+                }),
+                new MenuBarItem("_Cache", new List<MenuItem[]>
+                {
+                    new MenuItem[]
+                    {
+                        new ("_Flush", string.Empty, () => ViewModel?.FlushCache())
                     }
                 })
             });

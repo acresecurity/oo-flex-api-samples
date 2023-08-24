@@ -3,7 +3,7 @@ using Spectre.Console.Cli;
 
 namespace Flex.Cli
 {
-    internal abstract class DefaultCommandSettings : CommandSettings
+    internal class DefaultCommandSettings : CommandSettings
     {
         /// <summary>
         /// Optional parameter for displaying the output in JSON format
@@ -11,8 +11,14 @@ namespace Flex.Cli
         [CommandOption("-j|--json")]
         public bool OutputJson { get; set; }
 
-        [CommandOption("--no-banner")]
-        public bool IncludeBanner { get; set; } = true;
+        /// <summary>
+        /// Optional parameter for flushing the cache
+        /// </summary>
+        /// <remarks>
+        /// Will also reset authentication tokens requiring a new login
+        /// </remarks>
+        [CommandOption("--flush")]
+        public bool FlushCache { get; set; }
 
         protected virtual FluentValidation.Results.ValidationResult InternalValidate() => new();
 
