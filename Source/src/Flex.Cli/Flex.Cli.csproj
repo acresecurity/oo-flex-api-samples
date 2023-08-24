@@ -1,0 +1,43 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <Import Project="..\..\Dependencies.props" />
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <UserSecretsId>flex-cli</UserSecretsId>
+    <TargetFramework>$(CommonTargetFrameworks)</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <RootNamespace>Flex</RootNamespace>
+    <AssemblyName>flex</AssemblyName>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <FrameworkReference Include="Microsoft.AspNetCore.App"></FrameworkReference>
+  </ItemGroup>
+
+  <ItemGroup Label="Package References">
+    <PackageReference Include="Ben.Demystifier" />
+    <PackageReference Include="EasyCaching.Disk" />
+    <PackageReference Include="EasyCaching.Serialization.Json" />
+    <PackageReference Include="Enums.NET" />
+    <PackageReference Include="FluentValidation.DependencyInjectionExtensions" />
+    <PackageReference Include="Flurl" />
+    <PackageReference Include="Humanizer" />
+    <PackageReference Include="IdentityModel.OidcClient" />
+    <PackageReference Include="MQTTnet.Extensions.ManagedClient" />
+    <PackageReference Include="Newtonsoft.Json" />
+    <PackageReference Include="ReactiveUI.Fody" />
+    <PackageReference Include="ReactiveMarbles.ObservableEvents.SourceGenerator" PrivateAssets="all" />
+    <PackageReference Include="Spectre.Console.Cli" />
+    <PackageReference Include="Spectre.Console.Json" />
+    <PackageReference Include="System.IO.Abstractions" />
+    <PackageReference Include="Terminal.Gui" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="appsettings.Development.json" Condition="'$(Configuration)'=='DEBUG~'">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+</Project>

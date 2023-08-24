@@ -1,10 +1,12 @@
-# Flex API Samples
+# Flex API Console Sample
 
-Sample code demonstrating how to do various aspects of the Flex API.
+Fully functional console application that demonstates how to utilize the Flex API.
 
 ## Requirements
 
-The projects all require the [.NET 6.0 SDK](https://dotnet.microsoft.com/en-us/download).
+- The projects all require the [.NET 7.0 SDK](https://dotnet.microsoft.com/en-us/download).
+- Flex API license
+- Configured Flex Identity client. See helpful information below.
 
 ## Features
 
@@ -17,13 +19,16 @@ The projects all require the [.NET 6.0 SDK](https://dotnet.microsoft.com/en-us/d
     - Subscribing to alarms, events, and status
     - TCP and WebSocket transport
 - Hardware Tree
-    - How to retrieve the complete DNA hardware tree and fetch child nodes.
-    - API rate limiting support
+    - How to retrieve the complete DNA hardware tree and fetch child nodes.    
 - Cardholder
     - Complete lifecyle management of a cardholder and its credentials
     - Adding, editing, deleting cardholders and credentials
     - Assigning and removing access levels
-    - Data validation handling
+- Authenticating to Flex Identity server using OpenID Connect 
+- Client and server side data validation
+- API rate limiting support
+- Output response as JSON data using the `--json` option
+
 
 ## Helpful information
 
@@ -34,11 +39,48 @@ The projects all require the [.NET 6.0 SDK](https://dotnet.microsoft.com/en-us/d
 
 ## Screenshots ##
 
-Subscribing to Events
+### Login Procedure ###
 
-![MQTT Events](/Images/MQTT Events.gif)
+![Login Procedure](/Images/LoginProcedure.png)
+
+### Setup Gui ###
+
+`dotnet run setup` or `flex setup`
+
+![Setup Gui](/Images/SetupGui.png)
+
+### Subscribing to Events ###
+
+`dotnet run mqtt events`
+
+![MQTT Events](/Images/MQTTEvents.gif)
 
 
-Hardware Tree
+### Hardware Tree ###
 
-![Hardware Tree](/Images/Hardware Tree Demo.gif)
+`dotnet run hardware tree`
+
+![Hardware Tree](/Images/HardwareTreeDemo.gif)
+
+### Searching Cardholders ###
+
+`dotnet run cardholder get --where 'LastName == "Brown"' --orderBy FirstName`
+
+![CardholderSearch](/Images/CardholderSearchTable.png)
+
+### Viewing Cardholder Outputed as JSON ###
+
+`dotnet run cardholder --json view 49acee78-5f0d-4ff0-ad7f-2a918f21c650`
+
+![CardholderView](/Images/CardholderJsonOutput.png)
+
+### Validation Errors ###
+
+`dotnet run credential edit 2db27f49-ec76-493b-91aa-10f90623f091 --CardNumber 365 --IssueCode 2000`
+![ValidationErrors](/Images/ValidationErrors.png)
+
+### Editing Cardholder ###
+
+`dotnet run cardholder edit 49acee78-5f0d-4ff0-ad7f-2a918f21c650 --Zip 76226 --MiddleName Glenn`
+
+![EditingCardholder](/Images/EditingCardholder.png)

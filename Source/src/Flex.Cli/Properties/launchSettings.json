@@ -1,0 +1,16 @@
+{
+  "profiles": {
+    "console": {
+      "commandName": "Project",
+      "commandLineArgs": "setup",
+      "commandLineArgs~~~~~": "mqtt status",
+      "commandLineArgs~~~~": "hardware tree",
+      "commandLineArgs~~~": "cardholder edit 49acee78-5f0d-4ff0-ad7f-2a918f21c650 --Zip 76226",
+      "commandLineArgs~~": "cardholder --json view 49acee78-5f0d-4ff0-ad7f-2a918f21c650 --credentials --photos",
+      "commandLineArgs~": "cardholder --json --where \"LastName == 'Brown'\" --orderBy FirstName",
+      "environmentVariables": {
+        "DOTNET_ENVIRONMENT": "Development"
+      }
+    }
+  }
+}
