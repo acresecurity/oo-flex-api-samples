@@ -72,3 +72,14 @@ Fully functional console application that demonstates how to utilize the Flex AP
 `dotnet run cardholder --json view 49acee78-5f0d-4ff0-ad7f-2a918f21c650`
 
 ![CardholderView](/Images/CardholderJsonOutput.png)
+
+### Validation Errors ###
+
+`dotnet run credential edit 2db27f49-ec76-493b-91aa-10f90623f091 --CardNumber 365 --IssueCode 2000`
+![ValidationErrors](/Images/ValidationErrors.png)
+
+### Editing Cardholder ###
+
+`dotnet run cardholder edit 49acee78-5f0d-4ff0-ad7f-2a918f21c650 --Zip 76226 --MiddleName Glenn`
+
+![EditingCardholder](/Images/EditingCardholder.png)
