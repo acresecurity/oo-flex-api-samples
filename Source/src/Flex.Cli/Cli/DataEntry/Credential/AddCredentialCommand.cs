@@ -25,7 +25,7 @@ namespace Flex.Cli.DataEntry.Credential
                 return CommandLineInsufficientPermission;
             }
 
-            var response = await AnsiConsole.Status().StartAsync("Adding credential...", _ => client.PostJSendAsync($"api/v2/cardholder/{commandSettings.CardholderKey}/credential", settings));
+            var response = await AnsiConsole.Status().StartAsync("Adding credential...", _ => client.PostJSendAsync($"api/v2/cardholder/{commandSettings.CardholderKey}/credential", commandSettings));
 
             if (!response.IsSuccess())
                 return DisplayError(response);

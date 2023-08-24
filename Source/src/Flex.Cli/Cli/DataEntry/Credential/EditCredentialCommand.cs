@@ -37,7 +37,7 @@ namespace Flex.Cli.DataEntry.Credential
 
             var original = response.Deserialize<DataObjects.Cardholder.Credential>();
 
-            response = await AnsiConsole.Status().StartAsync("Saving cardholder...", _ => client.PutJSendAsync($"api/v2/credential/{commandSettings.UniqueKey}", settings));
+            response = await AnsiConsole.Status().StartAsync("Saving cardholder...", _ => client.PutJSendAsync($"api/v2/credential/{commandSettings.UniqueKey}", commandSettings));
 
             if (!response.IsSuccess())
                 return DisplayError(response);
