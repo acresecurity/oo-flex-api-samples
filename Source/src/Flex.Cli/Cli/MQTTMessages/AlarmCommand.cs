@@ -121,48 +121,6 @@ namespace Flex.Cli.MQTTMessages
             return true;
         }
 
-/*
-        protected override bool DisplayPayload(MqttApplicationMessage message, Table table, Dictionary<int, string> eventDescriptions)
-        {
-            if (MqttTopicFilterComparer.Compare(message.Topic, "flex/+/+/+/alarm") != MqttTopicFilterCompareResult.IsMatch)
-                return false;
-
-            // Remove any alarms that don't exist anymore
-            var notFound = _alarms.Where(x => !_alarms.Select(p => p.Key).Contains(x.Key));
-            foreach (var item in notFound)
-                _alarms.TryRemove(item.Key, out _);
-
-            var json = Encoding.UTF8.GetString(message.Payload);
-            var data = JsonConvert.DeserializeObject<Alarm>(json);
-            if (data == null)
-                return false;
-
-            if (_alarms.TryGetValue(data.UniqueId, out var found))
-            {
-                data.Count = found.Count + 1;
-                if (!_alarms.TryUpdate(data.UniqueId, data, found))
-                    return false;
-            }
-            else
-                _alarms.TryAdd(data.UniqueId, data);
-
-            table.Rows.Clear();
-            foreach (var item in _alarms.Values)
-            {
-                table.AddRow(
-                    item.Transaction.ToLongTimeString(),
-                    eventDescriptions[item.EventDescriptionId],
-                    item.HardwareAddress,
-                    item.HardwareDescription,
-                    item.HardwareType,
-                    item.Count.ToString(),
-                    item.Status.ToString());
-            }
-
-            return true;
-        }
-*/
-
         // Flex                 Root topic
         //   +                  Hardware System Source  (int)
         //     +                Hardware Type           (string) Example, Door, Controller, Input, Output, Reader
