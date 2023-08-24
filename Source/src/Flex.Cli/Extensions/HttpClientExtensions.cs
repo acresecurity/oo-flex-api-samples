@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Net.Http.Headers;
 using System.Text;
 using Flex.Responses;
 using Flurl;
@@ -108,7 +109,13 @@ namespace System.Net
 
         public static async Task<T> SendJSendAsync<T>(this HttpClient httpClient, HttpMethod method, string requestUri, object content)
         {
-            var message = new HttpRequestMessage(method, requestUri) { Version = HttpVersion.Version11, Content = new StringContent(string.Empty, Encoding.UTF8, "application/json") };
+            var message = new HttpRequestMessage(method, requestUri)
+            {
+                Version = HttpVersion.Version11, 
+                Content = new StringContent(string.Empty, Encoding.UTF8, "application/json"),
+            };
+            message.Headers.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
             if (content != null)
             {
                 if (content is HttpContent httpContent)
@@ -120,6 +127,7 @@ namespace System.Net
             var httpResponseMessage = await httpClient.SendAsync(message);
 
             httpResponseMessage.EnsureSuccessStatusCode();
+
             return typeof(T) == typeof(IgnoreResponse)
                 ? default
                 : JsonConvert.DeserializeObject<T>(await httpResponseMessage.Content.ReadAsStringAsync());
