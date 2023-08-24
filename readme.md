@@ -24,6 +24,7 @@ Fully functional console application that demonstates how to utilize the Flex AP
     - Complete lifecyle management of a cardholder and its credentials
     - Adding, editing, deleting cardholders and credentials
     - Assigning and removing access levels
+- Authenticating to Flex Identity server using OpenID Connect 
 - Client and server side data validation
 - API rate limiting support
 - Output response as JSON data using the `--json` option
@@ -51,11 +52,23 @@ Fully functional console application that demonstates how to utilize the Flex AP
 
 `dotnet run mqtt events`
 
-![MQTT Events](/Images/MQTT Events.gif)
+![MQTT Events](/Images/MQTTEvents.gif)
 
 
 ### Hardware Tree ###
 
 `dotnet run hardware tree`
 
-![Hardware Tree](/Images/Hardware Tree Demo.gif)
+![Hardware Tree](/Images/HardwareTreeDemo.gif)
+
+### Searching Cardholders ###
+
+`dotnet run cardholder get --where 'LastName == "Brown"' --orderBy FirstName`
+
+![CardholderSearch](/Images/CardholderSearchTable.png)
+
+### Viewing Cardholder Outputed as JSON ###
+
+`dotnet run cardholder --json view 49acee78-5f0d-4ff0-ad7f-2a918f21c650`
+
+![CardholderView](/Images/CardholderJsonOutput.png)
