@@ -27,8 +27,6 @@ namespace Flex.Cli.Alarms
 
         protected override async Task<int> ExecuteAsync(CommandContext context, AlarmSettings settings, HttpClient client, UserInfo userInfo, Dictionary<int, string> eventDescriptions)
         {
-            await ExecuteAsync(context, settings, client, userInfo);
-
             //
             // Fetch the alarm to be processed. This way we can verify the state and the alarm priority before hand to avoid
             // and server side verification errors that might be returned.
