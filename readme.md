@@ -33,9 +33,9 @@ Fully functional console application that demonstates how to utilize the Flex AP
 ## Helpful information
 
 - [Swagger API Explorer](https://flextest.ooaccess.net/apiexplorer/index.html)
-- [Identity Client Setup](https://bitbucket.org/ooaccess/flex-api-samples/wiki/Identity%20Client)
-- [JSend Message Response](https://bitbucket.org/ooaccess/flex-api-samples/wiki/JSend%20-%20Json%20Message%20Structure%20Overview)
-- [Authorizing Postman Requests](https://bitbucket.org/ooaccess/flex-api-samples/wiki/Authorizing%20Postman%20Requests)
+- [Identity Client Setup](https://github.com/acresecurity/oo-flex-api-samples/wiki/Identity-Client)
+- [JSend Message Response](https://github.com/acresecurity/oo-flex-api-samples/wiki/JSend-%E2%80%90-Json-Message-Structure-Overview)
+- [Authorizing Postman Requests](https://github.com/acresecurity/oo-flex-api-samples/wiki/Authorizing-Postman-Requests)
 
 ## Screenshots ##
 
