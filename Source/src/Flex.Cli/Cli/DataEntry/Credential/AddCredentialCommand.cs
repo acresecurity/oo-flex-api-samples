@@ -43,5 +43,54 @@ namespace Flex.Cli.DataEntry.Credential
         }
 
         #endregion
+
+        private static bool DefaultToDeactivate(DataObjects.Settings.Settings settings, DataObjects.Cardholder.Cardholder cardholder)
+        {
+            var result = settings.NewCredential.DefaultToDeactivate ?? false;
+            var tenantId = cardholder != null ? cardholder.TenantId ?? 0 : 0;
+            if (settings.Segregation.UsesSegregation == true && settings.Tenants.TryGetValue(tenantId, out var tenant))
+                result = tenant.DefaultToDeactivateNewCard ?? result;
+
+            return !result;
+        }
+
+        private static int DefaultCardMode(DataObjects.Settings.Settings settings, DataObjects.Cardholder.Cardholder cardholder)
+        {
+            var result = settings.NewCredential.DefaultCardMode ?? 0;
+            var tenantId = cardholder != null ? cardholder.TenantId ?? 0 : 0;
+            if (settings.Segregation.UsesSegregation == true && settings.Tenants.TryGetValue(tenantId, out var tenant))
+                result = tenant.DefaultCodeMode ?? result;
+
+            return result;
+        }
+
+        private static int DefaultFacilityCode(DataObjects.Settings.Settings settings, DataObjects.Cardholder.Cardholder cardholder)
+        {
+            var result = settings.NewCredential.DefaultFacilityCode ?? 0;
+            var tenantId = cardholder != null ? cardholder.TenantId ?? 0 : 0;
+            if (settings.Segregation.UsesSegregation == true && settings.Tenants.TryGetValue(tenantId, out var tenant))
+                result = tenant.DefaultFacilityCode ?? result;
+
+            return result;
+        }
+
+        private static DateTime DefaultDeactivationDate(DataObjects.Settings.Settings settings, DataObjects.Cardholder.Cardholder cardholder)
+        {
+            var defaultActivation = settings.NewCredential.DefaultActivation ?? 90;
+            var tenantId = cardholder != null ? cardholder.TenantId ?? 0 : 0;
+            if (settings.Segregation.UsesSegregation == true && settings.Tenants.TryGetValue(tenantId, out var tenant))
+                defaultActivation = tenant.DefaultActivation ?? defaultActivation;
+
+            var result = defaultActivation;
+
+            //Value 0=1 Day, 89=90 Days, 90=1 Year, 91=2 Years, etc.
+
+            if (result < 0)
+                result = 90;
+
+            return result > 89
+                ? DateTime.Now.AddYears(result - 89)
+                : DateTime.Now.AddDays(result + 1);
+        }
     }
 }
